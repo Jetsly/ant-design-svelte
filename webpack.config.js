@@ -6,6 +6,12 @@ module.exports = {
   mode: 'development',
   entry: './site/index.js',
   resolve: {
+    extensions: [
+      '.ts',
+      '.mjs',
+      '.js',
+      '.json',
+    ],
     mainFields: ['svelte', 'browser', 'module', 'main'],
   },
   stats: {
@@ -24,7 +30,7 @@ module.exports = {
     rules: [
       {
         test: /\.(html|svelte)$/,
-        exclude: /node_modules|_util/,
+        exclude: /node_modules/,
         use: {
           loader: 'svelte-loader',
           options: {
@@ -34,14 +40,11 @@ module.exports = {
         },
       },
       {
-        test: /\.(html|svelte)$/,
-        include:/_util/,
+        test: /\.ts$/,
+        exclude: /(node_modules)/,
         use: {
-          loader: 'svelte-loader',
-          options: {
-            emitCss: true,
-          },
-        },
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.(c|le)ss$/,
