@@ -1,0 +1,40 @@
+{
+  "name": "ant-design-svelte",
+  "version": "0.0.1",
+  "title": "Ant Design Svelte",
+  "description": "An enterprise-class UI design language and Svelte-based implementation",
+  "keywords": [
+    "ant",
+    "design",
+    "antd",
+    "svelte",
+    "svelteComponent",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend"
+  ],
+  "main": "index.js",
+  "author": "Jetsly <cnljli@live.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.6.0",
+    "css-loader": "^3.0.0",
+    "gulp": "^4.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "postcss-loader": "^3.0.0",
+    "svelte": "^3.6.4",
+    "svelte-loader": "^2.13.4",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2",
+    "webpackbar": "^3.2.0"
+  }
+}
