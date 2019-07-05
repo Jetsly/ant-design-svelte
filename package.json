@@ -21,6 +21,9 @@
   "scripts": {
     "dev": "webpack-dev-server"
   },
+  "dependencies": {
+    "svelte": "^3.6.4"
+  },
   "devDependencies": {
     "autoprefixer": "^9.6.0",
     "css-loader": "^3.0.0",
@@ -30,7 +33,6 @@
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.7.0",
     "postcss-loader": "^3.0.0",
-    "svelte": "^3.6.4",
     "svelte-loader": "^2.13.4",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",

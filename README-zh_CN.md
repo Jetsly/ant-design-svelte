@@ -1,4 +1,4 @@
-<h1 align="center">Ant Design</h1>
+<h1 align="center">Ant Design Svelte</h1>
 
 <div align="center">
 
