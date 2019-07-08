@@ -1,9 +1,11 @@
-const path = require('path');
+import path from 'path';
+import webpack from 'webpack';
+import 'webpack-dev-server';
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBar = require('webpackbar');
 
-module.exports = {
+const config: webpack.Configuration = {
   mode: 'development',
   entry: './site/index.js',
   resolve: {
@@ -11,7 +13,7 @@ module.exports = {
     mainFields: ['svelte', 'browser', 'module', 'main'],
     alias: {
       '@': path.resolve(__dirname, './'),
-      'ant-design-svelte': path.resolve(__dirname, './components'),
+      'ant-design-svelte': path.resolve(__dirname, './'),
     },
   },
   stats: {
@@ -43,12 +45,12 @@ module.exports = {
             loader: 'svelte-loader',
             options: {
               preprocess: {
-                script: require('./scripts/svelte-import'),
+                script: require('./scripts/svelte-import.ts'),
               },
             },
           },
           {
-            loader: path.resolve('./scripts/markdown-it-Loader.js'),
+            loader: path.resolve('./scripts/markdown-it-Loader.ts'),
             options: {
               html: true,
             },
@@ -61,8 +63,8 @@ module.exports = {
         use: {
           loader: 'ts-loader',
           options: {
-            transpileOnly: true
-          }
+            transpileOnly: true,
+          },
         },
       },
       {
@@ -89,3 +91,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config;

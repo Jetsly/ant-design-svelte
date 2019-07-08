@@ -1,4 +1,6 @@
-const path = require('path');
+import path from 'path';
+import webpack from 'webpack';
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
@@ -10,13 +12,13 @@ const tsLoader = {
   },
 };
 
-module.exports = {
+const config: webpack.Configuration= {
   mode: 'production',
   optimization: {
     minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin({})],
   },
   entry: {
-    antd: './index.js',
+    antd: './index',
   },
   output: {
     library: 'antd',
@@ -71,3 +73,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config
