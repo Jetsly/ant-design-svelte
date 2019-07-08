@@ -1,18 +1,19 @@
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBar = require('webpackbar');
+const svelte = require('svelte/compiler');
 
 module.exports = {
   mode: 'development',
   entry: './site/index.js',
   resolve: {
-    extensions: [
-      '.ts',
-      '.mjs',
-      '.js',
-      '.json',
-    ],
+    extensions: ['.ts', '.mjs', '.js', '.json'],
     mainFields: ['svelte', 'browser', 'module', 'main'],
+    alias: {
+      '@': path.resolve(__dirname, './'),
+      'ant-design-svelte': path.resolve(__dirname, './components'),
+    },
   },
   stats: {
     modules: false,
@@ -29,22 +30,41 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(html|svelte)$/,
+        test: /\.svelte$/,
         exclude: /node_modules/,
         use: {
           loader: 'svelte-loader',
           options: {
-            customElement: true,
-            emitCss: true,
+            // emitCss: true,
           },
         },
       },
       {
-        test: /\.ts$/,
+        test: /\.md/,
+        exclude: /(node_modules)/,
+        use: [
+          {
+            loader: 'svelte-loader',
+            options: {
+              preprocess: {
+                script: require('./scripts/svelte-import')
+              },
+            },
+          },
+          {
+            loader: path.resolve('./scripts/markdown-it-Loader.js'),
+            options: {
+              html: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(ts|js)$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.(c|le)ss$/,

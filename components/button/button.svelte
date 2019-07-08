@@ -1,6 +1,5 @@
-<svelte:options tag="a-button"/>
+<svelte:options tag="ant-button"/>
 <script>
-  import "./style/index.js";
   import Wave from '../_util/wave'
   import { onMount,tick } from "svelte";
 
@@ -30,9 +29,6 @@
 
 
 </script>
-<style>
-  @import "main.css";
-</style>
 {#if href}
   <a {...buttonProps} {href}>
     <slot />

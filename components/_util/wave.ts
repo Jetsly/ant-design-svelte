@@ -21,8 +21,8 @@ function clickHandle(node: HTMLElement, waveColor: string) {
     waveColor !== 'transparent'
   ) {
     styleForPesudo.innerHTML = `[ant-click-animating-without-extra-node]:after { --antd-wave-shadow-color:${waveColor};  }`;
-    if (!node.contains(styleForPesudo)) {
-      node.appendChild(styleForPesudo);
+    if (!document.body.contains(styleForPesudo)) {
+      document.body.appendChild(styleForPesudo);
     }
   }
 }

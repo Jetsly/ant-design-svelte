@@ -1,8 +1,6 @@
-import Button from '../components/button/button.svelte';
-
-// const acc = document.createElement('div');
-// acc.innerHTML = 'sss';
-
-// var a = new Button({
-//   target: document.querySelector('#test'),
-// });
+import './theme/static/index.less'
+import 'highlight.js/styles/github.css'
+import ButtonDemo from '../components/button/demo/index.svelte';
+new ButtonDemo({
+  target: document.querySelector('#app'),
+});
