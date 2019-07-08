@@ -15,7 +15,9 @@
     "framework",
     "frontend"
   ],
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "repository": "git@github.com:Jetsly/ant-design-svelte.git",
   "author": "Jetsly <cnljli@live.com>",
   "license": "MIT",
   "scripts": {
