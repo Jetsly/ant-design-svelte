@@ -3,11 +3,17 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const WebpackBar = require('webpackbar');
+const tsLoader = {
+  loader: 'ts-loader',
+  options: {
+    transpileOnly: true,
+  },
+};
 
 module.exports = {
   mode: 'production',
   optimization: {
-    minimizer: [new OptimizeCSSAssetsPlugin({})],
+    minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin({})],
   },
   entry: {
     antd: './index.js',
@@ -32,9 +38,7 @@ module.exports = {
         test: /\.svelte$/,
         exclude: /node_modules/,
         use: [
-          {
-            loader: 'babel-loader',
-          },
+          tsLoader,
           {
             loader: 'svelte-loader',
           },
@@ -42,21 +46,7 @@ module.exports = {
       },
       {
         test: /\.(t|mj|j)s$/,
-        include: /node_modules\/svelte/,
-        use: [
-          {
-            loader: 'babel-loader',
-          },
-        ],
-      },
-      {
-        test: /\.(t|mj|j)s$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-          },
-        ],
+        use: [tsLoader],
       },
       {
         test: /\.(c|le)ss$/,
