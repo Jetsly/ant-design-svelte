@@ -2,7 +2,6 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBar = require('webpackbar');
-const svelte = require('svelte/compiler');
 
 module.exports = {
   mode: 'development',
@@ -34,9 +33,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'svelte-loader',
-          options: {
-            // emitCss: true,
-          },
         },
       },
       {
@@ -47,7 +43,7 @@ module.exports = {
             loader: 'svelte-loader',
             options: {
               preprocess: {
-                script: require('./scripts/svelte-import')
+                script: require('./scripts/svelte-import'),
               },
             },
           },

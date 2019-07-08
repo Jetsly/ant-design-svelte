@@ -66,7 +66,7 @@ function loader(source) {
   `;
 }
 
-console.log(
-  loader(fs.readFileSync('./components/button/demo/basic.md').toString()),
-);
+// console.log(
+//   loader(fs.readFileSync('./components/button/demo/basic.md').toString()),
+// );
 module.exports = loader;

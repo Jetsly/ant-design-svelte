@@ -3,6 +3,9 @@ const libraryName = 'ant-design-svelte';
 const pluginStateKey = `importPluginState$`;
 function svelteImport(input) {
   const data = babel.transform(input.content, {
+    babelrc: false,
+    configFile: false,
+    filename: input.filename,
     plugins: [
       ({ types }) => {
         function getPluginState(state) {
