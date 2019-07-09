@@ -3,16 +3,27 @@ import webpack from 'webpack';
 import 'webpack-dev-server';
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 const WebpackBar = require('webpackbar');
-
+const isProd = process.env.NODE_ENV !== 'development';
 const config: webpack.Configuration = {
-  mode: 'development',
+  mode: isProd ? 'production' : 'development',
   entry: './site/index',
+  output: {
+    path: path.join(__dirname, './_site'),
+    publicPath: './',
+  },
+  optimization: {
+    minimizer: isProd
+      ? [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin({})]
+      : [],
+  },
   resolve: {
     extensions: ['.ts', '.mjs', '.js', '.json', '.svelte'],
     mainFields: ['svelte', 'browser', 'module', 'main'],
     alias: {
-      '@': path.resolve(__dirname, './'),
+      site: path.resolve(__dirname, './site'),
       'ant-design-svelte': path.resolve(__dirname, './'),
     },
   },

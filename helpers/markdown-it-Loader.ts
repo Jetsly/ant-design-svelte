@@ -24,7 +24,7 @@ function loader(source) {
   );
   var md = MarkdownIt(opts.preset, opts).use(meta);
   const scripts = [
-    '\nimport Demo from "@/site/theme/template/Content/Demo";',
+    '\nimport Demo from "site/theme/template/Content/Demo";',
   ];
   md.core.ruler.push('update_template', function replace(state) {
     const Token = state.Token;
@@ -60,7 +60,6 @@ function loader(source) {
           });
         }
         tokens.push(token);
-        console.log(token);
       } else {
         tokens.push(token);
       }

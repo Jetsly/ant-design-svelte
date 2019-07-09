@@ -4,7 +4,5 @@ node_js:
   - 10.10.0
 script:
   - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then cp ./scripts/.npmrc.template $HOME/.npmrc; fi
-  - COVERAGE=true yarn run test
-  - yarn run codecov
   - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then yarn run pub-with-ci; fi
   - bash ./scripts/deploy-to-gh-pages.sh

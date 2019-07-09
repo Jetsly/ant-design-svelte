@@ -1,6 +1,6 @@
 {
   "name": "ant-design-svelte",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.1",
   "title": "Ant Design Svelte",
   "description": "An enterprise-class UI design language and Svelte-based implementation",
   "keywords": [
@@ -29,10 +29,10 @@
   "author": "Jetsly <cnljli@live.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack-dev-server --config webpack.site.config.ts",
+    "dev": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack-dev-server --config webpack.site.config.ts",
     "build": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack --config webpack.build.config.ts",
     "pub-with-ci": "gulp pub-with-ci",
-    "site": "gulp site"
+    "site": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack --config webpack.site.config.ts"
   },
   "dependencies": {
     "svelte": "^3.6.4",

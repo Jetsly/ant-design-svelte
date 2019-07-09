@@ -1,15 +1,53 @@
 import path from 'path';
 import { task, series, src, dest, parallel } from 'gulp';
+import webpack from 'webpack';
 import rimraf from 'rimraf';
 import gulpTs from 'gulp-typescript';
+import through2 from 'through2';
 import transformLess from './scripts/transformLess';
 import transformSvelte from './scripts/transformSvelte';
+import webpackBuild from './webpack.build.config';
 
 const cwd = process.cwd();
 const libDir = path.join(cwd, './lib');
 const esDir = path.join(cwd, './es');
+const distDir = path.join(cwd, './dist');
 rimraf.sync(libDir);
 rimraf.sync(esDir);
+rimraf.sync(distDir);
+
+function buildWebpack(config) {
+  return new Promise(resolve => {
+    webpack(config, (err, stats) => {
+      if (err) {
+        console.error(err.stack || err);
+        return;
+      }
+
+      const info = stats.toJson();
+
+      if (stats.hasErrors()) {
+        console.error(info.errors);
+      }
+
+      if (stats.hasWarnings()) {
+        console.warn(info.warnings);
+      }
+
+      const buildInfo = stats.toString({
+        colors: true,
+        children: true,
+        chunks: false,
+        modules: false,
+        chunkModules: false,
+        hash: false,
+        version: false,
+      });
+      console.log(buildInfo);
+      resolve();
+    });
+  });
+}
 
 task('compile-res', () =>
   src([
@@ -28,6 +66,16 @@ task('compile-ts', () =>
         module: 'es6',
         declaration: true,
       })(),
+    )
+    .pipe(
+      through2.obj(async function(file, encoding, next) {
+        if (file.isBuffer()) {
+          file.contents = Buffer.from(
+            file.contents.toString().replace(/.svelte/g, ''),
+          );
+        }
+        next(null, file);
+      }),
     )
     .pipe(dest(esDir))
     .pipe(
@@ -64,4 +112,9 @@ task(
         .pipe(dest(libDir)),
   ]),
 );
-task('pub-with-ci', parallel(['compile-res', 'compile-ts', 'compile-svelte']));
+task('compile-build', () => buildWebpack(webpackBuild));
+
+task(
+  'pub-with-ci',
+  parallel(['compile-res', 'compile-ts', 'compile-svelte', 'compile-build']),
+);
