@@ -20,10 +20,11 @@ const config: webpack.Configuration = {
       : [],
   },
   resolve: {
-    extensions: ['.ts', '.mjs', '.js', '.json'],
+    extensions: ['.ts', '.mjs', '.js', '.json', '.svelte'],
     mainFields: ['svelte', 'browser', 'module', 'main'],
     alias: {
       site: path.resolve(__dirname, './site'),
+      components: path.resolve(__dirname, './components'),
       'ant-design-svelte': path.resolve(__dirname, './'),
     },
   },

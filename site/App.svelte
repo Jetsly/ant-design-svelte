@@ -1,7 +1,7 @@
 <script>
   import { Router, Link, Route } from "svelte-routing";
-  import Button from "../components/button/demo/index";
-  import Grid from "../components/grid/demo/index";
+  import Button from "components/button/demo/index.svelte";
+  import Grid from "components/grid/demo/index.svelte";
   export let url = "";
 </script>
 
