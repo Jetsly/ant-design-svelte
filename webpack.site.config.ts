@@ -60,12 +60,15 @@ const config: webpack.Configuration = {
             options: {
               hydratable: true,
               preprocess: {
-                script: require('./helpers/svelte-import.ts'),
+                script: require('./scripts/helpers/svelte-import.ts')({
+                  libraryDirectory: 'components',
+                  style: true,
+                }),
               },
             },
           },
           {
-            loader: path.resolve('./helpers/markdown-it-Loader.ts'),
+            loader: path.resolve('./scripts/helpers/markdown-it-Loader.ts'),
             options: {
               html: true,
             },

@@ -4,6 +4,7 @@ const printer = ts.createPrinter();
 export interface Options {
   libraryName: string;
   libraryDirectory: string;
+  style?: 'css' | boolean;
 }
 export interface ImportedStruct {
   importName: string;
@@ -41,46 +42,52 @@ function createDistAst(struct: ImportedStruct, options: Options) {
   );
 
   astNodes.push(scriptNode);
-  const stylePath = `${importPath}/style/index`;
-  const styleNode = ts.createImportDeclaration(
-    undefined,
-    undefined,
-    undefined,
-    ts.createLiteral(stylePath),
-  );
-  astNodes.push(styleNode);
+  if (options.style) {
+    const stylePath =
+      options.style === 'css'
+        ? `${importPath}/style/index.css`
+        : `${importPath}/style/index`;
+    const styleNode = ts.createImportDeclaration(
+      undefined,
+      undefined,
+      undefined,
+      ts.createLiteral(stylePath),
+    );
+    astNodes.push(styleNode);
+  }
   return astNodes;
 }
-function createTransformer(options: Options) {
-  const transformer: ts.TransformerFactory<ts.SourceFile> = context => {
-    const visitor: ts.Visitor = node => {
-      if (ts.isSourceFile(node)) {
-        return ts.visitEachChild(node, visitor, context);
-      }
-      if (!ts.isImportDeclaration(node)) {
-        return node;
-      }
-      const importedLibName = (<ts.StringLiteral>node.moduleSpecifier).text;
-      if (options.libraryName !== importedLibName) {
-        return node;
-      }
-      const structs = getImportedStructs(node);
-      if (structs.size === 0) {
-        return node;
-      }
-      return Array.from(structs).reduce(
-        (acc, struct) => {
-          const nodes = createDistAst(struct, options);
-          return acc.concat(nodes);
-        },
-        <ts.Node[]>[],
-      );
+
+const svelteImport = (options: Options) => input => {
+  function createTransformer(options: Options) {
+    const transformer: ts.TransformerFactory<ts.SourceFile> = context => {
+      const visitor: ts.Visitor = node => {
+        if (ts.isSourceFile(node)) {
+          return ts.visitEachChild(node, visitor, context);
+        }
+        if (!ts.isImportDeclaration(node)) {
+          return node;
+        }
+        const importedLibName = (<ts.StringLiteral>node.moduleSpecifier).text;
+        if (options.libraryName !== importedLibName) {
+          return node;
+        }
+        const structs = getImportedStructs(node);
+        if (structs.size === 0) {
+          return node;
+        }
+        return Array.from(structs).reduce(
+          (acc, struct) => {
+            const nodes = createDistAst(struct, options);
+            return acc.concat(nodes);
+          },
+          <ts.Node[]>[],
+        );
+      };
+      return node => ts.visitNode(node, visitor);
     };
-    return node => ts.visitNode(node, visitor);
-  };
-  return transformer;
-}
-function svelteImport(input) {
+    return transformer;
+  }
   const result = ts.transform(
     ts.createSourceFile(
       input.filename,
@@ -91,7 +98,7 @@ function svelteImport(input) {
     [
       createTransformer({
         libraryName: 'ant-design-svelte',
-        libraryDirectory: 'components',
+        libraryDirectory: options.libraryDirectory,
       }),
     ],
   );
@@ -100,7 +107,7 @@ function svelteImport(input) {
   return {
     code: resultCode,
   };
-}
+};
 
 // svelteImport({
 //   content: `import { Button } from 'ant-design-svelte'`,

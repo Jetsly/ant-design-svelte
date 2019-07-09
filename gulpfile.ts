@@ -5,6 +5,7 @@ import rimraf from 'rimraf';
 import gulpTs from 'gulp-typescript';
 import { writeFileSync } from 'fs';
 import through2 from 'through2';
+import GitHub from '@octokit/rest';
 import transformLess from './scripts/transformLess';
 import transformSvelte from './scripts/transformSvelte';
 import webpackBuild from './webpack.build.config';
@@ -86,42 +87,31 @@ task('compile-ts', () =>
     .pipe(dest(libDir)),
 );
 
+task('compile-ts-helpers', () =>
+  src(['scripts/helpers/svelte-*.ts'])
+    .pipe(
+      gulpTs.createProject('tsconfig.json', {
+        module: "commonjs",
+        declaration: false,
+      })(),
+    )
+    .pipe(dest("./helpers"))
+);
+
 task(
   'compile-svelte',
   parallel([
     () =>
       src(['components/**/*.svelte'])
         .pipe(transformSvelte('esm'))
-        .pipe(
-          gulpTs.createProject('tsconfig.json', {
-            module: 'es6',
-            allowJs: true,
-          })(),
-        )
         .pipe(dest(esDir)),
     () =>
       src(['components/**/*.svelte'])
-        .pipe(transformSvelte('esm'))
-        .pipe(
-          gulpTs.createProject('tsconfig.json', {
-            module: 'commonjs',
-            allowJs: true,
-          })(),
-        )
+        .pipe(transformSvelte("cjs"))
         .pipe(dest(libDir)),
   ]),
 );
 task('compile-build', () => buildWebpack(webpackBuild));
-
-task(
-  'pub-with-ci',
-  series(() => {
-    rimraf.sync(libDir);
-    rimraf.sync(esDir);
-    rimraf.sync(distDir);
-    return Promise.resolve();
-  }, parallel(['compile-res', 'compile-ts', 'compile-svelte', 'compile-build'])),
-);
 
 task(function copyHtml(cb) {
   writeFileSync(path.join(cwd, '_site/CNAME'), 'ant-svelte.ddot.ink');
@@ -129,3 +119,16 @@ task(function copyHtml(cb) {
 });
 
 task('site', series([() => buildWebpack(webpackSite), 'copyHtml']));
+
+task(
+  'compile-release',
+  series(() => {
+    rimraf.sync(libDir);
+    rimraf.sync(esDir);
+    rimraf.sync(distDir);
+    rimraf.sync("./helpers");
+    return Promise.resolve();
+  }, parallel(['compile-res', 'compile-ts', 'compile-ts-helpers', 'compile-svelte', 'compile-build'])),
+);
+
+task('pub-with-ci', series(['compile-release']));

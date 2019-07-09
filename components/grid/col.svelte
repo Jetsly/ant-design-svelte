@@ -1,6 +1,6 @@
 <script>
   import classes from "../_util/classes";
-  import { key } from "./_part.ts";
+  import { key } from "./_part";
   import { onMount, getContext } from "svelte";
 
   const { gutter } = getContext(key);

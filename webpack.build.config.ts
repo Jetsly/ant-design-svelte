@@ -43,6 +43,9 @@ const config: webpack.Configuration= {
           tsLoader,
           {
             loader: 'svelte-loader',
+            options: {
+              hydratable: true,
+            },
           },
         ],
       },

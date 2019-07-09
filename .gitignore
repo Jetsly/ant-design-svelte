@@ -137,3 +137,5 @@ dist
 lib
 es
 _site
+helpers
+!scripts/helpers
