@@ -2,6 +2,8 @@ language: node_js
 sudo: required
 node_js:
   - 10.10.0
+cache:
+  yarn: true
 script:
   - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then cp ./scripts/.npmrc.template $HOME/.npmrc; fi
   - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then yarn run pub-with-ci; fi
