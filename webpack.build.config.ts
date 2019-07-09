@@ -28,7 +28,7 @@ const config: webpack.Configuration= {
     modules: false,
   },
   resolve: {
-    extensions: ['.ts', '.mjs', '.js', '.json'],
+    extensions: ['.ts', '.mjs', '.js', '.json', '.svelte'],
     mainFields: ['svelte', 'browser', 'module', 'main'],
     alias: {
       '@': path.resolve(__dirname, './'),

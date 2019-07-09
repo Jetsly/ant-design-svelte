@@ -41,7 +41,7 @@ function createDistAst(struct: ImportedStruct, options: Options) {
   );
 
   astNodes.push(scriptNode);
-  const stylePath = `${importPath}/style/index.ts`;
+  const stylePath = `${importPath}/style/index`;
   const styleNode = ts.createImportDeclaration(
     undefined,
     undefined,

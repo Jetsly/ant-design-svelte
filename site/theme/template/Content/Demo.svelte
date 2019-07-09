@@ -1,9 +1,10 @@
 <script>
   let codeBoxClass = "code-box";
   let visible = false;
+  export let style;
 </script>
 
-<section class={visible?`${codeBoxClass} expand`:codeBoxClass}>
+<section class={visible ? `${codeBoxClass} expand` : codeBoxClass} {style} >
   <slot name="component" />
   <section class="code-box-meta markdown">
     <slot name="title" />

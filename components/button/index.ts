@@ -1,2 +1,2 @@
-import Button from './button.svelte';
+import Button from './button';
 export default Button;

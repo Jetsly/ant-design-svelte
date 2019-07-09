@@ -7,9 +7,9 @@ const WebpackBar = require('webpackbar');
 
 const config: webpack.Configuration = {
   mode: 'development',
-  entry: './site/index.js',
+  entry: './site/index',
   resolve: {
-    extensions: ['.ts', '.mjs', '.js', '.json'],
+    extensions: ['.ts', '.mjs', '.js', '.json', '.svelte'],
     mainFields: ['svelte', 'browser', 'module', 'main'],
     alias: {
       '@': path.resolve(__dirname, './'),
@@ -32,9 +32,11 @@ const config: webpack.Configuration = {
     rules: [
       {
         test: /\.svelte$/,
-        exclude: /node_modules/,
         use: {
           loader: 'svelte-loader',
+          options: {
+            hydratable: true,
+          },
         },
       },
       {
@@ -44,13 +46,14 @@ const config: webpack.Configuration = {
           {
             loader: 'svelte-loader',
             options: {
+              hydratable: true,
               preprocess: {
-                script: require('./scripts/svelte-import.ts'),
+                script: require('./helpers/svelte-import.ts'),
               },
             },
           },
           {
-            loader: path.resolve('./scripts/markdown-it-Loader.ts'),
+            loader: path.resolve('./helpers/markdown-it-Loader.ts'),
             options: {
               html: true,
             },

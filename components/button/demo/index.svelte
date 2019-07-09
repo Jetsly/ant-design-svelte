@@ -1,9 +1,16 @@
 <script>
-  import Basic from "./basic.md";
-  import Icon from "./icon.md";
+  let mdDoc = [];
+  const mdlist = require.context(__dirname, false, /md$/);
+  mdlist.keys().forEach(key => {
+    mdDoc.push(mdlist(key).default);
+  });
 </script>
 
 <style>
+  :global([id^="components-button-demo-"]) {
+    display: flex;
+    flex-wrap: wrap;
+  }
   :global([id^="components-button-demo-"] .ant-btn) {
     margin-right: 8px;
     margin-bottom: 12px;
@@ -14,6 +21,7 @@
 </style>
 
 <div id="components-button-demo-">
-  <Basic />
-  <Icon />
+  {#each mdDoc as component}
+    <svelte:component this={component} />
+  {/each}
 </div>

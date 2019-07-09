@@ -1,4 +1,4 @@
-const MarkdownIt = require('markdown-it');
+import MarkdownIt from 'markdown-it';
 const meta = require('markdown-it-meta');
 const loaderUtils = require('loader-utils');
 const hljs = require('highlight.js');
@@ -12,7 +12,9 @@ function loader(source) {
       highlight: function(str, lang) {
         if (lang && hljs.getLanguage(lang)) {
           try {
-            return hljs.highlight(lang, str).value;
+            return hljs
+              .highlight(lang, str)
+              .value.replace(/({|})/g, a => `{'${a}'}`);
           } catch (__) {}
         }
         return '';
@@ -22,7 +24,7 @@ function loader(source) {
   );
   var md = MarkdownIt(opts.preset, opts).use(meta);
   const scripts = [
-    '\nimport Demo from "@/site/theme/template/Content/Demo.svelte";',
+    '\nimport Demo from "@/site/theme/template/Content/Demo";',
   ];
   md.core.ruler.push('update_template', function replace(state) {
     const Token = state.Token;
@@ -49,7 +51,16 @@ function loader(source) {
           token,
           new Token('paragraph_close', 'div', -1),
         );
-        token.content = token.content;
+      } else if (token.type === 'inline') {
+        token.content = token.content.replace(/({|})/g, a => `{'${a}'}`);
+        if (Array.isArray(token.children)) {
+          token.children = token.children.map(item => {
+            item.content = item.content.replace(/({|})/g, a => `{'${a}'}`);
+            return item;
+          });
+        }
+        tokens.push(token);
+        console.log(token);
       } else {
         tokens.push(token);
       }
@@ -57,16 +68,18 @@ function loader(source) {
     state.tokens = tokens;
   });
   const renderedDocument = md.render(source);
+  const metad = (md as any).meta;
   return `
   <script>${scripts.join('\n')}</script>
-  <Demo>
-    <div class="code-box-title" slot="title">${md.meta.title['zh-CN']}</div>
-    ${renderedDocument.replace(/({|})/g, a => `{'${a}'}`)}
+  <Demo style="order:${metad.order}">
+    <div class="code-box-title" slot="title">${metad.title['zh-CN']}</div>
+    ${renderedDocument}
   </Demo>
   `;
 }
 
 // console.log(
-//   loader(fs.readFileSync('./components/button/demo/basic.md').toString()),
+//   loader(fs.readFileSync('./components/grid/demo/gutter.md').toString()),
 // );
+// yarn ts-node -T  scripts/markdown-it-Loader.ts
 module.exports = loader;

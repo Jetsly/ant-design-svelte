@@ -7,10 +7,16 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "sourceMap": true,
-    "noEmitHelpers": false,
     "strictNullChecks": false,
-    "types": ["svelte", "node"]
+    "importHelpers": true,
+    "types": [
+      "svelte",
+      "node",
+      "webpack-env",
+      "markdown-it",
+      "gulp",
+      "through2"
+    ]
   },
   "exclude": ["node_modules", "lib", "es"]
 }
