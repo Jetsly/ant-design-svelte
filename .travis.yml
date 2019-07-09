@@ -1,7 +1,7 @@
 language: node_js
 sudo: required
 node_js:
-  - 10.10.0
+  - 12.6.0
 cache:
   yarn: true
 script:
