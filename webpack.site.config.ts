@@ -20,7 +20,7 @@ const config: webpack.Configuration = {
       : [],
   },
   resolve: {
-    extensions: ['.ts', '.mjs', '.js', '.json', '.svelte'],
+    extensions: ['.ts', '.mjs', '.js', '.json'],
     mainFields: ['svelte', 'browser', 'module', 'main'],
     alias: {
       site: path.resolve(__dirname, './site'),
