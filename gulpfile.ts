@@ -3,18 +3,17 @@ import { task, series, src, dest, parallel } from 'gulp';
 import webpack from 'webpack';
 import rimraf from 'rimraf';
 import gulpTs from 'gulp-typescript';
+import { writeFileSync } from 'fs';
 import through2 from 'through2';
 import transformLess from './scripts/transformLess';
 import transformSvelte from './scripts/transformSvelte';
 import webpackBuild from './webpack.build.config';
+import webpackSite from './webpack.site.config';
 
 const cwd = process.cwd();
 const libDir = path.join(cwd, './lib');
 const esDir = path.join(cwd, './es');
 const distDir = path.join(cwd, './dist');
-rimraf.sync(libDir);
-rimraf.sync(esDir);
-rimraf.sync(distDir);
 
 function buildWebpack(config) {
   return new Promise(resolve => {
@@ -116,5 +115,17 @@ task('compile-build', () => buildWebpack(webpackBuild));
 
 task(
   'pub-with-ci',
-  parallel(['compile-res', 'compile-ts', 'compile-svelte', 'compile-build']),
+  series(() => {
+    rimraf.sync(libDir);
+    rimraf.sync(esDir);
+    rimraf.sync(distDir);
+    return Promise.resolve();
+  }, parallel(['compile-res', 'compile-ts', 'compile-svelte', 'compile-build'])),
 );
+
+task(function copyHtml(cb) {
+  writeFileSync(path.join(cwd, '_site/CNAME'), 'ant-svelte.ddot.ink');
+  cb();
+});
+
+task('site', series([() => buildWebpack(webpackSite), 'copyHtml']));

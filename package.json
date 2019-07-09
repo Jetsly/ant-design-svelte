@@ -30,9 +30,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack-dev-server --config webpack.site.config.ts",
-    "build": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack --config webpack.build.config.ts",
     "pub-with-ci": "gulp pub-with-ci",
-    "site": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack --config webpack.site.config.ts"
+    "site": "gulp site"
   },
   "dependencies": {
     "svelte": "^3.6.4",
