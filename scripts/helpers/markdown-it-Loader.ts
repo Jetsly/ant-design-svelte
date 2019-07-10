@@ -1,10 +1,10 @@
 import path from 'path';
 import MarkdownIt from 'markdown-it';
 import utils from 'markdown-it/lib/common/utils';
+import hljs from 'highlight.js';
 
 const markdonwMeta = require('markdown-it-meta');
 const loaderUtils = require('loader-utils');
-const hljs = require('highlight.js');
 const fs = require('fs');
 const isUsed = !process.env.DEBUT_LOADER;
 function stringRe(value) {
@@ -24,6 +24,55 @@ function code_block(tokens, idx, options, env, slf) {
   return `<pre ${slf.renderAttrs(token)}><code>${utils.escapeHtml(
     stringRe(tokens[idx].content),
   )} </code></pre>`;
+}
+function fence(tokens, idx, options, env, slf) {
+  var token = tokens[idx],
+    info = token.info ? utils.unescapeAll(token.info).trim() : '',
+    langName = '',
+    highlighted,
+    i,
+    tmpAttrs,
+    tmpToken;
+
+  if (info) {
+    langName = info.split(/\s+/g)[0];
+  }
+
+  if (options.highlight) {
+    highlighted =
+      options.highlight(token.content, langName) ||
+      utils.escapeHtml(token.content);
+  } else {
+    highlighted = utils.escapeHtml(token.content);
+  }
+
+  if (highlighted.indexOf('<pre') === 0) {
+    return highlighted + '\n';
+  }
+
+  // If language exists, inject class gently, without modifying original token.
+  // May be, one day we will add .clone() for token and simplify this part, but
+  // now we prefer to keep things local.
+  if (info) {
+    i = token.attrIndex('class');
+    tmpAttrs = token.attrs ? token.attrs.slice() : [];
+
+    if (i < 0) {
+      tmpAttrs.push(['class', options.langPrefix + langName]);
+    } else {
+      tmpAttrs[i][1] += ' ' + options.langPrefix + langName;
+    }
+
+    // Fake token just to render attributes
+    tmpToken = {
+      attrs: tmpAttrs,
+    };
+
+    return `<pre ${slf.renderAttrs(
+      tmpToken,
+    )}><code>${highlighted}</code></pre>`;
+  }
+  return `<pre ${slf.renderAttrs(token)}><code>${highlighted}</code></pre>`;
 }
 function loader(source) {
   var opts = Object.assign(
@@ -48,6 +97,7 @@ function loader(source) {
   md.renderer.rules.text = otherMd.renderer.rules.text = text;
   md.renderer.rules.code_inline = otherMd.renderer.rules.code_inline = code_inline;
   md.renderer.rules.code_block = otherMd.renderer.rules.code_block = code_block;
+  md.renderer.rules.fence = otherMd.renderer.rules.fence = fence;
   otherMd.core.ruler.push('update_template', function replace(state) {
     state.tokens = otherTokens;
   });
@@ -65,7 +115,7 @@ function loader(source) {
       const tokens = [];
       const component = new Token('html_block', '', 0);
       const code = new Token('paragraph_open', 'div', 1);
-      code.attrs = [['slot', 'code'], ['class', 'highlight-wrapper']];
+      code.attrs = [['slot', 'code'], ['class', 'highlight']];
       for (let index = 0; index < state.tokens.length; index++) {
         const token = state.tokens[index];
         if (

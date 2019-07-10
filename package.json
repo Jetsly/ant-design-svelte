@@ -1,6 +1,6 @@
 {
   "name": "ant-design-svelte",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "title": "Ant Design Svelte",
   "description": "An enterprise-class UI design language and Svelte-based implementation",
   "keywords": [
@@ -34,6 +34,9 @@
     "pub-with-ci": "gulp pub-with-ci",
     "site": "gulp site"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "@ant-design/icons": "^2.1.1",
     "svelte": "^3.6.4",
@@ -45,6 +48,7 @@
     "@types/cross-spawn": "^6.0.0",
     "@types/fs-extra": "^8.0.0",
     "@types/gulp": "^4.0.6",
+    "@types/highlight.js": "^9.12.3",
     "@types/markdown-it": "^0.0.8",
     "@types/node": "^12.0.12",
     "@types/through2": "^2.0.34",

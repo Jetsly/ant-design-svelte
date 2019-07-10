@@ -64,7 +64,7 @@ module.exports = {
             preprocess: {
               script: require('ant-design-svelte/helpers/svelte-import')({
                 libraryDirectory: 'es',
-                style: 'css',
+                style: true,
               }),
             },
           },
@@ -74,7 +74,9 @@ module.exports = {
         test: /\.(c|le)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader'
+          'css-loader',
+          'postcss-loader',
+          { loader: 'less-loader', options: { javascriptEnabled: true } },
         ],
       },
     ],

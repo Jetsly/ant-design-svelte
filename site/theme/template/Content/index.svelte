@@ -14,14 +14,14 @@
 
   let demos = [];
   let doc;
+  let isDoc = false;
   $: {
     if (page) {
-      mdDocList
-        .keys()
-        .filter(key => RegExp(`${page}.${lang}`, "i").test(key))
-        .forEach(key => {
-          demos.push(mdDocList(key));
-        });
+      doc = mdDocList(
+        mdDocList
+          .keys()
+          .filter(key => RegExp(`${page}.${lang}`, "i").test(key))[0]
+      );
     } else {
       mdDemoList
         .keys()
@@ -40,7 +40,6 @@
         });
     }
     demos.sort((a, b) => a.meta.order - b.meta.order);
-    doc = doc || demos[0]
   }
 </script>
 
@@ -48,4 +47,4 @@
   <title>Ant Design Svelte - {page || component}</title>
 </svelte:head>
 
-<MainContent {doc} {demos} />
+<MainContent {doc} {demos} {isDoc} />
