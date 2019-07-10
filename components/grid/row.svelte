@@ -1,5 +1,5 @@
 <script>
-  import classes from "../_util/classes";
+  import classNames from "../_util/classes";
   import { key } from "./_part";
   import { onMount, setContext } from "svelte";
 
@@ -17,7 +17,7 @@
         ? `margin-left:${gutter / -2}px;margin-right:${gutter / -2}px;`
         : ""
     }${style}`,
-    class: classes(className, {
+    class: classNames(className, {
       [prefixCls]: !type,
       [`${prefixCls}-${type}`]: type,
       [`${prefixCls}-${type}-${justify}`]: type && justify,

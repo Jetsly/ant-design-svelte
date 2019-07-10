@@ -29,21 +29,24 @@
   "author": "Jetsly <cnljli@live.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack-dev-server --config webpack.site.config.ts",
+    "dev": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack-dev-server --config webpack.config.ts",
     "release": "gulp compile-release",
     "pub-with-ci": "gulp pub-with-ci",
     "site": "gulp site"
   },
   "dependencies": {
+    "@ant-design/icons": "^2.1.1",
     "svelte": "^3.6.4",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "warning": "^4.0.3"
   },
   "devDependencies": {
     "@octokit/rest": "^16.28.2",
+    "@types/cross-spawn": "^6.0.0",
+    "@types/fs-extra": "^8.0.0",
     "@types/gulp": "^4.0.6",
     "@types/markdown-it": "^0.0.8",
     "@types/node": "^12.0.12",
-    "@types/rimraf": "^2.0.2",
     "@types/through2": "^2.0.34",
     "@types/webpack": "^4.4.34",
     "@types/webpack-dev-server": "^3.1.6",
@@ -51,7 +54,10 @@
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
     "cross-env": "^5.2.0",
+    "cross-spawn": "^6.0.5",
     "css-loader": "^3.0.0",
+    "del": "^5.0.0",
+    "fs-extra": "^8.1.0",
     "gulp": "^4.0.2",
     "gulp-typescript": "^5.0.1",
     "highlight.js": "^9.15.8",
@@ -66,7 +72,6 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss": "^7.0.17",
     "postcss-loader": "^3.0.0",
-    "rimraf": "^2.6.3",
     "rucksack-css": "^1.0.2",
     "svelte-loader": "^2.13.4",
     "svelte-routing": "^1.2.1",

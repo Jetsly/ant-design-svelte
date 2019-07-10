@@ -1,5 +1,5 @@
 <script>
-  import classes from "../_util/classes";
+  import classNames from "../_util/classes";
   import { key } from "./_part";
   import { onMount, getContext } from "svelte";
 
@@ -23,14 +23,21 @@
 
   function getSizeClassObj() {
     let sizeClassObj = {};
+    const props = {
+      xs,
+      sm,
+      md,
+      lg,
+      xl,
+      xxl
+    };
     ["xs", "sm", "md", "lg", "xl", "xxl"].forEach(size => {
       let sizeProps = {};
-      // if (typeof props[size] === "number") {
-      //   sizeProps.span = props[size];
-      // } else if (typeof props[size] === "object") {
-      //   sizeProps = props[size] || {};
-      // }
-      // delete others[size];
+      if (typeof props[size] === "number") {
+        sizeProps.span = props[size];
+      } else if (typeof props[size] === "object") {
+        sizeProps = props[size] || {};
+      }
       sizeClassObj = {
         ...sizeClassObj,
         [`${prefixCls}-${size}-${sizeProps.span}`]:
@@ -54,7 +61,7 @@
         ? `padding-left:${gutter / 2}px;padding-right:${gutter / 2}px;`
         : ""
     }${style}`,
-    class: classes(prefixCls, className, {
+    class: classNames(prefixCls, className, {
       [`${prefixCls}-${span}`]: span !== undefined,
       [`${prefixCls}-order-${order}`]: order,
       [`${prefixCls}-offset-${offset}`]: offset,

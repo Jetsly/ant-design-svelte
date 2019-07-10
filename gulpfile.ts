@@ -1,53 +1,22 @@
 import path from 'path';
 import { task, series, src, dest, parallel } from 'gulp';
-import webpack from 'webpack';
-import rimraf from 'rimraf';
+import del from 'del';
 import gulpTs from 'gulp-typescript';
-import { writeFileSync } from 'fs';
+import { outputFileSync } from 'fs-extra';
 import through2 from 'through2';
 import GitHub from '@octokit/rest';
+import spawn from 'cross-spawn';
 import transformLess from './scripts/transformLess';
 import transformSvelte from './scripts/transformSvelte';
-import webpackBuild from './webpack.build.config';
-import webpackSite from './webpack.site.config';
+import buildWebpack, { buildUmdConfig } from './scripts/buildWebpack';
+import createConfig from './webpack.config';
+
+import route from './site/route';
 
 const cwd = process.cwd();
 const libDir = path.join(cwd, './lib');
 const esDir = path.join(cwd, './es');
 const distDir = path.join(cwd, './dist');
-
-function buildWebpack(config) {
-  return new Promise(resolve => {
-    webpack(config, (err, stats) => {
-      if (err) {
-        console.error(err.stack || err);
-        return;
-      }
-
-      const info = stats.toJson();
-
-      if (stats.hasErrors()) {
-        console.error(info.errors);
-      }
-
-      if (stats.hasWarnings()) {
-        console.warn(info.warnings);
-      }
-
-      const buildInfo = stats.toString({
-        colors: true,
-        children: true,
-        chunks: false,
-        modules: false,
-        chunkModules: false,
-        hash: false,
-        version: false,
-      });
-      console.log(buildInfo);
-      resolve();
-    });
-  });
-}
 
 task('compile-res', () =>
   src([
@@ -91,11 +60,11 @@ task('compile-ts-helpers', () =>
   src(['scripts/helpers/svelte-*.ts'])
     .pipe(
       gulpTs.createProject('tsconfig.json', {
-        module: "commonjs",
+        module: 'commonjs',
         declaration: false,
       })(),
     )
-    .pipe(dest("./helpers"))
+    .pipe(dest('./helpers')),
 );
 
 task(
@@ -107,28 +76,79 @@ task(
         .pipe(dest(esDir)),
     () =>
       src(['components/**/*.svelte'])
-        .pipe(transformSvelte("cjs"))
+        .pipe(transformSvelte('cjs'))
         .pipe(dest(libDir)),
   ]),
 );
-task('compile-build', () => buildWebpack(webpackBuild));
+task('compile-build', () => buildWebpack(buildUmdConfig));
+
+task(function buildSitefile() {
+  return buildWebpack(createConfig({}, { ssr: true }));
+});
 
 task(function copyHtml(cb) {
-  writeFileSync(path.join(cwd, '_site/CNAME'), 'ant-svelte.ddot.ink');
+  outputFileSync(path.join(cwd, '_site/CNAME'), 'ant-svelte.ddot.ink');
   cb();
 });
 
-task('site', series([() => buildWebpack(webpackSite), 'copyHtml']));
+task(function generate(cb) {
+  route.forEach(url => {
+    const { html, head } = require('./_ssr_site/app.js').default.render({
+      url,
+    });
+    outputFileSync(
+      path.join(cwd, `_site/${url}/index.html`),
+      `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>${head}</title>
+        <link href="/app.css" rel="stylesheet"></head>
+        <body>
+        <script type="text/javascript" src="/app.js"></script>
+        ${html}
+        </body>
+      </html>
+  `,
+    );
+  });
+  cb();
+});
+
+task(
+  'site',
+  series(
+    () => del(['./_site', './_ssr_site']),
+    'buildSitefile',
+    'copyHtml',
+    'generate',
+  ),
+);
 
 task(
   'compile-release',
-  series(() => {
-    rimraf.sync(libDir);
-    rimraf.sync(esDir);
-    rimraf.sync(distDir);
-    rimraf.sync("./helpers");
-    return Promise.resolve();
-  }, parallel(['compile-res', 'compile-ts', 'compile-ts-helpers', 'compile-svelte', 'compile-build'])),
+  series(
+    () => del([libDir, esDir, distDir, './helpers']),
+    parallel([
+      'compile-res',
+      'compile-ts',
+      'compile-ts-helpers',
+      'compile-svelte',
+      'compile-build',
+    ]),
+  ),
 );
 
-task('pub-with-ci', series(['compile-release']));
+task(
+  'pub-with-ci',
+  series([
+    'compile-release',
+    cb => {
+      spawn.sync('npm', ['publish'], {
+        stdio: 'inherit',
+      });
+      cb();
+    },
+  ]),
+);

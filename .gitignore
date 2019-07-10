@@ -98,9 +98,6 @@ typings/
 .AppleDouble
 .LSOverride
 
-# Icon must end with two \r
-Icon
-
 # Thumbnails
 ._*
 
@@ -137,5 +134,6 @@ dist
 lib
 es
 _site
+_ssr_site
 helpers
 !scripts/helpers

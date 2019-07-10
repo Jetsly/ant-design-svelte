@@ -1,7 +1,7 @@
 <svelte:options tag="ant-button"/>
 <script>
   import Wave from '../_util/wave'
-  import classes from '../_util/classes'
+  import classNames from '../_util/classes'
   import { onMount,tick } from "svelte";
 
   export let prefixCls = "ant-btn";
@@ -25,7 +25,7 @@
 
   $: buttonProps = {
     disabled,
-    class: classes({
+    class: classNames({
         [`${prefixCls}`]: true,
         [`${prefixCls}-${type}`]: type,
         // [`${prefixCls}-${shape}`]: shape,

@@ -37,5 +37,14 @@ You can set it to a object like `{ xs: 8, sm: 16, md: 24, lg: 32 }` for responsi
     </Col>
   </Row>
 </div>
+<style>
+.gutter-example .ant-row > div {
+  background: transparent;
+  border: 0;
+}
+.gutter-box {
+  background: #00a0e9;
+  padding: 5px 0;
+}
+</style>
 ```
-

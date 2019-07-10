@@ -1,5 +1,5 @@
-import path from 'path';
 import webpack from 'webpack';
+import path from 'path';
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -12,7 +12,7 @@ const tsLoader = {
   },
 };
 
-const config: webpack.Configuration= {
+export const buildUmdConfig = {
   mode: 'production',
   optimization: {
     minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin({})],
@@ -77,4 +77,35 @@ const config: webpack.Configuration= {
   ],
 };
 
-export default config
+export default function buildWebpack(config) {
+  return new Promise(resolve => {
+    webpack(config, (err, stats) => {
+      if (err) {
+        console.error(err.stack || err);
+        return;
+      }
+
+      const info = stats.toJson();
+
+      if (stats.hasErrors()) {
+        console.error(info.errors);
+      }
+
+      if (stats.hasWarnings()) {
+        console.warn(info.warnings);
+      }
+
+      const buildInfo = stats.toString({
+        colors: true,
+        children: true,
+        chunks: false,
+        modules: false,
+        chunkModules: false,
+        hash: false,
+        version: false,
+      });
+      console.log(buildInfo);
+      resolve();
+    });
+  });
+}

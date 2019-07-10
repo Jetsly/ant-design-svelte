@@ -1,8 +1,8 @@
 import ts from 'typescript';
 import { join } from 'path';
+const libraryName = 'ant-design-svelte';
 const printer = ts.createPrinter();
 export interface Options {
-  libraryName: string;
   libraryDirectory: string;
   style?: 'css' | boolean;
 }
@@ -28,7 +28,7 @@ function getImportedStructs(node: ts.Node) {
 function createDistAst(struct: ImportedStruct, options: Options) {
   const astNodes: ts.Node[] = [];
 
-  const { libraryName, libraryDirectory } = options;
+  const { libraryDirectory, style } = options;
   const importPath = join(
     libraryName!,
     libraryDirectory,
@@ -42,9 +42,9 @@ function createDistAst(struct: ImportedStruct, options: Options) {
   );
 
   astNodes.push(scriptNode);
-  if (options.style) {
+  if (style) {
     const stylePath =
-      options.style === 'css'
+      style === 'css'
         ? `${importPath}/style/index.css`
         : `${importPath}/style/index`;
     const styleNode = ts.createImportDeclaration(
@@ -58,36 +58,37 @@ function createDistAst(struct: ImportedStruct, options: Options) {
   return astNodes;
 }
 
-const svelteImport = (options: Options) => input => {
-  function createTransformer(options: Options) {
-    const transformer: ts.TransformerFactory<ts.SourceFile> = context => {
-      const visitor: ts.Visitor = node => {
-        if (ts.isSourceFile(node)) {
-          return ts.visitEachChild(node, visitor, context);
-        }
-        if (!ts.isImportDeclaration(node)) {
-          return node;
-        }
-        const importedLibName = (<ts.StringLiteral>node.moduleSpecifier).text;
-        if (options.libraryName !== importedLibName) {
-          return node;
-        }
-        const structs = getImportedStructs(node);
-        if (structs.size === 0) {
-          return node;
-        }
-        return Array.from(structs).reduce(
-          (acc, struct) => {
-            const nodes = createDistAst(struct, options);
-            return acc.concat(nodes);
-          },
-          <ts.Node[]>[],
-        );
-      };
-      return node => ts.visitNode(node, visitor);
+function createTransformer(options: Options) {
+  const transformer: ts.TransformerFactory<ts.SourceFile> = context => {
+    const visitor: ts.Visitor = node => {
+      if (ts.isSourceFile(node)) {
+        return ts.visitEachChild(node, visitor, context);
+      }
+      if (!ts.isImportDeclaration(node)) {
+        return node;
+      }
+      const importedLibName = (<ts.StringLiteral>node.moduleSpecifier).text;
+      if (libraryName !== importedLibName) {
+        return node;
+      }
+      const structs = getImportedStructs(node);
+      if (structs.size === 0) {
+        return node;
+      }
+      return Array.from(structs).reduce(
+        (acc, struct) => {
+          const nodes = createDistAst(struct, options);
+          return acc.concat(nodes);
+        },
+        <ts.Node[]>[],
+      );
     };
-    return transformer;
-  }
+    return node => ts.visitNode(node, visitor);
+  };
+  return transformer;
+}
+
+const svelteImport = (options: Options) => input => {
   const result = ts.transform(
     ts.createSourceFile(
       input.filename,
@@ -95,12 +96,7 @@ const svelteImport = (options: Options) => input => {
       ts.ScriptTarget.ES2016,
       true,
     ),
-    [
-      createTransformer({
-        libraryName: 'ant-design-svelte',
-        libraryDirectory: options.libraryDirectory,
-      }),
-    ],
+    [createTransformer(options)],
   );
   const transformedSourceFile = result.transformed[0];
   const resultCode = printer.printFile(transformedSourceFile);
@@ -110,9 +106,12 @@ const svelteImport = (options: Options) => input => {
 };
 
 // svelteImport({
+//   libraryDirectory: 'components',
+//   style: true,
+// })({
 //   content: `import { Button } from 'ant-design-svelte'`,
 //   filename: 'sss',
 // });
-// yarn ts-node -T scripts/svelte-import.ts
+// yarn ts-node -T scripts/helpers/svelte-import.ts
 
 module.exports = svelteImport;

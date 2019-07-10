@@ -1,14 +1,22 @@
 <script>
+  import { getContext } from "svelte";
+  const lang = getContext("lang");
+
   let codeBoxClass = "code-box";
   let visible = false;
-  export let style;
+
+  export let meta;
 </script>
 
-<section class={visible ? `${codeBoxClass} expand` : codeBoxClass} {style} >
+<section id={meta.id} class={visible ? `${codeBoxClass} expand` : codeBoxClass}>
   <slot name="component" />
   <section class="code-box-meta markdown">
-    <slot name="title" />
-    <slot name="description" />
+    <div class="code-box-title">{meta.title[lang]}</div>
+    {#if lang === 'zh-CN'}
+      <slot name="znDesc" />
+    {:else}
+      <slot name="enDesc" />
+    {/if}
     <div class="code-box-actions">
       <span className="code-expand-icon">
         <img
