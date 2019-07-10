@@ -103,11 +103,11 @@ task(function generate(cb) {
       <html>
         <head>
           <meta charset="UTF-8">
-          <title>${head}</title>
+          ${head}
         <link href="/app.css" rel="stylesheet"></head>
         <body>
-        <script type="text/javascript" src="/app.js"></script>
         <div id="app">${html}</div>
+        <script type="text/javascript" src="/app.js"></script>
         </body>
       </html>
   `,

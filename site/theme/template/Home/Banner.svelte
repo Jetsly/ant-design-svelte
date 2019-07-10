@@ -13,11 +13,11 @@
         ry="6"
         stroke="#2F54EB"
         strokeWidth="1.6" />
-      <g transform="translate(200 450)">
-        <g style={{ transformOrigin: '50% 50%', transform: 'rotate(-340deg)' }}>
+      <!-- <g transform="translate(200 450)">
+        <g style={ transformOrigin: '50% 50%', transform: 'rotate(-340deg)' }>
           <rect stroke="#FADB14" strokeWidth="1.6" width="9" height="9" />
         </g>
-      </g>
+      </g> -->
     </svg>
   </div>
   <div class="banenr page">
@@ -25,7 +25,7 @@
       <h1 key="h1">Ant Design Svelte</h1>
       <div class="banner-btns" key="buttons">
         <Link to="/docs/getting-started">
-        <Button type="primary" class="banner-btn components">sss</Button>
+        <Button type="primary" class="banner-btn components">快速上手</Button>
         </Link>
       </div>
     </div>

@@ -45,7 +45,7 @@
         padding: 0;
       }
     }
-  <style>`;
+  </style>`;
 </script>
 
 <svelte:head>
