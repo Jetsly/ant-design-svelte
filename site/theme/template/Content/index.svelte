@@ -8,9 +8,9 @@
   const mdDemoList = require.context(process.env.MD_DEMO_URL, true, /\.md$/);
   const lang = getContext("lang");
 
-  console.log($$props);
-  console.log(page);
-  console.log(component);
+  // console.log($$props);
+  // console.log(page);
+  // console.log(component);
 
   let demos = [];
   let doc;

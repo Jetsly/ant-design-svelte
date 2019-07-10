@@ -107,7 +107,7 @@ task(function generate(cb) {
         <link href="/app.css" rel="stylesheet"></head>
         <body>
         <script type="text/javascript" src="/app.js"></script>
-        ${html}
+        <div id="app">${html}</div>
         </body>
       </html>
   `,

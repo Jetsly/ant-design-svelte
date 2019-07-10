@@ -8,7 +8,15 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const WebpackBar = require('webpackbar');
 
 function addPlugins(ssr = false) {
-  return [
+  return (ssr
+    ? []
+    : [
+        new HtmlWebpackPlugin({
+          filename: 'index.html',
+          template: './site/index.ejs',
+        }),
+      ]
+  ).concat([
     new WebpackBar({
       name: ssr
         ? '🚚  Ant Design Svelte Site SSR'
@@ -23,10 +31,7 @@ function addPlugins(ssr = false) {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-    new HtmlWebpackPlugin({
-      titile: 'Ant Design Svelte',
-    }),
-  ];
+  ]);
 }
 
 function getSvelteLoader(ssr = false) {

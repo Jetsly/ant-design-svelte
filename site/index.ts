@@ -3,6 +3,6 @@ import 'highlight.js/styles/solarized-light.css';
 import App from './App.svelte';
 
 new App({
-  target: document.body,
+  target: document.getElementById('app'),
   hydrate: true,
 });
