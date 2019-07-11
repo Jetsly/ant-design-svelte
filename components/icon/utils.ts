@@ -35,13 +35,15 @@ export function removeTypeTheme(type: string) {
 }
 
 export function withThemeSuffix(type: string, theme: ThemeType) {
-  let result = type;
+  let result = type
+    .replace(/^\w/, a => a.toUpperCase())
+    .replace(/-(\w)/, (w,a) => a.toUpperCase());
   if (theme === 'filled') {
-    result += '-fill';
+    result += 'Fill';
   } else if (theme === 'outlined') {
-    result += '-o';
+    result += 'Outline';
   } else if (theme === 'twoTone') {
-    result += '-twotone';
+    result += 'TwoTone';
   } else {
     warning(false, 'Icon', `This icon '${type}' has unknown theme '${theme}'`);
   }

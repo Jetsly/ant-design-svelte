@@ -17,3 +17,4 @@
 
 export { default as Button } from './button';
 export { Col, Row } from './grid';
+export { default as Icon } from './icon';

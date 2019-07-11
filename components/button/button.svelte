@@ -3,6 +3,7 @@
   import Wave from '../_util/wave'
   import classNames from '../_util/classes'
   import { onMount,tick } from "svelte";
+  import Icon from '../icon'
 
   export let prefixCls = "ant-btn";
   export let type = "default";
@@ -15,6 +16,7 @@
   export let ghost;
   export let block;
   export let href;
+  export let target;
 
   let waveRef;
   let hasTwoCNChar = false;
@@ -28,31 +30,37 @@
     class: classNames({
         [`${prefixCls}`]: true,
         [`${prefixCls}-${type}`]: type,
-        // [`${prefixCls}-${shape}`]: shape,
-        // [`${prefixCls}-${sizeMap[size]}`]: sizeMap[size],
+        [`${prefixCls}-${shape}`]: shape,
+        [`${prefixCls}-${sizeMap[size]}`]: sizeMap[size],
         // [`${prefixCls}-icon-only`]: !children && children !== 0 && icon,
-        // [`${prefixCls}-loading`]: loading,
+        [`${prefixCls}-loading`]: loading,
         [`${prefixCls}-background-ghost`]: ghost || type === 'ghost',
         // [`${prefixCls}-two-chinese-chars`]: hasTwoCNChar,
         [`${prefixCls}-block`]: block,
     })
   };
 
-  onMount(async () => {
-    await tick();
+  $: iconType= loading?'loading':icon
+
+  function waveNode(node){
     if (type !== 'link') {
-      return Wave(waveRef)
+      return Wave(node)
     }
-  });
-
-
+  }
+  let havSlot = !!$$props.$$slots
 </script>
 {#if href}
-  <a {...buttonProps} {href} on:click>
-    <slot />
+  <a {...buttonProps} {href} {target} on:click>
+  {#if iconType}
+  <Icon type={iconType}/>
+  {/if}
+    {#if havSlot}<span><slot /></span> {:else}<slot />{/if}
   </a>
 {:else}
-  <button {...buttonProps} type={htmlType || 'button'} bind:this={waveRef}  on:click>
-    <slot />
+  <button {...buttonProps} type={htmlType || 'button'} use:waveNode  on:click>
+  {#if iconType}
+  <Icon type={iconType}/>
+  {/if}
+    {#if havSlot}<span><slot /></span> {:else}<slot />{/if}
   </button>
 {/if}

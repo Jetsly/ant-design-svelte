@@ -26,7 +26,7 @@
       mdDemoList
         .keys()
         .filter(key =>
-          RegExp(`${component}(\\/demo)?\\/\\w+(\\.${lang})?\.md`, "i").test(
+          RegExp(`${component}(\\/demo)?\\/[\\w|-]+(\\.${lang})?\.md`, "i").test(
             key
           )
         )

@@ -17,7 +17,7 @@ Use tag `<Icon />` to create an icon and set its type in the `type` prop. Specif
 <script>
 import { Icon } from 'ant-design-svelte';
 </script>
-<div className="icons-list">
+<div class="icons-list">
   <Icon type="home" />
   <Icon type="setting" theme="filled" />
   <Icon type="smile" theme="outlined" />
@@ -25,4 +25,11 @@ import { Icon } from 'ant-design-svelte';
   <Icon type="smile" rotate={180} />
   <Icon type="loading" />
 </div>
+<style>
+.icons-list > .anticon {
+  margin-right: 6px;
+  font-size: 24px;
+}
+</style>
 ```
+

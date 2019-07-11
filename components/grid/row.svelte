@@ -1,5 +1,5 @@
 <script>
-  import classNames from "../_util/classes";
+  import classNames, { formatStyle } from "../_util/classes";
   import { key } from "./_part";
   import { onMount, setContext } from "svelte";
 
@@ -7,16 +7,16 @@
   export let prefixCls = "ant-row";
   export let gutter = 0;
   export { className as class };
-  export let style = "";
+  export let style = {};
   export let type;
   export let align;
   export let justify;
   $: rowProps = {
-    style: `${
-      gutter > 0
-        ? `margin-left:${gutter / -2}px;margin-right:${gutter / -2}px;`
-        : ""
-    }${style}`,
+    style: formatStyle({
+      ...style,
+      marginLeft: gutter > 0 ? `${gutter / -2}px` : undefined,
+      marginRight: gutter > 0 ? `${gutter / -2}px` : null
+    }),
     class: classNames(className, {
       [prefixCls]: !type,
       [`${prefixCls}-${type}`]: type,

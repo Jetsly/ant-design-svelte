@@ -1,5 +1,5 @@
 <script>
-  import { Row, Col } from "ant-design-svelte";
+  import { Row, Col, Icon } from "ant-design-svelte";
   import { getContext } from "svelte";
   const lang = getContext("lang");
   export let doc;
@@ -41,6 +41,7 @@
           {#if demos.length}
             <h2>
               <span>代码演示</span>
+              <Icon type="appstore" class="code-box-expand-trigger" />
             </h2>
           {/if}
         </section>

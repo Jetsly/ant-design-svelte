@@ -1,5 +1,5 @@
 <script>
-  import classNames from "../_util/classes";
+  import classNames, { formatStyle } from "../_util/classes";
   import { key } from "./_part";
   import { onMount, getContext } from "svelte";
 
@@ -8,7 +8,7 @@
   let className;
   export let prefixCls = "ant-col";
   export { className as class };
-  export let style = "";
+  export let style = {};
   export let span;
   export let order;
   export let offset;
@@ -56,11 +56,11 @@
   }
 
   $: colProps = {
-    style: `${
-      gutter > 0
-        ? `padding-left:${gutter / 2}px;padding-right:${gutter / 2}px;`
-        : ""
-    }${style}`,
+    style: formatStyle({
+      ...style,
+      paddingLeft: gutter > 0 ? `${gutter / 2}px` : undefined,
+      paddingRight: gutter > 0 ? `${gutter / 2}px` : null
+    }),
     class: classNames(prefixCls, className, {
       [`${prefixCls}-${span}`]: span !== undefined,
       [`${prefixCls}-order-${order}`]: order,
