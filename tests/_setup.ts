@@ -1,10 +1,10 @@
-const hooks = require('require-extension-hooks');
-const MarkdownIt = require('markdown-it');
-const { compile } = require('svelte/compiler');
-const path = require('path');
-const ts = require('typescript');
+import hooks from 'require-extension-hooks';
+import MarkdownIt from 'markdown-it';
+import path from 'path';
+import ts from 'typescript';
+import { compile } from 'svelte/compiler';
 
-hooks('svelte').push(function({ filename, content }) {
+function transpileSvelte({ filename, content }) {
   const { js } = compile(content, {
     filename,
     generate: 'ssr',
@@ -13,7 +13,9 @@ hooks('svelte').push(function({ filename, content }) {
   return ts.transpile(js.code, {
     esModuleInterop: true,
   });
-});
+}
+
+hooks('svelte').push(transpileSvelte);
 
 hooks('md').push(function({ filename, content }) {
   const md = MarkdownIt('default', {
@@ -36,13 +38,5 @@ hooks('md').push(function({ filename, content }) {
     }
     state.tokens = tokens;
   });
-
-  const { js } = compile(md.render(content), {
-    filename: filename.replace('.md', '.svelte'),
-    generate: 'ssr',
-    format: 'esm',
-  });
-  return ts.transpile(js.code, {
-    esModuleInterop: true,
-  });
+  return transpileSvelte({ content: md.render(content), filename });
 });

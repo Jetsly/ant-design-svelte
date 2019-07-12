@@ -13,7 +13,7 @@ yarn run pub-with-ci
 
 fi;
 
-if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_COMMIT_MESSAGE == *$BUMP* || $TRAVIS_COMMIT_MESSAGE == *$SITE* ]]; then
+if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_COMMIT_MESSAGE == *$BUMP* || $TRAVIS_COMMIT_MESSAGE == *$SITE* ]]; then
 
 echo "Starting to update gh-pages\n"
 
@@ -38,5 +38,3 @@ else
 fi;
 
 yarn run test
-# only upload the coverage.json file
-bash <(curl -s https://codecov.io/bash) -f coverage/coverage.json

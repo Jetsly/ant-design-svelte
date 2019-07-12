@@ -30,7 +30,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack-dev-server --config webpack.config.ts",
-    "test": "ava",
+    "test": "nyc ava",
+    "coverage": "codecov",
     "pub-with-ci": "gulp pub-with-ci",
     "site": "gulp site"
   },
@@ -59,6 +60,7 @@
     "autoprefixer": "^9.6.1",
     "ava": "^2.2.0",
     "babel-loader": "^8.0.6",
+    "codecov": "^3.5.0",
     "copy-to-clipboard": "^3.2.0",
     "cross-env": "^5.2.0",
     "cross-spawn": "^6.0.5",

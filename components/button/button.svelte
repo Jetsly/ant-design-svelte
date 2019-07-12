@@ -1,5 +1,5 @@
 <script>
-  import Wave from '../_util/wave'
+  import wave from '../_util/wave'
   import classNames from '../_util/classes'
   import { onMount,tick } from "svelte";
   import Icon from '../icon'
@@ -41,11 +41,6 @@
 
   $: iconType= loading?'loading':icon
 
-  function waveNode(node){
-    if (type !== 'link') {
-      return Wave(node)
-    }
-  }
   let havSlot = !!$$props.$$slots
 </script>
 {#if href}
@@ -56,7 +51,7 @@
     {#if havSlot}<span><slot /></span> {:else}<slot />{/if}
   </a>
 {:else}
-  <button {...buttonProps} type={htmlType || 'button'} use:waveNode  on:click>
+  <button {...buttonProps} type={htmlType || 'button'} use:wave={type !== 'link'}  on:click>
   {#if iconType}
   <Icon type={iconType}/>
   {/if}

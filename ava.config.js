@@ -1,5 +1,6 @@
 export default {
   files: ['tests/**/*.test.ts', 'components/**/*.test.ts'],
+  sources: ['components/**/*'],
   tap: true,
   babel: false,
   compileEnhancements: false,
