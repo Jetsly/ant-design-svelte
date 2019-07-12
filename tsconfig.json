@@ -9,6 +9,7 @@
     "esModuleInterop": true,
     "strictNullChecks": false,
     "importHelpers": true,
+    "resolveJsonModule": true,
     "types": [
       "svelte",
       "node",

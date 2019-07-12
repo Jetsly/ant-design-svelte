@@ -76,7 +76,14 @@ task(
         .pipe(dest(esDir)),
     () =>
       src(['components/**/*.svelte'])
-        .pipe(transformSvelte('cjs'))
+        .pipe(transformSvelte('esm'))
+        .pipe(
+          gulpTs.createProject('tsconfig.json', {
+            module: 'commonjs',
+            declaration: false,
+            allowJs: true,
+          })(),
+        )
         .pipe(dest(libDir)),
   ]),
 );
@@ -84,11 +91,6 @@ task('compile-build', () => buildWebpack(buildUmdConfig));
 
 task(function buildSitefile() {
   return buildWebpack(createConfig({}, { ssr: true }));
-});
-
-task(function copyHtml(cb) {
-  outputFileSync(path.join(cwd, '_site/CNAME'), 'ant-svelte.ddot.ink');
-  cb();
 });
 
 task(function generate(cb) {
@@ -122,12 +124,7 @@ task(function generate(cb) {
 
 task(
   'site',
-  series(
-    () => del(['./_site', './_ssr_site']),
-    'buildSitefile',
-    'copyHtml',
-    'generate',
-  ),
+  series(() => del(['./_site', './_ssr_site']), 'buildSitefile', 'generate'),
 );
 
 task(

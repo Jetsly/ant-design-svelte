@@ -1,4 +1,3 @@
-<svelte:options tag="ant-button"/>
 <script>
   import Wave from '../_util/wave'
   import classNames from '../_util/classes'

@@ -5,6 +5,4 @@ node_js:
 cache:
   yarn: true
 script:
-  - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then cp ./scripts/.npmrc.template $HOME/.npmrc; fi
-  - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then yarn run pub-with-ci; fi
-  - bash ./scripts/deploy-to-gh-pages.sh
+  - scripts/travis-script.sh

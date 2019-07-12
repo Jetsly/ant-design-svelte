@@ -35,10 +35,7 @@ new App({
 `
         },
         "src/App.svelte": {
-          content: `${sourceCode.replace(
-            "ant-design-svelte",
-            "ant-design-svelte/es"
-          )}`
+          content: `${sourceCode}`
         },
         "index.html": {
           content: `<div id="container" style="padding: 24px"></div>
