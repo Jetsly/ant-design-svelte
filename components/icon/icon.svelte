@@ -19,6 +19,10 @@
   import { generate as generateColor } from "@ant-design/colors";
   import { renderIconDefinitionToSVGElement } from "@ant-design/icons/lib/helpers";
   import * as allIcons from "@ant-design/icons/lib/dist";
+  import { tooltip } from "../index";
+
+  let tooltipConfig;
+  export { tooltipConfig as tooltip };
 
   import {
     svgBaseProps,
@@ -95,7 +99,8 @@
   aria-label={type}
   style={formatStyle(style)}
   on:click
-  on:mouseout>
+  on:mouseout
+  use:tooltip={tooltipConfig}>
   {#if iconSvg}
     {@html iconSvg}
   {:else if isOnlyPath}

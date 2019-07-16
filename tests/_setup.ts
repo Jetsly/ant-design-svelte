@@ -25,7 +25,7 @@ hooks('md').push(function({ filename, content }) {
     var token = tokens[idx];
     return token.content.replace(
       `ant-design-svelte`,
-      `${path.join(__dirname, '../components/index')}`,
+      `${path.join(__dirname, '../components')}`,
     );
   };
   md.core.ruler.push('update_template', function replace(state) {

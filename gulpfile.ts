@@ -6,7 +6,7 @@ import { outputFileSync } from 'fs-extra';
 import through2 from 'through2';
 import GitHub from '@octokit/rest';
 import spawn from 'cross-spawn';
-import transformLess from './scripts/transformLess';
+import { transformComptLess } from 'alleria/lib/gulp';
 import transformSvelte from './scripts/transformSvelte';
 import buildWebpack, { buildUmdConfig } from './scripts/buildWebpack';
 import createConfig from './webpack.config';
@@ -24,7 +24,7 @@ task('compile-res', () =>
     'components/**/*.less',
     '!components/*/demo/*',
   ])
-    .pipe(transformLess)
+    .pipe(transformComptLess({ plugins: require('./postcss.config').plugins }))
     .pipe(dest(esDir))
     .pipe(dest(libDir)),
 );

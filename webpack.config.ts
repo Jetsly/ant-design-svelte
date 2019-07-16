@@ -42,7 +42,7 @@ function getSvelteLoader(ssr = false) {
       generate: ssr ? 'ssr' : 'dom',
       preprocess: {
         script: require('./scripts/helpers/svelte-import.ts')({
-          libraryDirectory: 'components',
+          libraryDirectory: '',
           style: !ssr,
         }),
       },
@@ -79,7 +79,7 @@ export function createConfig(
           site: path.resolve(__dirname, './site'),
           demo: path.resolve(__dirname, './site/theme/template/Content/Demo'),
           components: path.resolve(__dirname, './components'),
-          'ant-design-svelte': path.resolve(__dirname, './'),
+          'ant-design-svelte': path.resolve(__dirname, './components'),
         },
       },
       stats: {
@@ -169,7 +169,7 @@ export function createConfig(
           site: path.resolve(__dirname, './site'),
           demo: path.resolve(__dirname, './site/theme/template/Content/Demo'),
           components: path.resolve(__dirname, './components'),
-          'ant-design-svelte': path.resolve(__dirname, './'),
+          'ant-design-svelte': path.resolve(__dirname, './components'),
         },
       },
       stats: {
