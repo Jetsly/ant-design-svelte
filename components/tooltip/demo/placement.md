@@ -15,8 +15,8 @@ There are 12 placement options available.
 
 ```html
 <script>
-import { Button } from 'ant-design-svelte';
-import { formatStyle } from 'ant-design-svelte/_util/classes';
+import { Button,_util } from 'ant-design-svelte';
+const { formatStyle } = _util;
 const buttonWidth = 70;
 const text = 'prompt text';
 </script>

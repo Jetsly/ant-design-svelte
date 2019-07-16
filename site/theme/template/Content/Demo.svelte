@@ -1,9 +1,9 @@
 <script>
   import { getContext } from "svelte";
-  import { Icon } from "ant-design-svelte";
-  import classes from "components/_util/classes";
+  import { Icon, _util } from "ant-design-svelte";
   import LZString from "lz-string";
   import copy from "copy-to-clipboard";
+  const { classes } = _util;
   const lang = getContext("lang");
 
   let codeBoxClass = "code-box";
@@ -91,7 +91,9 @@ new App({
         type={copied ? 'check' : 'snippets'}
         class="code-box-code-copy"
         on:click={copyToClipboard}
-        on:mouseout={()=>{copied = false}} />
+        on:mouseout={() => {
+          copied = false;
+        }} />
       <span class="code-expand-icon">
         <img
           alt="expand code"
