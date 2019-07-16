@@ -27,7 +27,7 @@ function getOpst(parameters: Parameters): Parameters {
     ...parameters,
   };
 }
-  
+
 function getPos(target: HTMLElement, placement: TooltipPlacement) {
   const rect = target.getBoundingClientRect();
   let pos = {
@@ -141,7 +141,9 @@ export default function tooltip(node: HTMLElement, parameters: Parameters) {
     });
   };
   const leaveHander = () => {
-    tooltip.$set({ visible: false });
+    if (tooltip !== null) {
+      tooltip.$set({ visible: false });
+    }
   };
   node.addEventListener('mouseover', overHander);
   node.addEventListener('mouseleave', leaveHander);

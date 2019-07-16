@@ -19,7 +19,7 @@
   import { generate as generateColor } from "@ant-design/colors";
   import { renderIconDefinitionToSVGElement } from "@ant-design/icons/lib/helpers";
   import * as allIcons from "@ant-design/icons/lib/dist";
-  import { tooltip } from "../index";
+  import tooltip from "../tooltip";
 
   let tooltipConfig;
   export { tooltipConfig as tooltip };

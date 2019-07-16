@@ -2,8 +2,8 @@
   import wave from "../_util/wave";
   import classNames from "../_util/classes";
   import { onMount, tick } from "svelte";
-  import { Icon, tooltip } from "../index";
-
+  import Icon from "../icon";
+  import tooltip from "../tooltip";
   let tooltipConfig;
   export { tooltipConfig as tooltip };
   export let prefixCls = "ant-btn";

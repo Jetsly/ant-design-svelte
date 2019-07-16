@@ -1,11 +1,14 @@
 import path from 'path';
 import MarkdownIt from 'markdown-it';
 import utils from 'markdown-it/lib/common/utils';
+import {
+  tagArray as markdonwTagArray,
+  sourceArray as markdonwSourceArray,
+} from 'alleria/lib/markdown-it';
 import hljs from 'highlight.js';
-
+import fs from 'fs';
 const markdonwMeta = require('markdown-it-meta');
 const loaderUtils = require('loader-utils');
-const fs = require('fs');
 const isUsed = !process.env.DEBUT_LOADER;
 function stringRe(value) {
   return value.replace(/({|})/g, a => `{'${a}'}`);
@@ -91,102 +94,23 @@ function loader(source) {
     },
     isUsed ? loaderUtils.getOptions(this) : {},
   );
-  let otherTokens = [];
-  const md = MarkdownIt(opts.preset, opts).use(markdonwMeta);
-  const otherMd = MarkdownIt(opts.preset, opts);
-  md.renderer.rules.text = otherMd.renderer.rules.text = text;
-  md.renderer.rules.code_inline = otherMd.renderer.rules.code_inline = code_inline;
-  md.renderer.rules.code_block = otherMd.renderer.rules.code_block = code_block;
-  md.renderer.rules.fence = otherMd.renderer.rules.fence = fence;
-  otherMd.core.ruler.push('update_template', function replace(state) {
-    state.tokens = otherTokens;
-  });
-  const scripts = [];
-  let api = '';
-  let enDes = '';
-  let znDes = '';
-  if (opts.isDemo) {
-    const enDesToken = [];
-    const znDesToken = [];
-    let isenDes = false;
-    let isznDes = false;
-    md.core.ruler.push('update_template', function replace(state) {
-      const Token = state.Token;
-      const tokens = [];
-      const component = new Token('html_block', '', 0);
-      const code = new Token('paragraph_open', 'div', 1);
-      code.attrs = [['slot', 'code'], ['class', 'highlight']];
-      for (let index = 0; index < state.tokens.length; index++) {
-        const token = state.tokens[index];
-        if (
-          token.type === 'heading_open' &&
-          token.tag === 'h2' &&
-          state.tokens[index + 1].content == 'en-US'
-        ) {
-          isznDes = false;
-          isenDes = true;
-          index = index + 2;
-          continue;
-        } else if (
-          token.type === 'heading_open' &&
-          token.tag === 'h2' &&
-          state.tokens[index + 1].content == 'zh-CN'
-        ) {
-          isznDes = true;
-          isenDes = false;
-          index = index + 2;
-          continue;
-        }
-        if (token.type === 'fence' && token.tag === 'code') {
-          isznDes = false;
-          isenDes = false;
-          scripts.push(/<script>\n?([^>]+)<\/script>/.exec(token.content)[1]);
-          component.content = `<div class="code-box-demo" slot="component">${token.content.replace(
-            /<script>[^>]+>/,
-            '',
-          )}</div>`;
-          tokens.unshift(component);
-          tokens.push(code, token, new Token('paragraph_close', 'div', -1));
-        } else if (isenDes) {
-          enDesToken.push(token);
-        } else if (isznDes) {
-          znDesToken.push(token);
-        } else {
-          tokens.push(token);
-        }
-      }
-      state.tokens = tokens;
-      otherTokens = enDesToken;
-      enDes = otherMd.render('');
-      otherTokens = znDesToken;
-      znDes = otherMd.render('');
-    });
-  } else {
-    const apiToken = [];
-    md.core.ruler.push('update_template', function replace(state) {
-      const tokens = [];
-      let isApi = false;
-      state.tokens.forEach((token, idx) => {
-        if (
-          token.type === 'heading_open' &&
-          token.tag === 'h2' &&
-          state.tokens[idx + 1].content == 'API'
-        ) {
-          isApi = true;
-        }
-        if (isApi) {
-          apiToken.push(token);
-        } else {
-          tokens.push(token);
-        }
-      });
-      state.tokens = tokens;
-      otherTokens = apiToken;
-      api = otherMd.render('');
-    });
-  }
+  const md = MarkdownIt(opts.preset, opts)
+    .use(markdonwMeta)
+    .use(markdonwTagArray)
+    .use(markdonwSourceArray);
+  md.renderer.rules.text = text;
+  md.renderer.rules.code_inline = code_inline;
+  md.renderer.rules.code_block = code_block;
+  md.renderer.rules.fence = fence;
   const renderedDocument = md.render(source);
-  const meta = (md as any).meta;
+  const { meta, tagArray, sourceArray } = md as {
+    meta?: {
+      id: string;
+      filename: string;
+    };
+    tagArray?: Array<{ h2: string; html: string }>;
+    sourceArray?: Array<{ lang: string; source: string }>;
+  };
   if (isUsed) {
     meta.filename = path.relative(
       path.join(__dirname, '../../'),
@@ -194,23 +118,48 @@ function loader(source) {
     );
     meta.id = meta.filename.replace(/\//g, '-').replace(/.md/, '');
   }
-  return `
+  const code =
+    sourceArray
+      .filter(({ lang }) => lang === 'html')
+      .map(({ source }) => source)[0] || '';
+  if (!opts.isDemo) {
+    const splitH2Tag = ['API', 'FAQ'];
+    return `
   <script context="module"> 
-     export const meta=${JSON.stringify(meta)};
-     export const api=\`${api}\`;
+  export const meta=${JSON.stringify(meta)};
+  export const api=\`${tagArray
+    .filter(({ h2 }) => splitH2Tag.indexOf(h2) > -1)
+    .map(({ html }) => html)
+    .join('')}\`;
   </script>
-  ${
-    opts.isDemo
-      ? `<script>
-      import Demo from "demo";
-      ${scripts.join('\n')}</script>
-        <Demo meta={meta} >
-        <div class="code-box-description" slot="znDesc">${znDes}</div>
-        <div class="code-box-description" slot="enDesc">${enDes}</div>
-        ${renderedDocument} 
-        </Demo>`
-      : renderedDocument
+  ${tagArray
+    .filter(({ h2 }) => splitH2Tag.indexOf(h2) === -1)
+    .map(({ html }) => html)
+    .join('')}
+  `;
   }
+  return `
+<script context="module"> 
+  export const meta=${JSON.stringify(meta)};
+</script>
+<script>
+  import Demo from "demo";
+  ${/<script>\n?([^>]+)<\/script>/.exec(code)[1]}</script>
+<Demo meta={meta} >
+<div class="code-box-demo" slot="component">${code.replace(
+    /<script>[^>]+>/,
+    '',
+  )}</div>
+<div class="code-box-description" slot="znDesc">${tagArray
+    .filter(({ h2 }) => h2 === 'zh-CN')
+    .map(({ html }) => html.replace(/<h2>[^>]+>/, ''))}</div>
+<div class="code-box-description" slot="enDesc">${tagArray
+    .filter(({ h2 }) => h2 === 'en-US')
+    .map(({ html }) => html.replace(/<h2>[^>]+>/, ''))}</div>
+<div slot="code"><pre class="language-html">${stringRe(
+    hljs.highlight('html', code).value,
+  )}</pre></div>
+</Demo>
   `;
 }
 // console.log(
