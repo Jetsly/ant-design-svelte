@@ -12,8 +12,11 @@ const tsLoader = {
   },
 };
 
-export const buildUmdConfig = {
+export const buildUmdConfig: webpack.Configuration = {
   mode: 'production',
+  performance: {
+    hints: false,
+  },
   optimization: {
     minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin({})],
   },
@@ -24,9 +27,7 @@ export const buildUmdConfig = {
     library: 'antd',
     libraryTarget: 'umd',
   },
-  stats: {
-    modules: false,
-  },
+  stats: false,
   resolve: {
     extensions: ['.ts', '.mjs', '.js', '.json'],
     mainFields: ['svelte', 'browser', 'module', 'main'],
@@ -97,7 +98,7 @@ export default function buildWebpack(config) {
 
       const buildInfo = stats.toString({
         colors: true,
-        children: true,
+        children: false,
         chunks: false,
         modules: false,
         chunkModules: false,

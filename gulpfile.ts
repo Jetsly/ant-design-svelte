@@ -40,7 +40,9 @@ task('compile-ts', () =>
       through2.obj(async function(file, encoding, next) {
         if (file.isBuffer()) {
           file.contents = Buffer.from(
-            file.contents.toString().replace(/.svelte/g, ''),
+            file.contents
+              .toString()
+              .replace(/\.svelte(['|"])/g, (ext, char) => char),
           );
         }
         next(null, file);
