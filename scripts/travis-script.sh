@@ -1,26 +1,25 @@
  #!/bin/bash
 set -e # exit with nonzero exit code if anything fails
 
-yarn alleria-ghpage _site
+echo "$1"
+SITE="update site"
 
-# SITE="update site"
+yarn run test
 
-# yarn run test
+if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then 
 
-# if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then 
+echo "Starting to update npm\n"
 
-# echo "Starting to update npm\n"
+cp ./scripts/.npmrc.template $HOME/.npmrc
+yarn run pub-with-ci
 
-# cp ./scripts/.npmrc.template $HOME/.npmrc
-# yarn run pub-with-ci
+fi;
 
-# fi;
+if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]] || [[ $TRAVIS_COMMIT_MESSAGE == *$SITE* ]]; then
 
-# if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]] || [[ $TRAVIS_COMMIT_MESSAGE == *$SITE* ]]; then
+yarn run site
+yarn alleria-ghpage _site Jetsly/ant-design-svelte
 
-# yarn run site
-# yarn alleria-ghpage _site
-
-# else
-#  echo "Skipped updating gh-pages, because build is not triggered from the $TRAVIS_COMMIT_MESSAGE"
-# fi;
+else
+ echo "Skipped updating gh-pages, because build is not triggered from the $TRAVIS_COMMIT_MESSAGE"
+fi;
