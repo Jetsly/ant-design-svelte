@@ -98,9 +98,6 @@ typings/
 .AppleDouble
 .LSOverride
 
-# Icon must end with two \r
-Icon
-
 # Thumbnails
 ._*
 
@@ -132,3 +129,11 @@ Temporary Items
 .history
 
 # End of https://www.gitignore.io/api/osx,node,visualstudiocode
+
+dist
+lib
+es
+_site
+_ssr_site
+helpers
+!scripts/helpers

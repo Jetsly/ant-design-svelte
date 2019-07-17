@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strictNullChecks": false,
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "types": [
+      "svelte",
+      "node",
+      "webpack-env",
+      "markdown-it",
+      "gulp",
+      "through2"
+    ]
+  },
+  "exclude": ["node_modules", "lib", "es"]
+}

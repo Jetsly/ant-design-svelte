@@ -1,0 +1,10 @@
+language: node_js
+sudo: required
+node_js:
+  - 12.6.0
+cache:
+  yarn: true
+script:
+  - bash ./scripts/travis-script.sh
+after_success: 
+  - yarn run coverage
