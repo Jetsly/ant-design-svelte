@@ -1,10 +1,7 @@
  #!/bin/bash
 set -e # exit with nonzero exit code if anything fails
 
-project=`git remote  get-url origin | awk -F ":" '{print $2}'`
-echo "deploy $1 file to github<$project> page"
-project=${project/*github.com\//}
-echo "deploy $1 file to github<$project> page"
+yarn alleria-ghpage _site
 
 # SITE="update site"
 
