@@ -799,10 +799,10 @@ ajv@^6.1.0, ajv@^6.5.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-alleria@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/alleria/-/alleria-0.0.2.tgz#9daa07038bf75faf569f9d615a977292ff646455"
-  integrity sha512-XG5uGpG6b1u944yRJLl65Bv/NhG4EevLoMqNcv/ojvUEW1fvQ1oRcOZzQQuw+ym2zTd2escaMBrumwtA5qJsUA==
+alleria@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/alleria/-/alleria-0.0.3.tgz#b586625927fe57b6b4e6a90f99b2a3b3816ffed7"
+  integrity sha512-XgK1rORFcW/tbmTKLZmSVlEJ0PLopMf+zu3uN/uPkd0oaT3Bj9eWirU9r7fg5/DsRAQZwdHNjQgjRzGdEKKQuQ==
   dependencies:
     less "^3.9.0"
     less-plugin-npm-import "^2.1.0"

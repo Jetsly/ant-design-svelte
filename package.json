@@ -57,7 +57,7 @@
     "@types/webpack": "^4.4.34",
     "@types/webpack-dev-server": "^3.1.6",
     "@types/webpack-env": "^1.13.9",
-    "alleria": "^0.0.2",
+    "alleria": "^0.0.3",
     "autoprefixer": "^9.6.1",
     "ava": "^2.2.0",
     "babel-loader": "^8.0.6",
