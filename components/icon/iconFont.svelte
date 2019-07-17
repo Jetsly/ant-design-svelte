@@ -20,9 +20,8 @@
 </script>
 
 <script>
-  import Icon from "./icon.svelte";
+  import Icon from "./icon";
   export let type;
-  let a;
 </script>
 
 <Icon>

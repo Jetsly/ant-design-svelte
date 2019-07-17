@@ -18,6 +18,15 @@ const libDir = path.join(cwd, './lib');
 const esDir = path.join(cwd, './es');
 const distDir = path.join(cwd, './dist');
 
+const replaceSvelteExt = through2.obj(async function(file, encoding, next) {
+  if (file.isBuffer()) {
+    file.contents = Buffer.from(
+      file.contents.toString().replace(/\.svelte(['|"])/g, (ext, char) => char),
+    );
+  }
+  next(null, file);
+});
+
 task('compile-res', () =>
   src([
     'components/**/*.@(png|svg)',
@@ -36,18 +45,7 @@ task('compile-ts', () =>
         declaration: true,
       })(),
     )
-    .pipe(
-      through2.obj(async function(file, encoding, next) {
-        if (file.isBuffer()) {
-          file.contents = Buffer.from(
-            file.contents
-              .toString()
-              .replace(/\.svelte(['|"])/g, (ext, char) => char),
-          );
-        }
-        next(null, file);
-      }),
-    )
+    .pipe(replaceSvelteExt)
     .pipe(dest(esDir))
     .pipe(
       gulpTs.createProject('tsconfig.json', {
@@ -75,6 +73,7 @@ task(
     () =>
       src(['components/**/*.svelte'])
         .pipe(transformSvelte('esm'))
+        .pipe(replaceSvelteExt)
         .pipe(dest(esDir)),
     () =>
       src(['components/**/*.svelte'])
