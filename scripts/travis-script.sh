@@ -14,7 +14,7 @@ yarn run pub-with-ci
 
 fi;
 
-if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]] || [$TRAVIS_COMMIT_MESSAGE == *$SITE* ]; then
+if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]] || [[ $TRAVIS_COMMIT_MESSAGE == *$SITE* ]]; then
 
 rm -rf _site
 mkdir _site
