@@ -1,27 +1,29 @@
  #!/bin/bash
 set -e # exit with nonzero exit code if anything fails
 
-SITE="update site"
+project=`git remote  get-url origin | awk -F ":" '{print $2}'`
+echo "deploy $1 file to github<$project> page"
+project=${project/*github.com\//}
+echo "deploy $1 file to github<$project> page"
 
-yarn run test
+# SITE="update site"
 
-if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then 
+# yarn run test
 
-echo "Starting to update npm\n"
+# if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then 
 
-cp ./scripts/.npmrc.template $HOME/.npmrc
-yarn run pub-with-ci
+# echo "Starting to update npm\n"
 
-fi;
+# cp ./scripts/.npmrc.template $HOME/.npmrc
+# yarn run pub-with-ci
 
-if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]] || [[ $TRAVIS_COMMIT_MESSAGE == *$SITE* ]]; then
+# fi;
 
-rm -rf _site
-mkdir _site
+# if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]] || [[ $TRAVIS_COMMIT_MESSAGE == *$SITE* ]]; then
 
-yarn run site
-yarn alleria-ghpage _site
+# yarn run site
+# yarn alleria-ghpage _site
 
-else
- echo "Skipped updating gh-pages, because build is not triggered from the $TRAVIS_COMMIT_MESSAGE"
-fi;
+# else
+#  echo "Skipped updating gh-pages, because build is not triggered from the $TRAVIS_COMMIT_MESSAGE"
+# fi;
