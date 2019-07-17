@@ -5,12 +5,15 @@
   export let component;
 
   const mdDocList = require.context(process.env.MD_DOC_URL, true, /\.md$/);
-  const mdDemoList = require.context(process.env.MD_DEMO_URL, true, /\/[\w|-]+.((en-us|zh-cn)\.)?md$/i);
+  const mdDemoList = require.context(
+    process.env.MD_DEMO_URL,
+    true,
+    /\/[\w|-]+.((en-us|zh-cn)\.)?md$/i
+  );
   const lang = getContext("lang");
 
   // console.log($$props);
   // console.log(page);
-  // console.log(component);
   let demos = [];
   let doc;
   let isDoc = false;
@@ -22,16 +25,17 @@
           .filter(key => RegExp(`${page}.${lang}`, "i").test(key))[0]
       );
     } else {
+      demos = []
       mdDemoList
         .keys()
         .filter(key =>
-          RegExp(`${component}(\\/demo)?\\/[\\w|-]+(\\.${lang})?\.md`, "i").test(
-            key
-          )
+          RegExp(
+            `${component}(\\/demo)?\\/[\\w|-]+(\\.${lang})?\.md`,
+            "i"
+          ).test(key)
         )
         .forEach(key => {
           const mdDemo = mdDemoList(key);
-          console.log(mdDemo)
           if (mdDemo.meta.type) {
             doc = mdDemo;
           } else {
