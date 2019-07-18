@@ -1,7 +1,6 @@
 <script>
   import wave from "../_util/wave";
   import classNames from "../_util/classes";
-  import { onMount, tick } from "svelte";
   import Icon from "../icon";
   import tooltip from "../tooltip";
   let tooltipConfig;
@@ -19,7 +18,6 @@
   export let href;
   export let target;
 
-  let waveRef;
   let hasTwoCNChar = false;
   let sizeMap = {
     large: "lg",

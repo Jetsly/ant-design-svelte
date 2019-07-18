@@ -1,7 +1,7 @@
 <script>
   import { setContext, getContext } from "svelte";
   import classNames, { formatStyle } from "../_util/classes";
-  import { store } from "./menu-store.ts";
+  import { store } from "./menu-store";
   import warning from "../_util/warning";
 
   let className;

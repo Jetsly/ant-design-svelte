@@ -73,18 +73,10 @@ task(
     () =>
       src(['components/**/*.svelte'])
         .pipe(transformSvelte('esm'))
-        .pipe(replaceSvelteExt)
         .pipe(dest(esDir)),
     () =>
       src(['components/**/*.svelte'])
-        .pipe(transformSvelte('esm'))
-        .pipe(
-          gulpTs.createProject('tsconfig.json', {
-            module: 'commonjs',
-            declaration: false,
-            allowJs: true,
-          })(),
-        )
+        .pipe(transformSvelte('cjs'))
         .pipe(dest(libDir)),
   ]),
 );

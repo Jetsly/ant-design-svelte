@@ -1,5 +1,5 @@
 <script context="module">
-  import IconFont, { createFromIconfontScriptCN } from "./iconFont.svelte";
+  import IconFont, { createFromIconfontScriptCN } from "./iconFont";
   const _primaryColor = "#1890ff";
   export function setTwoToneColor(primaryColor) {
     _primaryColor = primaryColor;

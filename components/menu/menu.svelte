@@ -2,7 +2,7 @@
   import { setContext, createEventDispatcher } from "svelte";
   import classNames, { formatStyle } from "../_util/classes";
   import warning from "../_util/warning";
-  import { store } from "./menu-store.ts";
+  import { store } from "./menu-store";
 
   let className;
   export { className as class };
