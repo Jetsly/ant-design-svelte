@@ -1,15 +1,10 @@
 <script>
   import { getContext } from "svelte";
   import MainContent from "./MainContent.svelte";
+  import { mdDocList, mdDemoList } from "./page.ts";
   export let page;
   export let component;
 
-  const mdDocList = require.context(process.env.MD_DOC_URL, true, /\.md$/);
-  const mdDemoList = require.context(
-    process.env.MD_DEMO_URL,
-    true,
-    /\/[\w|-]+.((en-us|zh-cn)\.)?md$/i
-  );
   const lang = getContext("lang");
 
   // console.log($$props);
@@ -25,7 +20,7 @@
           .filter(key => RegExp(`${page}.${lang}`, "i").test(key))[0]
       );
     } else {
-      demos = []
+      demos = [];
       mdDemoList
         .keys()
         .filter(key =>

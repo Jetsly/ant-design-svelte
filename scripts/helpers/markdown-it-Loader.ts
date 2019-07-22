@@ -5,6 +5,7 @@ import {
   sourceArray as markdonwSourceArray,
 } from 'alleria/lib/markdown-it';
 import hljs from 'highlight.js';
+import cheerio from 'cheerio';
 import fs from 'fs';
 const markdonwMeta = require('markdown-it-meta');
 const loaderUtils = require('loader-utils');
@@ -74,13 +75,14 @@ function loader(source) {
   )}
   `;
   }
+  const $ = cheerio.load(code);
   return `
 <script context="module"> 
   export const meta=${JSON.stringify(meta)};
 </script>
 <script>
   import Demo from "demo";
-  ${/<script>\n?([^>]+)<\/script>/.exec(code)[1]}</script>
+  ${$('script').html()}</script>
 <Demo meta={meta} >
 <div class="code-box-demo" slot="component">${code.replace(
     /<script>[^>]+>/,

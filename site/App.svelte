@@ -11,10 +11,8 @@
 <!-- App.svelte -->
 <Layout>
   <Router {url}>
-    <div>
-      <Route path="/" component={Home} />
-      <Route path="components/:component" component={Content} />
-      <Route path="docs/:page" component={Content} />
-    </div>
+    <Route path="/" component={Home} />
+    <Route path="components/:component" component={Content} />
+    <Route path="docs/:page" component={Content} />
   </Router>
 </Layout>

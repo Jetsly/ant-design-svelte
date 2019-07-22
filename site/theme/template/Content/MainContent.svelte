@@ -2,24 +2,24 @@
   import { getContext, onMount } from "svelte";
   import { navigate } from "svelte-routing";
   import { Menu, Row, Col, Icon } from "ant-design-svelte";
+  import { mdDocList, mdDemoList } from "./page.ts";
+
   const lang = getContext("lang");
   export let doc;
   export let demos = [];
 
-  $: isMobile = false;
-  $: selectedKeys = [];
+  let isMobile = false;
+  let selectedKeys = [];
   onMount(() => {
     let mounted = true;
     const mq = window.matchMedia("(max-width: 750px)");
     function listener(ev) {
       if (!mounted) return;
       isMobile = mq.matches;
-      console.log(isMobile);
     }
     mq.addEventListener("change", listener);
     isMobile = mq.matches;
     selectedKeys = [location.pathname];
-    console.log(isMobile);
     return () => {
       mounted = false;
       mq.removeEventListener("change", listener);
@@ -30,6 +30,39 @@
     selectedKeys = detail.selectedKeys;
     navigate(selectedKeys[0]);
   }
+
+  const docsMap = mdDocList
+    .keys()
+    .map(key => mdDocList(key).meta)
+    .sort((a, b) => a.order - b.order)
+    .map(item => ({
+      ...item,
+      key: "/" + item.filename.replace(RegExp(`(index)?.${lang}.md`), "")
+    }));
+
+  const comptsMap = mdDemoList
+    .keys()
+    .filter(key => RegExp(`.${lang}.md`).test(key))
+    .map(key => mdDemoList(key).meta)
+    .map(item => ({
+      ...item,
+      key: "/" + item.filename.replace(RegExp(`index.${lang}.md`), "")
+    }))
+    .reduce((pre, val) => {
+      const idx = pre.findIndex(a => a.type === val.type);
+      if (idx == -1) {
+        return [
+          ...pre,
+          {
+            type: val.type,
+            group: [val]
+          }
+        ];
+      } else {
+        pre[idx].group.push(val);
+        return pre;
+      }
+    }, []);
 </script>
 
 <Row>
@@ -42,22 +75,21 @@
           {selectedKeys}
           mode="inline"
           on:select={handleMenu}>
-          <Menu.Item key="/docs/getting-started">快速上手</Menu.Item>
+          {#each docsMap as doc}
+            <Menu.Item key={doc.key}>{doc.title}</Menu.Item>
+          {/each}
           <Menu.SubMenu key="/components">
             <div slot="title">Components</div>
-            <Menu.ItemGroup>
-              <div slot="title">通用</div>
-              <Menu.Item key="/components/button/">Button 按钮</Menu.Item>
-              <Menu.Item key="/components/icon/">Icon 图标</Menu.Item>
-            </Menu.ItemGroup>
-            <Menu.ItemGroup>
-              <div slot="title">布局</div>
-              <Menu.Item key="/components/grid/">Grid 栅格</Menu.Item>
-            </Menu.ItemGroup>
-            <Menu.ItemGroup>
-              <div slot="title">数据展示</div>
-              <Menu.Item key="/components/tooltip/">Tooltip 文字提示</Menu.Item>
-            </Menu.ItemGroup>
+            {#each comptsMap as comptGroup}
+              <Menu.ItemGroup>
+                <div slot="title">{comptGroup.type}</div>
+                {#each comptGroup.group as compt}
+                  <Menu.Item key={compt.key}>
+                    {compt.title} {compt.subtitle}
+                  </Menu.Item>
+                {/each}
+              </Menu.ItemGroup>
+            {/each}
           </Menu.SubMenu>
         </Menu>
       </section>

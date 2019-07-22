@@ -1,7 +1,6 @@
 <script>
   import { setContext, getContext } from "svelte";
   import classNames, { formatStyle } from "../_util/classes";
-  import { store } from "./menu-store";
   import warning from "../_util/warning";
 
   let className;
@@ -9,34 +8,53 @@
   export let prefixCls = "ant-menu-submenu";
   export let key = "";
   export let disabled = false;
-  //  ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu-selected
+  export let title = false;
+
+  const state = getContext("state");
+  const level = getContext("level");
+  setContext("level", level + 1);
 
   let classString;
-
-  const { inlineIndent } = getContext("menu");
-  setContext("menu", {
-    inlineIndent: inlineIndent * 2
-  });
+  let subClassString;
+  let open = false;
   $: {
     classString = classNames(
       prefixCls,
-      `${prefixCls}-${$store.mode}`,
+      `${prefixCls}-${$state.mode}`,
       {
-        [`${prefixCls}-root`]: true
+        [`${prefixCls}-selected`]: $state.selectedKeys.indexOf(key) > -1,
+        // [`${prefixCls}-root`]: true,
+        [`${prefixCls}-open`]: open
       },
       className
+    );
+    subClassString = classNames(
+      "ant-menu",
+      "ant-menu-sub",
+      `ant-menu-${$state.mode}`,
+      {
+        "ant-menu-hidden": !open
+      }
     );
   }
 </script>
 
-<li class={classString} role="menuitem">
+<li
+  class={classString}
+  role="menuitem"
+  on:click={event => {
+    console.log(1);
+    open = !open;
+  }}>
   <div
     class={`${prefixCls}-title`}
-    style={formatStyle({ paddingLeft: inlineIndent })}>
-    <slot name="title" />
+    style={formatStyle({ paddingLeft: level * $state.inlineIndent })}>
+    <slot name="title">{title}</slot>
     <i class="ant-menu-submenu-arrow" />
   </div>
-  <ul class="ant-menu ant-menu-sub ant-menu-inline">
-    <slot />
-  </ul>
+  {#if $state.mode !== 'horizontal'}
+    <ul class={subClassString}>
+      <slot />
+    </ul>
+  {/if}
 </li>

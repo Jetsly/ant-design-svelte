@@ -15,14 +15,6 @@ More layouts with navigation: [layout](/components/layout).
 
 ## API
 
-```html
-<menu>
-  <Menu.Item>Menu</Menu.Item>
-  <SubMenu title="SubMenu">
-    <Menu.Item>SubMenuItem</Menu.Item>
-  </SubMenu>
-</menu>
-```
 
 ### Menu
 
@@ -33,14 +25,10 @@ More layouts with navigation: [layout](/components/layout).
 | inlineCollapsed | specifies the collapsed status when menu is inline mode | boolean | - |
 | inlineIndent | indent px of inline menu item on each level | number | 24 |
 | mode | type of the menu; `vertical`, `horizontal`, and `inline` modes are supported | string: `vertical` \| `horizontal` \| `inline` | `vertical` |
-| multiple | Allow selection of multiple items | boolean | false |
 | openKeys | array with the keys of currently opened sub menus | string\[] |  |
-| selectable | allow selecting menu items | boolean | true |
 | selectedKeys | array with the keys of currently selected menu items | string\[] |  |
 | style | style of the root node | object |  |
 | theme | color theme of the menu | string: `light` `dark` | `light` |
-| onDeselect | callback executed when a menu item is deselected, only supported for multiple mode | function({ item, key, keyPath, selectedKeys, domEvent }) | - |
-| onOpenChange | called when open/close sub menu | function(openKeys: string\[]) | noop |
 | onSelect | callback executed when a menu item is selected | function({ item, key, keyPath, selectedKeys, domEvent }) | none |
 
 ### Menu.Item

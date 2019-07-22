@@ -2,21 +2,24 @@
   import { getContext } from "svelte";
   import classNames, { formatStyle } from "../_util/classes";
   import warning from "../_util/warning";
-  import { store } from "./menu-store";
 
   let className;
   export { className as class };
   export let prefixCls = "ant-menu-item";
   export let key = "";
   export let disabled = false;
+
+  const state = getContext("state");
+  const level = getContext("level");
   let classString;
-  const { inlineIndent } = getContext("menu");
   function handleClick(e) {
-    store.update(val => ({ ...val, selectedKeys: [key] }));
+    if (disabled) return "";
+    state.update(val => ({ ...val, selectedKeys: [key] }))
   }
   $: {
     classString = classNames(prefixCls, className, {
-      "ant-menu-item-selected": $store.selectedKeys.indexOf(key) > -1
+      "ant-menu-item-selected": $state.selectedKeys.indexOf(key) > -1,
+      "ant-menu-item-disabled": disabled
     });
   }
 </script>
@@ -24,7 +27,7 @@
 <li
   class={classString}
   role="menuitem"
-  style={formatStyle({ paddingLeft: inlineIndent })}
+  style={formatStyle({ paddingLeft: level * $state.inlineIndent })}
   on:click={handleClick}>
   <slot />
 </li>
