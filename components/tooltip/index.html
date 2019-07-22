@@ -1,0 +1,365 @@
+
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <meta charset="utf-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta name="description" content="An enterprise-class UI design language and Sevlte implementation with a set of high-quality Sevlte components, one of best Sevlte UI library for enterprises">
+          <title>Ant Design Svelte - tooltip</title>
+        <link href="/app.css" rel="stylesheet"></head>
+        <body>
+        <div id="app">
+	<div class="page-wrapper">
+	  
+	  
+	    <div>
+	      
+	      
+
+	<div style="" class="ant-row">
+	  
+	  <div style="" class="ant-col main-menu ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
+	  
+	    <section class="main-menu-inner">
+	        <ul class="ant-menu ant-menu-inline ant-menu-light ant-menu-root aside-container menu-site" role="menu" style="">
+	  
+	          <li class="ant-menu-item" role="menuitem" style="padding-left:40">
+	  快速上手
+	</li>
+	          <li class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-root" role="menuitem">
+	  <div class="ant-menu-submenu-title" style="padding-left:40">
+	    <div slot="title">Components</div>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">通用</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Button 按钮
+	</li>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Icon 图标
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">布局</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Grid 栅格
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">数据展示</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Tooltip 文字提示
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	          
+	    <i class="ant-menu-submenu-arrow"></i>
+	  </div>
+	  <ul class="ant-menu ant-menu-sub ant-menu-inline">
+	    
+	            
+	  </ul>
+	</li>
+	        
+	</ul>
+	      </section>
+	  
+	</div>
+	  <div style="" class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-18 ant-col-xl-19 ant-col-xxl-20">
+	  
+	    <section class="main-container main-container-component">
+	      <class class="toc-affix" offsetTop="16">
+	          <ul id="demo-toc" class="toc">
+	            <li key="components-tooltip-demo-basic" title="基本">
+	                  <a href="#components-tooltip-demo-basic">基本</a>
+	                </li><li key="components-tooltip-demo-placement" title="位置">
+	                  <a href="#components-tooltip-demo-placement">位置</a>
+	                </li>
+	          </ul>
+	        </class>
+	      <article>
+	        <section class="markdown">
+	          <h1>
+	              Tooltip
+	              <span class="subtitle">文字提示</span>
+	            </h1>
+	            <section class="markdown">
+	              <h2>何时使用</h2>
+	<p>鼠标移入则显示提示，移出消失，气泡浮层不承载复杂文本和操作。</p>
+	<p>可用来代替系统默认的 <code>title</code> 提示，提供一个<code>按钮/文字/操作</code>的文案解释。</p>
+	            </section>
+	          <h2>
+	              <span>代码演示</span>
+	              <i class="anticon anticon-appstore code-box-expand-trigger" aria-label="appstore" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"></path></svg>
+	</i>
+	            </h2>
+	        </section>
+	        <div style="margin-left:-8px;margin-right:-8px" class="ant-row">
+	  
+	            <div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-tooltip-demo-basic" class="code-box">
+	  <div class="code-box-demo" slot="component">
+	<span>Tooltip will show on mouse enter.</span></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-tooltip-demo-basic">基本</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p>最简单的用法。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	<span class="hljs-keyword">import</span> { tooltip } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">use:tooltip</span>=<span class="hljs-string">{{title:</span>"<span class="hljs-attr">prompt</span> <span class="hljs-attr">text</span>"}} &gt;</span>Tooltip will show on mouse enter.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div><div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-tooltip-demo-placement" class="code-box">
+	  <div class="code-box-demo" slot="component">
+	<div class="demo">
+	  <div style="margin-left:70px;white-space:nowrap">
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    TL
+	  </button>
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    Top
+	  </button>
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    TR
+	  </button>
+	  </div>
+	  <div style="width:70px;float:left">
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    LT
+	  </button>
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    Left
+	  </button>
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    LB
+	  </button>
+	  </div>
+	  <div style="width:70px;margin-left:304px">
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    RT
+	  </button>
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    Right
+	  </button>
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    RB
+	  </button>
+	  </div>
+	  <div style="margin-left:70px;clear:both;white-space:nowrap">
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    BL
+	  </button>
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    Bottom
+	  </button>
+	    <button class="ant-btn ant-btn-default" type="button">
+	    
+	    BR
+	  </button>
+	  </div>
+	</div>
+	<style>
+	.code-box-demo .demo {
+	  overflow: auto;
+	}
+	.code-box-demo .ant-btn {
+	  margin-right: 8px;
+	  margin-bottom: 8px;
+	}
+	#components-tooltip-demo-placement .ant-btn {
+	  width: 70px;
+	  text-align: center;
+	  padding: 0;
+	}
+	</style></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-tooltip-demo-placement">位置</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p>位置有 12 个方向。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	<span class="hljs-keyword">import</span> { Button,_util } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	<span class="hljs-keyword">const</span> { formatStyle } = _util;
+	<span class="hljs-keyword">const</span> buttonWidth = <span class="hljs-number">70</span>;
+	<span class="hljs-keyword">const</span> text = <span class="hljs-string">'prompt text'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"demo"</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{formatStyle({</span> <span class="hljs-attr">marginLeft:</span> <span class="hljs-attr">buttonWidth</span>, <span class="hljs-attr">whiteSpace:</span> '<span class="hljs-attr">nowrap</span>' })}&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">topLeft</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>TL<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">top</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>Top<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">topRight</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>TR<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{formatStyle({</span> <span class="hljs-attr">width:</span> <span class="hljs-attr">buttonWidth</span>, <span class="hljs-attr">float:</span> '<span class="hljs-attr">left</span>' })}&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">leftTop</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>LT<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">left</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>Left<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">leftBottom</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>LB<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{formatStyle({</span> <span class="hljs-attr">width:</span> <span class="hljs-attr">buttonWidth</span>, <span class="hljs-attr">marginLeft:</span> <span class="hljs-attr">buttonWidth</span> * <span class="hljs-attr">4</span> + <span class="hljs-attr">24</span> })}&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">rightTop</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>RT<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">right</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>Right<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">rightBottom</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>RB<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{formatStyle({</span> <span class="hljs-attr">marginLeft:</span> <span class="hljs-attr">buttonWidth</span>, <span class="hljs-attr">clear:</span> '<span class="hljs-attr">both</span>', <span class="hljs-attr">whiteSpace:</span> '<span class="hljs-attr">nowrap</span>' })}&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">bottomLeft</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>BL<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">bottom</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>Bottom<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">tooltip</span>=<span class="hljs-string">{{placement:</span>"<span class="hljs-attr">bottomRight</span>",<span class="hljs-attr">title:text</span>}}&gt;</span>BR<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+	<span class="hljs-selector-class">.code-box-demo</span> <span class="hljs-selector-class">.demo</span> {
+	  <span class="hljs-attribute">overflow</span>: auto;
+	}
+	<span class="hljs-selector-class">.code-box-demo</span> <span class="hljs-selector-class">.ant-btn</span> {
+	  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">8px</span>;
+	  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">8px</span>;
+	}
+	<span class="hljs-selector-id">#components-tooltip-demo-placement</span> <span class="hljs-selector-class">.ant-btn</span> {
+	  <span class="hljs-attribute">width</span>: <span class="hljs-number">70px</span>;
+	  <span class="hljs-attribute">text-align</span>: center;
+	  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+	}
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div>
+	          
+	</div>
+	        <div class="markdown api-container">
+	          <h2>API</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>提示文字</td>
+<td>string</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<h3>共同的 API</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>placement</td>
+<td>气泡框位置，可选 <code>top</code> <code>left</code> <code>right</code> <code>bottom</code> <code>topLeft</code> <code>topRight</code> <code>bottomLeft</code> <code>bottomRight</code> <code>leftTop</code> <code>leftBottom</code> <code>rightTop</code> <code>rightBottom</code></td>
+<td>string</td>
+<td>top</td>
+</tr>
+<tr>
+<td>trigger</td>
+<td>触发行为，可选 <code>hover</code></td>
+<td>string</td>
+<td>hover</td>
+</tr>
+</tbody>
+</table>
+	        </div>
+	      </article>
+	    </section>
+	  
+	</div>
+	
+	</div>
+	      
+	    </div>
+	  
+	
+	</div></div>
+        <script type="text/javascript" src="/app.js"></script>
+        </body>
+      </html>
+  

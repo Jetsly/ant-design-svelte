@@ -1,0 +1,193 @@
+
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <meta charset="utf-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta name="description" content="An enterprise-class UI design language and Sevlte implementation with a set of high-quality Sevlte components, one of best Sevlte UI library for enterprises">
+          <title>Ant Design Svelte - getting-started</title>
+        <link href="/app.css" rel="stylesheet"></head>
+        <body>
+        <div id="app">
+	<div class="page-wrapper">
+	  
+	  
+	    <div>
+	      
+	      
+	      
+
+	<div style="" class="ant-row">
+	  
+	  <div style="" class="ant-col main-menu ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
+	  
+	    <section class="main-menu-inner">
+	        <ul class="ant-menu ant-menu-inline ant-menu-light ant-menu-root aside-container menu-site" role="menu" style="">
+	  
+	          <li class="ant-menu-item" role="menuitem" style="padding-left:40">
+	  快速上手
+	</li>
+	          <li class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-root" role="menuitem">
+	  <div class="ant-menu-submenu-title" style="padding-left:40">
+	    <div slot="title">Components</div>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">通用</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Button 按钮
+	</li>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Icon 图标
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">布局</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Grid 栅格
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">数据展示</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Tooltip 文字提示
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	          
+	    <i class="ant-menu-submenu-arrow"></i>
+	  </div>
+	  <ul class="ant-menu ant-menu-sub ant-menu-inline">
+	    
+	            
+	  </ul>
+	</li>
+	        
+	</ul>
+	      </section>
+	  
+	</div>
+	  <div style="" class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-18 ant-col-xl-19 ant-col-xxl-20">
+	  
+	    <section class="main-container main-container-component">
+	      
+	      <article>
+	        <section class="markdown">
+	          <h1>
+	              快速上手
+	              
+	            </h1>
+	            <section class="markdown">
+	              <p>Ant Design Svelte 致力于提供给程序员<strong>愉悦</strong>的开发体验。</p>
+	<blockquote>
+	<p>在开始之前，推荐先学习 <a href="https://svelte.dev/">Svelte</a> 和 <a href="http://babeljs.io/docs/learn-es2015/">ES2015</a>，并正确安装和配置了 <a href="https://nodejs.org/">Node.js</a> v8 或以上。官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识，并且已经完全掌握了 Svelte 全家桶的正确开发方式。如果你刚开始学习前端或者 Svelte，将 UI 框架作为你的第一步可能不是最好的主意。</p>
+	</blockquote>
+	<hr>
+	<h2>引入ant-design-svelte</h2>
+	<h3>1. 安装组件</h3>
+	<pre class="language-"><code class="language-bash">$ npm i --save ant-design-svelte
+	</code></pre>
+	<h3>2. 使用组件</h3>
+	<p>直接用下面的代码替换 <code>App.svelte</code> 的内容，用 svelte 的方式直接使用 antd 组件。</p>
+	<pre class="language-"><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	<span class="hljs-keyword">import</span> { Button } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span>&gt;</span>Primary<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"dashed"</span>&gt;</span>Dashed<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"danger"</span>&gt;</span>Danger<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	</code></pre>
+	<h3>3. 挂载组件</h3>
+	<p>直接用下面的代码替换 <code>inedx.js</code> 的内容</p>
+	<pre class="language-"><code class="language-js"><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./App.svelte'</span>;
+	<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'app'</span>);
+	<span class="hljs-built_in">document</span>.body.appendChild(a);
+	<span class="hljs-keyword">new</span> App({
+	  <span class="hljs-attr">target</span>: app,
+	});
+	</code></pre>
+	<h3>4. webpack配置</h3>
+	<pre class="language-"><code class="language-js"><span class="hljs-keyword">const</span> HtmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'html-webpack-plugin'</span>);
+	<span class="hljs-keyword">const</span> MiniCssExtractPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mini-css-extract-plugin'</span>);
+	<span class="hljs-built_in">module</span>.exports = {
+	  <span class="hljs-attr">entry</span>: <span class="hljs-string">'./src/index.js'</span>,
+	  <span class="hljs-attr">module</span>: {
+	    <span class="hljs-attr">rules</span>: [
+	      {
+	        <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.svelte$/</span>,
+	        <span class="hljs-attr">use</span>: {
+	          <span class="hljs-attr">loader</span>: <span class="hljs-string">'svelte-loader'</span>,
+	          <span class="hljs-attr">options</span>: {
+	            <span class="hljs-attr">hydratable</span>: <span class="hljs-literal">true</span>,
+	            <span class="hljs-attr">preprocess</span>: {
+	              <span class="hljs-attr">script</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">'ant-design-svelte/helpers/svelte-import'</span>)({
+	                <span class="hljs-attr">libraryDirectory</span>: <span class="hljs-string">'es'</span>,
+	                <span class="hljs-attr">style</span>: <span class="hljs-literal">true</span>,
+	              }),
+	            },
+	          },
+	        },
+	      },
+	      {
+	        <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(c|le)ss$/</span>,
+	        <span class="hljs-attr">use</span>: [
+	          MiniCssExtractPlugin.loader,
+	          <span class="hljs-string">'css-loader'</span>,
+	          <span class="hljs-string">'postcss-loader'</span>,
+	          { <span class="hljs-attr">loader</span>: <span class="hljs-string">'less-loader'</span>, <span class="hljs-attr">options</span>: { <span class="hljs-attr">javascriptEnabled</span>: <span class="hljs-literal">true</span> } },
+	        ],
+	      },
+	    ],
+	  },
+	  <span class="hljs-attr">plugins</span>: [
+	    <span class="hljs-keyword">new</span> HtmlWebpackPlugin({}),
+	    <span class="hljs-keyword">new</span> MiniCssExtractPlugin({
+	      <span class="hljs-attr">filename</span>: <span class="hljs-string">'[name].css'</span>,
+	      <span class="hljs-attr">chunkFilename</span>: <span class="hljs-string">'[id].css'</span>,
+	    }),
+	  ],
+	};
+	</code></pre>
+	            </section>
+	          
+	        </section>
+	        
+	        <div class="markdown api-container">
+	          
+	        </div>
+	      </article>
+	    </section>
+	  
+	</div>
+	
+	</div>
+	    </div>
+	  
+	
+	</div></div>
+        <script type="text/javascript" src="/app.js"></script>
+        </body>
+      </html>
+  

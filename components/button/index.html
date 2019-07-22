@@ -1,0 +1,781 @@
+
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <meta charset="utf-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta name="description" content="An enterprise-class UI design language and Sevlte implementation with a set of high-quality Sevlte components, one of best Sevlte UI library for enterprises">
+          <title>Ant Design Svelte - button</title>
+        <link href="/app.css" rel="stylesheet"></head>
+        <body>
+        <div id="app">
+	<div class="page-wrapper">
+	  
+	  
+	    <div>
+	      
+	      
+
+	<div style="" class="ant-row">
+	  
+	  <div style="" class="ant-col main-menu ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
+	  
+	    <section class="main-menu-inner">
+	        <ul class="ant-menu ant-menu-inline ant-menu-light ant-menu-root aside-container menu-site" role="menu" style="">
+	  
+	          <li class="ant-menu-item" role="menuitem" style="padding-left:40">
+	  快速上手
+	</li>
+	          <li class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-root" role="menuitem">
+	  <div class="ant-menu-submenu-title" style="padding-left:40">
+	    <div slot="title">Components</div>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">通用</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Button 按钮
+	</li>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Icon 图标
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">布局</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Grid 栅格
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">数据展示</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Tooltip 文字提示
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	          
+	    <i class="ant-menu-submenu-arrow"></i>
+	  </div>
+	  <ul class="ant-menu ant-menu-sub ant-menu-inline">
+	    
+	            
+	  </ul>
+	</li>
+	        
+	</ul>
+	      </section>
+	  
+	</div>
+	  <div style="" class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-18 ant-col-xl-19 ant-col-xxl-20">
+	  
+	    <section class="main-container main-container-component">
+	      <class class="toc-affix" offsetTop="16">
+	          <ul id="demo-toc" class="toc">
+	            <li key="components-button-demo-basic" title="按钮类型">
+	                  <a href="#components-button-demo-basic">按钮类型</a>
+	                </li><li key="components-button-demo-icon" title="图标按钮">
+	                  <a href="#components-button-demo-icon">图标按钮</a>
+	                </li><li key="components-button-demo-disabled" title="不可用状态">
+	                  <a href="#components-button-demo-disabled">不可用状态</a>
+	                </li><li key="components-button-demo-loading" title="加载中状态">
+	                  <a href="#components-button-demo-loading">加载中状态</a>
+	                </li><li key="components-button-demo-ghost" title="幽灵按钮">
+	                  <a href="#components-button-demo-ghost">幽灵按钮</a>
+	                </li><li key="components-button-demo-block" title="block 按钮">
+	                  <a href="#components-button-demo-block">block 按钮</a>
+	                </li>
+	          </ul>
+	        </class>
+	      <article>
+	        <section class="markdown">
+	          <h1>
+	              Button
+	              <span class="subtitle">按钮</span>
+	            </h1>
+	            <section class="markdown">
+	              <h2>何时使用</h2>
+	<p>标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。</p>
+	            </section>
+	          <h2>
+	              <span>代码演示</span>
+	              <i class="anticon anticon-appstore code-box-expand-trigger" aria-label="appstore" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"></path></svg>
+	</i>
+	            </h2>
+	        </section>
+	        <div style="margin-left:-8px;margin-right:-8px" class="ant-row">
+	  
+	            <div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-button-demo-basic" class="code-box">
+	  <div class="code-box-demo" slot="component">
+	<div>
+	  <button class="ant-btn ant-btn-primary" type="button">
+	    
+	    Primary
+	  </button>
+	  <button class="ant-btn ant-btn-default" type="button">
+	    
+	    Default
+	  </button>
+	  <button class="ant-btn ant-btn-dashed" type="button">
+	    
+	    Dashed
+	  </button>
+	  <button class="ant-btn ant-btn-danger" type="button">
+	    
+	    Danger
+	  </button>
+	</div></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-button-demo-basic">按钮类型</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p>按钮有五种类型：主按钮、次按钮、虚线按钮、危险按钮和链接按钮。主按钮在同一个操作区域最多出现一次。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	<span class="hljs-keyword">import</span> { Button } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span>&gt;</span>Primary<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"dashed"</span>&gt;</span>Dashed<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"danger"</span>&gt;</span>Danger<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div><div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-button-demo-icon" class="code-box">
+	  <div class="code-box-demo" slot="component">
+	<div>
+	  <button class="ant-btn ant-btn-primary ant-btn-circle" type="button">
+	    <i class="anticon anticon-search" aria-label="search" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg>
+	</i>
+	    
+	  </button>
+	  <button class="ant-btn ant-btn-primary" type="button">
+	    <i class="anticon anticon-search" aria-label="search" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg>
+	</i>
+	    
+	    Search
+	  
+	  </button>
+	  <button class="ant-btn ant-btn-default ant-btn-circle" type="button">
+	    <i class="anticon anticon-search" aria-label="search" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg>
+	</i>
+	    
+	  </button>
+	  <button class="ant-btn ant-btn-default" type="button">
+	    <i class="anticon anticon-search" aria-label="search" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg>
+	</i>
+	    Search
+	  </button>
+	  <br>
+	  <button class="ant-btn ant-btn-default ant-btn-circle" type="button">
+	    <i class="anticon anticon-search" aria-label="search" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg>
+	</i>
+	    
+	  </button>
+	  <button class="ant-btn ant-btn-default" type="button">
+	    <i class="anticon anticon-search" aria-label="search" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg>
+	</i>
+	    Search
+	  </button>
+	  <button class="ant-btn ant-btn-dashed ant-btn-circle" type="button">
+	    <i class="anticon anticon-search" aria-label="search" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg>
+	</i>
+	    
+	  </button>
+	  <button class="ant-btn ant-btn-dashed" type="button">
+	    <i class="anticon anticon-search" aria-label="search" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg>
+	</i>
+	    
+	    Search
+	  
+	  </button>
+	</div></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-button-demo-icon">图标按钮</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p>当需要在 <code>Button</code> 内嵌入 <code>Icon</code> 时，可以设置 <code>icon</code> 属性，或者直接在 <code>Button</code> 内使用 <code>Icon</code> 组件。</p>
+	<p>如果想控制 <code>Icon</code> 具体的位置，只能直接使用 <code>Icon</code> 组件，而非 <code>icon</code> 属性。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	<span class="hljs-keyword">import</span> { Button } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"circle"</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"search"</span> /&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"search"</span>&gt;</span>
+	    Search
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"circle"</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"search"</span> /&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"search"</span>&gt;</span>Search<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"circle"</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"search"</span> /&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"search"</span>&gt;</span>Search<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"dashed"</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"circle"</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"search"</span> /&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"dashed"</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"search"</span>&gt;</span>
+	    Search
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div><div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-button-demo-disabled" class="code-box">
+	  <div class="code-box-demo" slot="component">
+	<div>
+	  <button class="ant-btn ant-btn-primary" type="button">
+	    
+	    Primary
+	  </button>
+	  <button disabled disabled="true" class="ant-btn ant-btn-primary" type="button">
+	    
+	    
+	    Primary(disabled)
+	  
+	  </button>
+	  <br>
+	  <button class="ant-btn ant-btn-default" type="button">
+	    
+	    Default
+	  </button>
+	  <button disabled disabled="true" class="ant-btn ant-btn-default" type="button">
+	    
+	    Default(disabled)
+	  </button>
+	  <br>
+	  <button class="ant-btn ant-btn-dashed" type="button">
+	    
+	    Dashed
+	  </button>
+	  <button disabled disabled="true" class="ant-btn ant-btn-dashed" type="button">
+	    
+	    
+	    Dashed(disabled)
+	  
+	  </button>
+	  <br>
+	  <button class="ant-btn ant-btn-link" type="button">
+	    
+	    Link
+	  </button>
+	  <button disabled disabled="true" class="ant-btn ant-btn-link" type="button">
+	    
+	    
+	    Link(disabled)
+	  
+	  </button>
+	  <div style="padding: 8px 8px 0px; background: rgb(190, 200, 200);">
+	    <button class="ant-btn ant-btn-default ant-btn-background-ghost" type="button">
+	    
+	    Ghost
+	  </button>
+	    <button disabled disabled="true" class="ant-btn ant-btn-default ant-btn-background-ghost" type="button">
+	    
+	    
+	      Ghost(disabled)
+	    
+	  </button>
+	  </div>
+	</div></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-button-demo-disabled">不可用状态</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p>添加 <code>disabled</code> 属性即可让按钮处于不可用状态，同时按钮样式也会改变。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	  <span class="hljs-keyword">import</span> { Button } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span>&gt;</span>Primary<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">disabled</span>&gt;</span>
+	    Primary(disabled)
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">disabled</span>&gt;</span>Default(disabled)<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"dashed"</span>&gt;</span>Dashed<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"dashed"</span> <span class="hljs-attr">disabled</span>&gt;</span>
+	    Dashed(disabled)
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"link"</span>&gt;</span>Link<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"link"</span> <span class="hljs-attr">disabled</span>&gt;</span>
+	    Link(disabled)
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"padding: 8px 8px 0px; background: rgb(190, 200, 200);"</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">ghost</span>&gt;</span>Ghost<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">ghost</span> <span class="hljs-attr">disabled</span>&gt;</span>
+	      Ghost(disabled)
+	    <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div><div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-button-demo-loading" class="code-box">
+	  <div class="code-box-demo" slot="component">
+
+	<div>
+	  <button class="ant-btn ant-btn-primary ant-btn-loading" type="button">
+	    <i class="anticon anticon-loading" aria-label="loading" style="">
+	  <svg viewBox="0 0 1024 1024" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="anticon-spin" style=""><path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path></svg>
+	</i>
+	    
+	    Loading
+	  
+	  </button>
+	  <button class="ant-btn ant-btn-primary ant-btn-sm ant-btn-loading" type="button">
+	    <i class="anticon anticon-loading" aria-label="loading" style="">
+	  <svg viewBox="0 0 1024 1024" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="anticon-spin" style=""><path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path></svg>
+	</i>
+	    
+	    Loading
+	  
+	  </button>
+	  <br>
+	  <button class="ant-btn ant-btn-primary" type="button">
+	    
+	    
+	    Click me!
+	  
+	  </button>
+	  <button class="ant-btn ant-btn-primary" type="button">
+	    <i class="anticon anticon-poweroff" aria-label="poweroff" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M705.6 124.9a8 8 0 0 0-11.6 7.2v64.2c0 5.5 2.9 10.6 7.5 13.6a352.2 352.2 0 0 1 62.2 49.8c32.7 32.8 58.4 70.9 76.3 113.3a355 355 0 0 1 27.9 138.7c0 48.1-9.4 94.8-27.9 138.7a355.92 355.92 0 0 1-76.3 113.3 353.06 353.06 0 0 1-113.2 76.4c-43.8 18.6-90.5 28-138.5 28s-94.7-9.4-138.5-28a353.06 353.06 0 0 1-113.2-76.4A355.92 355.92 0 0 1 184 650.4a355 355 0 0 1-27.9-138.7c0-48.1 9.4-94.8 27.9-138.7 17.9-42.4 43.6-80.5 76.3-113.3 19-19 39.8-35.6 62.2-49.8 4.7-2.9 7.5-8.1 7.5-13.6V132c0-6-6.3-9.8-11.6-7.2C178.5 195.2 82 339.3 80 506.3 77.2 745.1 272.5 943.5 511.2 944c239 .5 432.8-193.3 432.8-432.4 0-169.2-97-315.7-238.4-386.7zM480 560h64c4.4 0 8-3.6 8-8V88c0-4.4-3.6-8-8-8h-64c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8z"></path></svg>
+	</i>
+	    
+	    Click me!
+	  
+	  </button>
+	  <br>
+	  <button class="ant-btn ant-btn-default ant-btn-circle ant-btn-loading" type="button">
+	    <i class="anticon anticon-loading" aria-label="loading" style="">
+	  <svg viewBox="0 0 1024 1024" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="anticon-spin" style=""><path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path></svg>
+	</i>
+	    
+	  </button>
+	  <button class="ant-btn ant-btn-primary ant-btn-circle ant-btn-loading" type="button">
+	    <i class="anticon anticon-loading" aria-label="loading" style="">
+	  <svg viewBox="0 0 1024 1024" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="anticon-spin" style=""><path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path></svg>
+	</i>
+	    
+	  </button>
+	</div></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-button-demo-loading">加载中状态</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p>添加 <code>loading</code> 属性即可让按钮处于加载状态，最后两个按钮演示点击后进入加载状态。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	  <span class="hljs-keyword">import</span> { Button } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	  <span class="hljs-keyword">let</span> iconLoading = <span class="hljs-literal">false</span>
+	  <span class="hljs-keyword">let</span> btnLoading = <span class="hljs-literal">false</span>
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">loading</span>&gt;</span>
+	    Loading
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"small"</span> <span class="hljs-attr">loading</span>&gt;</span>
+	    Loading
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">loading</span>=<span class="hljs-string">{btnLoading}</span> <span class="hljs-attr">on:click</span>=<span class="hljs-string">{()</span>=&gt;</span>{btnLoading=true}}&gt;
+	    Click me!
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"poweroff"</span> <span class="hljs-attr">loading</span>=<span class="hljs-string">{iconLoading}</span>  <span class="hljs-attr">on:click</span>=<span class="hljs-string">{()</span>=&gt;</span>{iconLoading=true}}&gt;
+	    Click me!
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"circle"</span> <span class="hljs-attr">loading</span> /&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"circle"</span> <span class="hljs-attr">loading</span> /&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div><div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-button-demo-ghost" class="code-box">
+	  <div class="code-box-demo" slot="component">
+	<div style="background: rgb(190, 200, 200); padding: 26px 16px 16px;">
+	  <button class="ant-btn ant-btn-primary ant-btn-background-ghost" type="button">
+	    
+	    
+	    Primary
+	  
+	  </button>
+	  <button class="ant-btn ant-btn-default ant-btn-background-ghost" type="button">
+	    
+	    Default
+	  </button>
+	  <button class="ant-btn ant-btn-dashed ant-btn-background-ghost" type="button">
+	    
+	    
+	    Dashed
+	  
+	  </button>
+	  <button class="ant-btn ant-btn-danger ant-btn-background-ghost" type="button">
+	    
+	    
+	    danger
+	  
+	  </button>
+	  <button class="ant-btn ant-btn-link ant-btn-background-ghost" type="button">
+	    
+	    
+	    link
+	  
+	  </button>
+	</div></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-button-demo-ghost">幽灵按钮</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p>幽灵按钮将按钮的内容反色，背景变为透明，常用在有色背景上。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	  <span class="hljs-keyword">import</span> { Button } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background: rgb(190, 200, 200); padding: 26px 16px 16px;"</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">ghost</span>&gt;</span>
+	    Primary
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">ghost</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"dashed"</span> <span class="hljs-attr">ghost</span>&gt;</span>
+	    Dashed
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"danger"</span> <span class="hljs-attr">ghost</span>&gt;</span>
+	    danger
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"link"</span> <span class="hljs-attr">ghost</span>&gt;</span>
+	    link
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div><div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-button-demo-block" class="code-box">
+	  <div class="code-box-demo" slot="component">
+	<div>
+	  <button class="ant-btn ant-btn-primary ant-btn-block" type="button">
+	    
+	    
+	    Primary
+	  
+	  </button>
+	  <button class="ant-btn ant-btn-default ant-btn-block" type="button">
+	    
+	    Default
+	  </button>
+	  <button class="ant-btn ant-btn-dashed ant-btn-block" type="button">
+	    
+	    
+	    Dashed
+	  
+	  </button>
+	  <button class="ant-btn ant-btn-danger ant-btn-block" type="button">
+	    
+	    
+	    Danger
+	  
+	  </button>
+	  <button class="ant-btn ant-btn-link ant-btn-block" type="button">
+	    
+	    
+	    Link
+	  
+	  </button>
+	</div></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-button-demo-block">block 按钮</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p><code>block</code>属性将使按钮适合其父宽度。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	  <span class="hljs-keyword">import</span> { Button } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">block</span>&gt;</span>
+	    Primary
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">block</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"dashed"</span> <span class="hljs-attr">block</span>&gt;</span>
+	    Dashed
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"danger"</span> <span class="hljs-attr">block</span>&gt;</span>
+	    Danger
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"link"</span> <span class="hljs-attr">block</span>&gt;</span>
+	    Link
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div>
+	          
+	</div>
+	        <div class="markdown api-container">
+	          <h2>API</h2>
+<p>通过设置 Button 的属性来产生不同的按钮样式，推荐顺序为：<code>type</code> -&gt; <code>shape</code> -&gt; <code>size</code> -&gt; <code>loading</code> -&gt; <code>disabled</code>。</p>
+<p>按钮的属性说明如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>disabled</td>
+<td>按钮失效状态</td>
+<td>boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>ghost</td>
+<td>幽灵属性，使按钮背景透明，版本 2.7 中增加</td>
+<td>boolean</td>
+<td>false</td>
+</tr>
+<tr>
+<td>href</td>
+<td>点击跳转的地址，指定此属性 button 的行为和 a 链接一致</td>
+<td>string</td>
+<td>-</td>
+</tr>
+<tr>
+<td>htmlType</td>
+<td>设置 <code>button</code> 原生的 <code>type</code> 值，可选值请参考 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type">HTML 标准</a></td>
+<td>string</td>
+<td><code>button</code></td>
+</tr>
+<tr>
+<td>icon</td>
+<td>设置按钮的图标类型</td>
+<td>string</td>
+<td>-</td>
+</tr>
+<tr>
+<td>loading</td>
+<td>设置按钮载入状态</td>
+<td>boolean | { delay: number }</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>shape</td>
+<td>设置按钮形状，可选值为 <code>circle</code>、 <code>round</code> 或者不设</td>
+<td>string</td>
+<td>-</td>
+</tr>
+<tr>
+<td>size</td>
+<td>设置按钮大小，可选值为 <code>small</code> <code>large</code> 或者不设</td>
+<td>string</td>
+<td><code>default</code></td>
+</tr>
+<tr>
+<td>target</td>
+<td>相当于 a 链接的 target 属性，href 存在时生效</td>
+<td>string</td>
+<td>-</td>
+</tr>
+<tr>
+<td>type</td>
+<td>设置按钮类型，可选值为 <code>primary</code> <code>dashed</code> <code>danger</code> <code>link</code>(3.17 中增加) 或者不设</td>
+<td>string</td>
+<td>-</td>
+</tr>
+<tr>
+<td>on:click</td>
+<td>点击按钮时的回调</td>
+<td>(event) =&gt; void</td>
+<td>-</td>
+</tr>
+<tr>
+<td>block</td>
+<td>将按钮宽度调整为其父宽度的选项</td>
+<td>boolean</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<p>支持原生 button 的其他所有属性。</p>
+<style>
+[id^="components-button-demo-"] .ant-btn {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
+[id^="components-button-demo-"] .ant-btn-group > .ant-btn {
+  margin-right: 0;
+}
+</style>
+	        </div>
+	      </article>
+	    </section>
+	  
+	</div>
+	
+	</div>
+	      
+	    </div>
+	  
+	
+	</div></div>
+        <script type="text/javascript" src="/app.js"></script>
+        </body>
+      </html>
+  

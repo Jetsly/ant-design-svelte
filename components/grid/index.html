@@ -1,0 +1,641 @@
+
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <meta charset="utf-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta name="description" content="An enterprise-class UI design language and Sevlte implementation with a set of high-quality Sevlte components, one of best Sevlte UI library for enterprises">
+          <title>Ant Design Svelte - grid</title>
+        <link href="/app.css" rel="stylesheet"></head>
+        <body>
+        <div id="app">
+	<div class="page-wrapper">
+	  
+	  
+	    <div>
+	      
+	      
+
+	<div style="" class="ant-row">
+	  
+	  <div style="" class="ant-col main-menu ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
+	  
+	    <section class="main-menu-inner">
+	        <ul class="ant-menu ant-menu-inline ant-menu-light ant-menu-root aside-container menu-site" role="menu" style="">
+	  
+	          <li class="ant-menu-item" role="menuitem" style="padding-left:40">
+	  快速上手
+	</li>
+	          <li class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-root" role="menuitem">
+	  <div class="ant-menu-submenu-title" style="padding-left:40">
+	    <div slot="title">Components</div>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">通用</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Button 按钮
+	</li>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Icon 图标
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">布局</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Grid 栅格
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	            <li class="ant-menu-item-group ant-menu-item-group-inline ant-menu-item-group-root" role="menu">
+	  <div class="ant-menu-item-group-title">
+	    <div slot="title">数据展示</div>
+	              <li class="ant-menu-item" role="menuitem" style="padding-left:80px">
+	  Tooltip 文字提示
+	</li>
+	            
+	  </div>
+	  <ul class="ant-menu-item-group-list">
+	    
+	              
+	  </ul>
+	</li>
+	          
+	    <i class="ant-menu-submenu-arrow"></i>
+	  </div>
+	  <ul class="ant-menu ant-menu-sub ant-menu-inline">
+	    
+	            
+	  </ul>
+	</li>
+	        
+	</ul>
+	      </section>
+	  
+	</div>
+	  <div style="" class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-18 ant-col-xl-19 ant-col-xxl-20">
+	  
+	    <section class="main-container main-container-component">
+	      <class class="toc-affix" offsetTop="16">
+	          <ul id="demo-toc" class="toc">
+	            <li key="components-grid-demo-basic" title="基础栅格">
+	                  <a href="#components-grid-demo-basic">基础栅格</a>
+	                </li><li key="components-grid-demo-gutter" title="区块间隔">
+	                  <a href="#components-grid-demo-gutter">区块间隔</a>
+	                </li><li key="components-grid-demo-offset" title="左右偏移">
+	                  <a href="#components-grid-demo-offset">左右偏移</a>
+	                </li><li key="components-grid-demo-sort" title="栅格排序">
+	                  <a href="#components-grid-demo-sort">栅格排序</a>
+	                </li>
+	          </ul>
+	        </class>
+	      <article>
+	        <section class="markdown">
+	          <h1>
+	              Grid
+	              <span class="subtitle">栅格</span>
+	            </h1>
+	            <section class="markdown">
+	              <h2>设计理念</h2>
+	<div class="grid-demo">
+	<div class="ant-row demo-row">
+	  <div class="ant-col-24 demo-col demo-col-1">
+	    100%
+	  </div>
+	</div>
+	<div class="ant-row demo-row">
+	  <div class="ant-col-6 demo-col demo-col-2">
+	    25%
+	  </div>
+	  <div class="ant-col-6 demo-col demo-col-3">
+	    25%
+	  </div>
+	  <div class="ant-col-6 demo-col demo-col-2">
+	    25%
+	  </div>
+	  <div class="ant-col-6 demo-col demo-col-3">
+	    25%
+	  </div>
+	</div>
+	<div class="ant-row demo-row">
+	  <div class="ant-col-8 demo-col demo-col-4">
+	    33.33%
+	  </div>
+	  <div class="ant-col-8 demo-col demo-col-5">
+	    33.33%
+	  </div>
+	  <div class="ant-col-8 demo-col demo-col-4">
+	    33.33%
+	  </div>
+	</div>
+	<div class="ant-row demo-row">
+	  <div class="ant-col-12 demo-col demo-col-1">
+	    50%
+	  </div>
+	  <div class="ant-col-12 demo-col demo-col-3">
+	    50%
+	  </div>
+	</div>
+	<div class="ant-row demo-row">
+	  <div class="ant-col-16 demo-col demo-col-4">
+	    66.66%
+	  </div>
+	  <div class="ant-col-8 demo-col demo-col-5">
+	    33.33%
+	  </div>
+	</div>
+	</div>
+	<p>在多数业务情况下，Ant Design 需要在设计区域内解决大量信息收纳的问题，因此在 12 栅格系统的基础上，我们将整个设计建议区域按照 24 等分的原则进行划分。</p>
+	<p>划分之后的信息区块我们称之为『盒子』。建议横向排列的盒子数量最多四个，最少一个。『盒子』在整个屏幕上占比见上图。设计部分基于盒子的单位定制盒子内部的排版规则，以保证视觉层面的舒适感。</p><h2>概述</h2>
+	<p>布局的栅格化系统，我们是基于行（row）和列（col）来定义信息区块的外部框架，以保证页面的每个区域能够稳健地排布起来。下面简单介绍一下它的工作原理：</p>
+	<ul>
+	<li>通过<code>row</code>在水平方向建立一组<code>column</code>（简写 col）</li>
+	<li>你的内容应当放置于<code>col</code>内，并且，只有<code>col</code>可以作为<code>row</code>的直接元素</li>
+	<li>栅格系统中的列是指 1 到 24 的值来表示其跨越的范围。例如，三个等宽的列可以使用<code>.col-8</code>来创建</li>
+	<li>如果一个<code>row</code>中的<code>col</code>总和超过 24，那么多余的<code>col</code>会作为一个整体另起一行排列</li>
+	</ul><h2>Flex 布局</h2>
+	<p>我们的栅格化系统支持 Flex 布局，允许子元素在父节点内的水平对齐方式 - 居左、居中、居右、等宽排列、分散排列。子元素与子元素之间，支持顶部对齐、垂直居中对齐、底部对齐的方式。同时，支持使用 order 来定义元素的排列顺序。</p>
+	<p>Flex 布局是基于 24 栅格来定义每一个『盒子』的宽度，但不拘泥于栅格。</p>
+	            </section>
+	          <h2>
+	              <span>代码演示</span>
+	              <i class="anticon anticon-appstore code-box-expand-trigger" aria-label="appstore" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"></path></svg>
+	</i>
+	            </h2>
+	        </section>
+	        <div style="margin-left:-8px;margin-right:-8px" class="ant-row">
+	  
+	            <div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-grid-demo-basic" class="code-box">
+	  <div class="code-box-demo" slot="component">
+	<div>
+	  <div style="" class="ant-row">
+	  
+	    <div style="" class="ant-col ant-col-12">
+	  col-12
+	</div>
+	    <div style="" class="ant-col ant-col-12">
+	  col-12
+	</div>
+	  
+	</div>
+	  <div style="" class="ant-row">
+	  
+	    <div style="" class="ant-col ant-col-8">
+	  col-8
+	</div>
+	    <div style="" class="ant-col ant-col-8">
+	  col-8
+	</div>
+	    <div style="" class="ant-col ant-col-8">
+	  col-8
+	</div>
+	  
+	</div>
+	  <div style="" class="ant-row">
+	  
+	    <div style="" class="ant-col ant-col-6">
+	  col-6
+	</div>
+	    <div style="" class="ant-col ant-col-6">
+	  col-6
+	</div>
+	    <div style="" class="ant-col ant-col-6">
+	  col-6
+	</div>
+	    <div style="" class="ant-col ant-col-6">
+	  col-6
+	</div>
+	  
+	</div>
+	</div></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-grid-demo-basic">基础栅格</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p>从堆叠到水平排列。</p>
+	<p>使用单一的一组 <code>Row</code> 和 <code>Col</code> 栅格组件，就可以创建一个基本的栅格系统，所有列（Col）必须放在 <code>Row</code> 内。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	  <span class="hljs-keyword">import</span> { Row, Col } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Row</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"12"</span>&gt;</span>col-12<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"12"</span>&gt;</span>col-12<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Row</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Row</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"8"</span>&gt;</span>col-8<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"8"</span>&gt;</span>col-8<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"8"</span>&gt;</span>col-8<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Row</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Row</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"6"</span>&gt;</span>col-6<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"6"</span>&gt;</span>col-6<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"6"</span>&gt;</span>col-6<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"6"</span>&gt;</span>col-6<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Row</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div><div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-grid-demo-gutter" class="code-box">
+	  <div class="code-box-demo" slot="component">
+	<div class="gutter-example">
+	  <div style="margin-left:-8px;margin-right:-8px" class="ant-row">
+	  
+	    <div style="padding-left:8px;padding-right:8px" class="ant-col gutter-row ant-col-6">
+	  
+	      <div class="gutter-box">col-6</div>
+	    
+	</div>
+	    <div style="padding-left:8px;padding-right:8px" class="ant-col gutter-row ant-col-6">
+	  
+	      <div class="gutter-box">col-6</div>
+	    
+	</div>
+	    <div style="padding-left:8px;padding-right:8px" class="ant-col gutter-row ant-col-6">
+	  
+	      <div class="gutter-box">col-6</div>
+	    
+	</div>
+	    <div style="padding-left:8px;padding-right:8px" class="ant-col gutter-row ant-col-6">
+	  
+	      <div class="gutter-box">col-6</div>
+	    
+	</div>
+	  
+	</div>
+	</div>
+	<style>
+	.gutter-example .ant-row > div {
+	  background: transparent;
+	  border: 0;
+	}
+	.gutter-box {
+	  background: #00a0e9;
+	  padding: 5px 0;
+	}
+	</style></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-grid-demo-gutter">区块间隔</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p>栅格常常需要和间隔进行配合，你可以使用 <code>Row</code> 的 <code>gutter</code> 属性，我们推荐使用 <code>(16+8n)px</code> 作为栅格间隔。(n 是自然数)</p>
+	<p>如果要支持响应式，可以写成 <code>{ xs: 8, sm: 16, md: 24, lg: 32 }</code>。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	  <span class="hljs-keyword">import</span> { Row, Col } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"gutter-example"</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Row</span> <span class="hljs-attr">gutter</span>=<span class="hljs-string">"16"</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"gutter-row"</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"6"</span>&gt;</span>
+	      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"gutter-box"</span>&gt;</span>col-6<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	    <span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"gutter-row"</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"6"</span>&gt;</span>
+	      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"gutter-box"</span>&gt;</span>col-6<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	    <span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"gutter-row"</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"6"</span>&gt;</span>
+	      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"gutter-box"</span>&gt;</span>col-6<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	    <span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"gutter-row"</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"6"</span>&gt;</span>
+	      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"gutter-box"</span>&gt;</span>col-6<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	    <span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Row</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+	<span class="hljs-selector-class">.gutter-example</span> <span class="hljs-selector-class">.ant-row</span> &gt; <span class="hljs-selector-tag">div</span> {
+	  <span class="hljs-attribute">background</span>: transparent;
+	  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+	}
+	<span class="hljs-selector-class">.gutter-box</span> {
+	  <span class="hljs-attribute">background</span>: <span class="hljs-number">#00a0e9</span>;
+	  <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span> <span class="hljs-number">0</span>;
+	}
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div><div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-grid-demo-offset" class="code-box">
+	  <div class="code-box-demo" slot="component">
+	<div>
+	  <div style="" class="ant-row">
+	  
+	    <div style="" class="ant-col ant-col-8">
+	  col-8
+	</div>
+	    <div style="" class="ant-col ant-col-8 ant-col-offset-8">
+	  col-8
+	</div>
+	  
+	</div>
+	  <div style="" class="ant-row">
+	  
+	    <div style="" class="ant-col ant-col-6 ant-col-offset-6">
+	  col-6 col-offset-6
+	</div>
+	    <div style="" class="ant-col ant-col-6 ant-col-offset-6">
+	  col-6 col-offset-6
+	</div>
+	  
+	</div>
+	  <div style="" class="ant-row">
+	  
+	    <div style="" class="ant-col ant-col-12 ant-col-offset-6">
+	  col-12 col-offset-6
+	</div>
+	  
+	</div>
+	</div></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-grid-demo-offset">左右偏移</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p>列偏移。</p>
+	<p>使用 <code>offset</code> 可以将列向右侧偏。例如，<code>offset={4}</code> 将元素向右侧偏移了 4 个列（column）的宽度。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	  <span class="hljs-keyword">import</span> { Row, Col } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Row</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"8"</span>&gt;</span>col-8<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"8"</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">"8"</span>&gt;</span>col-8<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Row</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Row</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"6"</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">"6"</span>&gt;</span>col-6 col-offset-6<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"6"</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">"6"</span>&gt;</span>col-6 col-offset-6<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Row</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Row</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"12"</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">"6"</span>&gt;</span>col-12 col-offset-6<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Row</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div><div style="padding-left:8px;padding-right:8px" class="ant-col code-boxes-col-1-1 ant-col-24">
+	  
+	                <section id="components-grid-demo-sort" class="code-box">
+	  <div class="code-box-demo" slot="component">
+	<div>
+	  <div style="" class="ant-row">
+	  
+	    <div style="" class="ant-col ant-col-18 ant-col-push-6">
+	  col-18 col-push-6
+	</div>
+	    <div style="" class="ant-col ant-col-6 ant-col-pull-18">
+	  col-6 col-pull-18
+	</div>
+	  
+	</div>
+	</div></div>
+	
+	  <section class="code-box-meta markdown">
+	    <div class="code-box-title">
+	      <a href="#components-grid-demo-sort">栅格排序</a>
+	    </div>
+	    <div class="code-box-description" slot="znDesc">
+	<p>列排序。</p>
+	<p>通过使用 <code>push</code> 和 <code>pull</code> 类就可以很容易的改变列（column）的顺序。</p></div>
+	
+	    <div class="code-box-actions">
+	      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+	        <input type="hidden" name="parameters" value="HYVwNmQ">
+	        <input type="submit" value="Create New Sandbox with Prefilled Data" class="code-box-codesandbox">
+	      </form>
+	      <i class="anticon anticon-snippets code-box-code-copy" aria-label="snippets" style="">
+	  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="" style=""><path d="M832 112H724V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H500V72c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v40H320c-17.7 0-32 14.3-32 32v120h-96c-17.7 0-32 14.3-32 32v632c0 17.7 14.3 32 32 32h512c17.7 0 32-14.3 32-32v-96h96c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM664 888H232V336h218v174c0 22.1 17.9 40 40 40h174v338zm0-402H514V336h.2L664 485.8v.2zm128 274h-56V456L544 264H360v-80h68v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h152v32c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-32h68v576z"></path></svg>
+	</i>
+	      <span class="code-expand-icon">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" class="code-expand-icon-show">
+	        <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" class="code-expand-icon-hide">
+	      </span>
+	    </div>
+	  </section>
+	  <section class="highlight-wrapper">
+	    <div slot="code"><pre class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+	  <span class="hljs-keyword">import</span> { Row, Col } <span class="hljs-keyword">from</span> <span class="hljs-string">'ant-design-svelte'</span>;
+	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+	  <span class="hljs-tag">&lt;<span class="hljs-name">Row</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"18"</span> <span class="hljs-attr">push</span>=<span class="hljs-string">"6"</span>&gt;</span>col-18 col-push-6<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">Col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">"6"</span> <span class="hljs-attr">pull</span>=<span class="hljs-string">"18"</span>&gt;</span>col-6 col-pull-18<span class="hljs-tag">&lt;/<span class="hljs-name">Col</span>&gt;</span>
+	  <span class="hljs-tag">&lt;/<span class="hljs-name">Row</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></div>
+	
+	  </section>
+	</section>
+	              
+	</div>
+	          
+	</div>
+	        <div class="markdown api-container">
+	          <h2>API</h2>
+<h3>Row</h3>
+<table>
+<thead>
+<tr>
+<th>成员</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>align</td>
+<td>flex 布局下的垂直对齐方式：<code>top</code> <code>middle</code> <code>bottom</code></td>
+<td>string</td>
+<td><code>top</code></td>
+</tr>
+<tr>
+<td>gutter</td>
+<td>栅格间隔，可以写成像素值或支持响应式的对象写法 <code>{ xs: 8, sm: 16, md: 24}</code></td>
+<td>number/object</td>
+<td>0</td>
+</tr>
+<tr>
+<td>justify</td>
+<td>flex 布局下的水平排列方式：<code>start</code> <code>end</code> <code>center</code> <code>space-around</code> <code>space-between</code></td>
+<td>string</td>
+<td><code>start</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>布局模式，可选 <code>flex</code>，<a href="http://caniuse.com/#search=flex">现代浏览器</a> 下有效</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Col</h3>
+<table>
+<thead>
+<tr>
+<th>成员</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>offset</td>
+<td>栅格左侧的间隔格数，间隔内不可以有栅格</td>
+<td>number</td>
+<td>0</td>
+</tr>
+<tr>
+<td>order</td>
+<td>栅格顺序，<code>flex</code> 布局模式下有效</td>
+<td>number</td>
+<td>0</td>
+</tr>
+<tr>
+<td>pull</td>
+<td>栅格向左移动格数</td>
+<td>number</td>
+<td>0</td>
+</tr>
+<tr>
+<td>push</td>
+<td>栅格向右移动格数</td>
+<td>number</td>
+<td>0</td>
+</tr>
+<tr>
+<td>span</td>
+<td>栅格占位格数，为 0 时相当于 <code>display: none</code></td>
+<td>number</td>
+<td>-</td>
+</tr>
+<tr>
+<td>xs</td>
+<td><code>&lt;576px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>number|object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sm</td>
+<td><code>≥576px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>number|object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>md</td>
+<td><code>≥768px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>number|object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>lg</td>
+<td><code>≥992px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>number|object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>xl</td>
+<td><code>≥1200px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>number|object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>xxl</td>
+<td><code>≥1600px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>number|object</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>响应式栅格的断点扩展自 <a href="https://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints">BootStrap 4 的规则</a>（不包含链接里 <code>occasionally</code> 的部分)。</p><h2>FAQ</h2>
+<h3>IE9 响应式不工作怎么办？</h3>
+<p>可以引入 <a href="https://github.com/paulirish/matchMedia.js/">matchMedia polyfill</a> 添加支持。</p>
+	        </div>
+	      </article>
+	    </section>
+	  
+	</div>
+	
+	</div>
+	      
+	    </div>
+	  
+	
+	</div></div>
+        <script type="text/javascript" src="/app.js"></script>
+        </body>
+      </html>
+  
