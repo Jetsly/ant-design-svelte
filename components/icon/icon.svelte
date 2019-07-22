@@ -15,7 +15,6 @@
 </script>
 
 <script>
-  import { AccountBookFill } from "@ant-design/icons";
   import { generate as generateColor } from "@ant-design/colors";
   import { renderIconDefinitionToSVGElement } from "@ant-design/icons/lib/helpers";
   import * as allIcons from "@ant-design/icons/lib/dist";

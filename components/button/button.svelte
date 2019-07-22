@@ -4,7 +4,9 @@
   import Icon from "../icon";
   import tooltip from "../tooltip";
   let tooltipConfig;
+  let className;
   export { tooltipConfig as tooltip };
+  export { className as class };
   export let prefixCls = "ant-btn";
   export let type = "default";
   export let htmlType = "button";
@@ -21,13 +23,12 @@
   let hasTwoCNChar = false;
   let sizeMap = {
     large: "lg",
-    small: "sm"
+    small: "sm"     
   };
 
   $: buttonProps = {
     disabled,
-    class: classNames({
-      [`${prefixCls}`]: true,
+    class: classNames(className, prefixCls, {
       [`${prefixCls}-${type}`]: type,
       [`${prefixCls}-${shape}`]: shape,
       [`${prefixCls}-${sizeMap[size]}`]: sizeMap[size],
