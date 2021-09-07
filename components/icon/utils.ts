@@ -28,20 +28,17 @@ export function getThemeFromTypeName(type: string): ThemeType | null {
 }
 
 export function removeTypeTheme(type: string) {
-  return type
-    .replace(fillTester, '')
-    .replace(outlineTester, '')
-    .replace(twoToneTester, '');
+  return type.replace(fillTester, '').replace(outlineTester, '').replace(twoToneTester, '');
 }
 
 export function withThemeSuffix(type: string, theme: ThemeType) {
   let result = type
     .replace(/^\w/, a => a.toUpperCase())
-    .replace(/-(\w)/, (w,a) => a.toUpperCase());
+    .replace(/-(\w)/, (w, a) => a.toUpperCase());
   if (theme === 'filled') {
-    result += 'Fill';
+    result += 'Filled';
   } else if (theme === 'outlined') {
-    result += 'Outline';
+    result += 'Outlined';
   } else if (theme === 'twoTone') {
     result += 'TwoTone';
   } else {

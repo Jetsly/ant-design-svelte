@@ -1,4 +1,5 @@
 {
+  "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
@@ -9,15 +10,7 @@
     "esModuleInterop": true,
     "strictNullChecks": false,
     "importHelpers": true,
-    "resolveJsonModule": true,
-    "types": [
-      "svelte",
-      "node",
-      "webpack-env",
-      "markdown-it",
-      "gulp",
-      "through2"
-    ]
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules", "lib", "es"]
 }

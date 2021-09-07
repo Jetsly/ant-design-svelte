@@ -4,9 +4,8 @@ import del from 'del';
 import gulpTs from 'gulp-typescript';
 import { outputFileSync } from 'fs-extra';
 import through2 from 'through2';
-import GitHub from '@octokit/rest';
 import spawn from 'cross-spawn';
-import { transformComptLess } from 'alleria/lib/gulp';
+var less = require('gulp-less');
 import transformSvelte from './scripts/transformSvelte';
 import buildWebpack, { buildUmdConfig } from './scripts/buildWebpack';
 import createConfig from './webpack.config';
@@ -18,7 +17,7 @@ const libDir = path.join(cwd, './lib');
 const esDir = path.join(cwd, './es');
 const distDir = path.join(cwd, './dist');
 
-const replaceSvelteExt = through2.obj(async function(file, encoding, next) {
+const replaceSvelteExt = through2.obj(async function (file, encoding, next) {
   if (file.isBuffer()) {
     file.contents = Buffer.from(
       file.contents.toString().replace(/\.svelte(['|"])/g, (ext, char) => char),
@@ -28,12 +27,8 @@ const replaceSvelteExt = through2.obj(async function(file, encoding, next) {
 });
 
 task('compile-res', () =>
-  src([
-    'components/**/*.@(png|svg)',
-    'components/**/*.less',
-    '!components/*/demo/*',
-  ])
-    .pipe(transformComptLess({ plugins: require('./postcss.config').plugins }))
+  src(['components/**/*.@(png|svg)', 'components/**/*.less', '!components/*/demo/*'])
+    .pipe(less({ plugins: require('./postcss.config').plugins }))
     .pipe(dest(esDir))
     .pipe(dest(libDir)),
 );
@@ -70,14 +65,8 @@ task('compile-ts-helpers', () =>
 task(
   'compile-svelte',
   parallel([
-    () =>
-      src(['components/**/*.svelte'])
-        .pipe(transformSvelte('esm'))
-        .pipe(dest(esDir)),
-    () =>
-      src(['components/**/*.svelte'])
-        .pipe(transformSvelte('cjs'))
-        .pipe(dest(libDir)),
+    () => src(['components/**/*.svelte']).pipe(transformSvelte('esm')).pipe(dest(esDir)),
+    () => src(['components/**/*.svelte']).pipe(transformSvelte('cjs')).pipe(dest(libDir)),
   ]),
 );
 task('compile-build', () => buildWebpack(buildUmdConfig));

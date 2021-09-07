@@ -9,7 +9,7 @@ Ant Design Svelte 致力于提供给程序员**愉悦**的开发体验。
 
 ---
 
-## 引入ant-design-svelte
+## 引入 ant-design-svelte
 
 ### 1. 安装组件
 
@@ -23,13 +23,13 @@ $ npm i --save ant-design-svelte
 
 ```html
 <script>
-import { Button } from 'ant-design-svelte';
+  import { Button } from 'ant-design-svelte';
 </script>
 <div>
-  <Button type="primary">Primary</Button>
-  <Button>Default</Button>
-  <Button type="dashed">Dashed</Button>
-  <Button type="danger">Danger</Button>
+  <button type="primary">Primary</button>
+  <button>Default</button>
+  <button type="dashed">Dashed</button>
+  <button type="danger">Danger</button>
 </div>
 ```
 
@@ -46,7 +46,7 @@ new App({
 });
 ```
 
-### 4. webpack配置
+### 4. webpack 配置
 
 ```js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -60,7 +60,9 @@ module.exports = {
         use: {
           loader: 'svelte-loader',
           options: {
-            hydratable: true,
+            compilerOptions: {
+              hydratable: true,
+            },
             preprocess: {
               script: require('ant-design-svelte/helpers/svelte-import')({
                 libraryDirectory: 'es',
@@ -90,6 +92,3 @@ module.exports = {
   ],
 };
 ```
-
-
-

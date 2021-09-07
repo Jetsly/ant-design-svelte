@@ -1,18 +1,18 @@
 <script>
-  import { setContext, getContext } from "svelte";
-  import classNames, { formatStyle } from "../_util/classes";
-  import warning from "../_util/warning";
+  import { setContext, getContext } from 'svelte';
+  import classNames, { formatStyle } from '../_util/classes';
+  import warning from '../_util/warning';
 
   let className;
   export { className as class };
-  export let prefixCls = "ant-menu-submenu";
-  export let key = "";
-  export let disabled = false;
+  export let prefixCls = 'ant-menu-submenu';
+  export let key = '';
+  export const disabled = false;
   export let title = false;
 
-  const state = getContext("state");
-  const level = getContext("level");
-  setContext("level", level + 1);
+  const state = getContext('state');
+  const level = getContext('level');
+  setContext('level', level + 1);
 
   let classString;
   let subClassString;
@@ -24,18 +24,13 @@
       {
         [`${prefixCls}-selected`]: $state.selectedKeys.indexOf(key) > -1,
         // [`${prefixCls}-root`]: true,
-        [`${prefixCls}-open`]: open
+        [`${prefixCls}-open`]: open,
       },
-      className
+      className,
     );
-    subClassString = classNames(
-      "ant-menu",
-      "ant-menu-sub",
-      `ant-menu-${$state.mode}`,
-      {
-        "ant-menu-hidden": !open
-      }
-    );
+    subClassString = classNames('ant-menu', 'ant-menu-sub', `ant-menu-${$state.mode}`, {
+      'ant-menu-hidden': !open,
+    });
   }
 </script>
 
@@ -45,10 +40,12 @@
   on:click={event => {
     console.log(1);
     open = !open;
-  }}>
+  }}
+>
   <div
     class={`${prefixCls}-title`}
-    style={formatStyle({ paddingLeft: level * $state.inlineIndent })}>
+    style={formatStyle({ paddingLeft: level * $state.inlineIndent })}
+  >
     <slot name="title">{title}</slot>
     <i class="ant-menu-submenu-arrow" />
   </div>

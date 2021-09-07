@@ -1,26 +1,31 @@
 import path from 'path';
 import webpack from 'webpack';
-import 'webpack-dev-server';
+import type { Configuration as WebpackConfiguration } from 'webpack';
+import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const WebpackBar = require('webpackbar');
 
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration;
+}
+
 function addPlugins(ssr = false) {
-  return (ssr
-    ? []
-    : [
-        new HtmlWebpackPlugin({
-          filename: 'index.html',
-          template: './site/index.ejs',
-        }),
-      ]
+  return (
+    ssr
+      ? []
+      : [
+          new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: './site/index.ejs',
+          }),
+        ]
   ).concat([
     new WebpackBar({
-      name: ssr
-        ? '🚚  Ant Design Svelte Site SSR'
-        : '🚚  Ant Design Svelte Site',
+      name: ssr ? '🚚  Ant Design Svelte Site SSR' : '🚚  Ant Design Svelte Site',
       color: ssr ? '#2f54eb' : '#ec8b1f',
     }),
     new webpack.EnvironmentPlugin({
@@ -38,8 +43,10 @@ function getSvelteLoader(ssr = false) {
   return {
     loader: 'svelte-loader',
     options: {
-      hydratable: true,
-      generate: ssr ? 'ssr' : 'dom',
+      compilerOptions: {
+        hydratable: true,
+        generate: ssr ? 'ssr' : 'dom',
+      },
       preprocess: {
         script: require('./scripts/helpers/svelte-import.ts')({
           libraryDirectory: '',
@@ -57,7 +64,7 @@ export function createConfig(
   },
 ) {
   const isProd = process.env.NODE_ENV !== 'development';
-  const config: Array<webpack.Configuration> = [
+  const config: Array<Configuration> = [
     {
       mode: isProd ? 'production' : 'development',
       entry: {
@@ -68,9 +75,7 @@ export function createConfig(
         publicPath: '/',
       },
       optimization: {
-        minimizer: isProd
-          ? [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin({})]
-          : [],
+        minimizer: isProd ? [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin({})] : [],
       },
       resolve: {
         extensions: ['.ts', '.mjs', '.js', '.json', '.svelte'],
@@ -91,7 +96,6 @@ export function createConfig(
         historyApiFallback: {
           rewrites: [{ from: /./, to: '/index.html' }],
         },
-        disableHostCheck: true,
       },
       module: {
         rules: [
@@ -139,7 +143,7 @@ export function createConfig(
               MiniCssExtractPlugin.loader,
               'css-loader',
               'postcss-loader',
-              { loader: 'less-loader', options: { javascriptEnabled: true } },
+              { loader: 'less-loader', options: { lessOptions: { javascriptEnabled: true } } },
             ],
           },
         ],

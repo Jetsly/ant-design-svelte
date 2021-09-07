@@ -45,7 +45,9 @@ export const buildUmdConfig: webpack.Configuration = {
           {
             loader: 'svelte-loader',
             options: {
-              hydratable: true,
+              compilerOptions: {
+                hydratable: true,
+              },
             },
           },
         ],
@@ -61,7 +63,7 @@ export const buildUmdConfig: webpack.Configuration = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
-          { loader: 'less-loader', options: { javascriptEnabled: true } },
+          { loader: 'less-loader', options: { lessOptions: { javascriptEnabled: true } } },
         ],
       },
     ],
@@ -79,7 +81,7 @@ export const buildUmdConfig: webpack.Configuration = {
 };
 
 export default function buildWebpack(config) {
-  return new Promise(resolve => {
+  return new Promise<void>(resolve => {
     webpack(config, (err, stats) => {
       if (err) {
         console.error(err.stack || err);
