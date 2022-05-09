@@ -15,6 +15,16 @@
     "framework",
     "frontend"
   ],
+  "homepage": "https://ant-svelte.ddot.ink",
+  "bugs": {
+    "url": "https://github.com/Jetsly/ant-design-svelte/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jetsly/ant-design-svelte"
+  },
+  "license": "MIT",
+  "author": "Jetsly <cnljli@live.com>",
   "unpkg": "dist/antd.js",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -25,89 +35,33 @@
     "es",
     "helpers"
   ],
-  "repository": "git@github.com:Jetsly/ant-design-svelte.git",
-  "author": "Jetsly <cnljli@live.com>",
-  "license": "MIT",
   "scripts": {
-    "dev": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack serve --config webpack.config.ts",
-    "test": "nyc ava",
-    "coverage": "codecov",
-    "pub-with-ci": "gulp pub-with-ci",
-    "site": "gulp site"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "IE 11",
+    "not IE 10"
+  ],
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
-    "@ant-design/icons-svg": "^4.1.0",
-    "svelte": "^3.42.2",
-    "tslib": "^2.3.1",
+    "@ant-design/icons-svg": "^4.2.1",
     "warning": "^4.0.3"
   },
   "devDependencies": {
-    "@tsconfig/svelte": "^2.0.1",
-    "@types/cheerio": "^0.22.12",
-    "@types/cross-spawn": "^6.0.0",
-    "@types/fs-extra": "^9.0.12",
-    "@types/gulp": "^4.0.6",
-    "@types/highlight.js": "^10.1.0",
-    "@types/markdown-it": "^12.2.0",
-    "@types/node": "^16.7.1",
-    "@types/through2": "^2.0.34",
-    "@types/webpack-env": "^1.13.9",
-    "alleria": "^0.0.5",
-    "autoprefixer": "^10.3.2",
-    "ava": "^3.15.0",
-    "babel-loader": "^8.0.6",
-    "cheerio": "^1.0.0-rc.3",
-    "codecov": "^3.5.0",
-    "copy-to-clipboard": "^3.2.0",
-    "cross-env": "^7.0.3",
-    "cross-spawn": "^7.0.3",
-    "css-loader": "^6.2.0",
-    "del": "^6.0.0",
-    "fast-glob": "^3.0.4",
-    "fs-extra": "^10.0.0",
-    "gulp": "^4.0.2",
-    "gulp-less": "^5.0.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
-    "highlight.js": "^11.2.0",
-    "html-webpack-plugin": "^5.3.2",
-    "husky": "^7.0.1",
-    "less": "^4.1.1",
-    "less-loader": "^10.0.1",
-    "less-plugin-npm-import": "^2.1.0",
-    "loader-utils": "^2.0.0",
-    "lz-string": "^1.4.4",
-    "markdown-it": "^12.2.0",
-    "markdown-it-meta": "^0.0.1",
-    "mini-css-extract-plugin": "^2.2.0",
-    "nyc": "^15.1.0",
-    "optimize-css-assets-webpack-plugin": "^6.0.1",
-    "postcss": "^8.3.6",
-    "postcss-loader": "^6.1.1",
-    "prettier": "^2.3.2",
-    "pretty-quick": "^3.1.1",
-    "require-extension-hooks": "^0.3.3",
-    "rucksack-css": "^1.0.2",
-    "svelte-loader": "^3.1.2",
-    "svelte-preprocess": "^4.8.0",
-    "svelte-routing": "^1.6.0",
-    "terser-webpack-plugin": "^5.1.4",
-    "through2": "^4.0.2",
-    "ts-loader": "^9.2.5",
-    "ts-node": "^10.2.1",
-    "typescript": "^4.3.5",
-    "webpack": "^5.51.1",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.0.0",
-    "webpackbar": "^5.0.0-3"
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.43",
+    "@tsconfig/svelte": "^3.0.0",
+    "svelte": "^3.48.0",
+    "typescript": "^4.6.4",
+    "vite": "^2.9.8"
   },
-  "browserslist": [
-    "last 2 version",
-    "Firefox ESR",
-    "> 1%",
-    "ie >= 9"
-  ]
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
 }

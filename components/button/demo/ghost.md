@@ -11,25 +11,30 @@ title:
 
 ## en-US
 
-`ghost` property will make button's background transparent, it is common used in colored background.
+`ghost` property will make button's background transparent, it is commonly used in colored background.
 
-```html
-<script>
-  import { Button } from 'ant-design-svelte';
-</script>
-<div style="background: rgb(190, 200, 200); padding: 26px 16px 16px;">
-  <Button type="primary" ghost>
-    Primary
-  </Button>
-  <Button ghost>Default</Button>
-  <Button type="dashed" ghost>
-    Dashed
-  </Button>
-  <Button type="danger" ghost>
-    danger
-  </Button>
-  <Button type="link" ghost>
-    link
-  </Button>
-</div>
+```jsx
+import { Button } from 'antd';
+
+export default () => (
+  <div className="site-button-ghost-wrapper">
+    <Button type="primary" ghost>
+      Primary
+    </Button>
+    <Button ghost>Default</Button>
+    <Button type="dashed" ghost>
+      Dashed
+    </Button>
+    <Button type="primary" danger ghost>
+      Danger
+    </Button>
+  </div>
+);
+```
+
+```css
+.site-button-ghost-wrapper {
+  padding: 26px 16px 16px;
+  background: rgb(190, 200, 200);
+}
 ```

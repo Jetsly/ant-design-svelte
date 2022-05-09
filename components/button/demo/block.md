@@ -1,35 +1,33 @@
 ---
-order: 9
+order: 10
 title:
-  zh-CN: block 按钮
-  en-US: block Button
+  zh-CN: Block 按钮
+  en-US: Block Button
 ---
 
 ## zh-CN
 
-`block`属性将使按钮适合其父宽度。
+`block` 属性将使按钮适合其父宽度。
 
 ## en-US
 
 `block` property will make the button fit to its parent width.
 
-```html
-<script>
-  import { Button } from 'ant-design-svelte';
-</script>
-<div>
-  <Button type="primary" block>
-    Primary
-  </Button>
-  <Button block>Default</Button>
-  <Button type="dashed" block>
-    Dashed
-  </Button>
-  <Button type="danger" block>
-    Danger
-  </Button>
-  <Button type="link" block>
-    Link
-  </Button>
-</div>
+```jsx
+import { Button } from 'antd';
+
+export default () => (
+  <>
+    <Button type="primary" block>
+      Primary
+    </Button>
+    <Button block>Default</Button>
+    <Button type="dashed" block>
+      Dashed
+    </Button>
+    <Button type="link" block>
+      Link
+    </Button>
+  </>
+);
 ```
