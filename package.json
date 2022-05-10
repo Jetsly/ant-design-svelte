@@ -36,7 +36,7 @@
     "helpers"
   ],
   "scripts": {
-    "dev": "vite",
+    "serve": "vite",
     "preview": "vite preview",
     "build": "rollup --config rollup.config.ts --configPlugin esbuild",
     "build-c": "concurrently npm:build-*",
@@ -53,6 +53,7 @@
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
     "@ant-design/icons-svg": "^4.2.1",
+    "tinro": "^0.6.12",
     "warning": "^4.0.3"
   },
   "devDependencies": {

@@ -1546,6 +1546,11 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
+tinro@^0.6.12:
+  version "0.6.12"
+  resolved "https://registry.yarnpkg.com/tinro/-/tinro-0.6.12.tgz#f07c7212720d1b8e4bce6b22c1e65b0aabe47f69"
+  integrity sha512-YYLh0a21GXXpS66ilZbywfXcPTKQQ+bv3tihoqKqSFQP6/F11N7ZmtRbFWcyZXXPFRSzNxmPJBB8ZhP0GkoS0Q==
+
 to-regex-range@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"
