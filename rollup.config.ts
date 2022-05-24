@@ -12,8 +12,6 @@ import multi from '@rollup/plugin-multi-entry';
 import json from '@rollup/plugin-json';
 
 
-
-
 const { ANT_THEME, DEV_THEME } = process.env;
 
 const postcssUseConf = {
@@ -108,7 +106,7 @@ export default Promise.all([getRollupInput(), getRollupLessInput()]).then(async 
         multi({
           entryFileName: 'antd.js'
         }),
-        esbuild(), svelte(), nodeResolve(), json(),
+        esbuild(), svelte({ preprocess: {} }), nodeResolve(), json(),
         postcss({
           extract: true,
           use: postcssUseConf,

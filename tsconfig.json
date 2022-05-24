@@ -4,7 +4,7 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
-    "baseUrl": ".",
+    "baseUrl": "./",
     /**
      * Typecheck JS in `.svelte` and `.js` files by default.
      * Disable checkJs if you'd like to use dynamic types in JS.
@@ -13,7 +13,10 @@
      */
     "allowJs": true,
     "checkJs": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "ant-design-svelte": ["./components/index.ts"]
+    }
   },
   "include": ["components/**/*.svelte", "site/**/*.svelte"],
   "references": [{ "path": "./tsconfig.node.json" }]
