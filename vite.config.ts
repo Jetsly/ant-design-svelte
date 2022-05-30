@@ -33,11 +33,7 @@ export default defineConfig(async ({ command, mode }) => {
     plugins: [
       moduleImport(),
       svelteMarkdown(),
-      svelte({
-        compilerOptions: {
-          hydratable: true,
-        }
-      }),
+      svelte(),
     ]
   };
   if (command === 'serve') {

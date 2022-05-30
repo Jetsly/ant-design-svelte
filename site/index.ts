@@ -4,5 +4,4 @@ import './theme/static/index.less';
 
 new App({
   target: document.getElementById('app'),
-  hydrate: true,
 });
