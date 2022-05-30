@@ -1,28 +1,19 @@
-<script>
+<script lang="ts">
   import { getContext } from 'svelte';
   import MainContent from './MainContent.svelte';
   import { meta } from 'tinro';
   const route = meta();
   const mdDocList = import.meta.globEager('docs/**/*.md');
   const mdDemoList = import.meta.globEager('components/**/[a-z|-]+.md');
-  console.log(mdDocList, mdDemoList);
-  // const mdDemoList = require.context(
-  //   process.env.MD_DEMO_URL,
-  //   true,
-  //   /\/[\w|-]+.((en-us|zh-cn)\.)?md$/i
-  // );
   const lang = getContext('lang');
-  // console.log($$props);
   let demos = [];
   let doc;
   let isDoc = false;
   let page;
   let component;
-  console.log(page);
   $: {
     page = route.params.page;
     component = route.params.component;
-    console.log(route.params);
     if (route.params.page) {
       doc =
         mdDocList[
@@ -49,4 +40,4 @@
 <svelte:head>
   <title>Ant Design Svelte - {page || component}</title>
 </svelte:head>
-<MainContent {doc} {demos} {isDoc} />
+<MainContent {doc} {demos} />

@@ -1,8 +1,8 @@
 ---
 order: 9
 title:
-  zh-CN: 危险按钮
-  en-US: Danger Buttons
+    zh-CN: 危险按钮
+    en-US: Danger Buttons
 ---
 
 ## zh-CN
@@ -13,24 +13,15 @@ title:
 
 `danger` is a property of button after antd 4.0.
 
-```jsx
-import { Button } from 'antd';
-
-export default () => (
-  <>
-    <Button type="primary" danger>
-      Primary
-    </Button>
+```html
+<script>
+    import { Button } from 'ant-design-svelte';
+</script>
+<div>
+    <Button type="primary" danger>Primary</Button>
     <Button danger>Default</Button>
-    <Button type="dashed" danger>
-      Dashed
-    </Button>
-    <Button type="text" danger>
-      Text
-    </Button>
-    <Button type="link" danger>
-      Link
-    </Button>
-  </>
-);
+    <Button type="dashed" danger>Dashed</Button>
+    <Button type="text" danger>Text</Button>
+    <Button type="link" danger>Link</Button>
+</div>
 ```

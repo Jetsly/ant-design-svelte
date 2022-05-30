@@ -1,8 +1,8 @@
 ---
 order: 10
 title:
-  zh-CN: Block 按钮
-  en-US: Block Button
+    zh-CN: Block 按钮
+    en-US: Block Button
 ---
 
 ## zh-CN
@@ -13,21 +13,14 @@ title:
 
 `block` property will make the button fit to its parent width.
 
-```jsx
-import { Button } from 'antd';
-
-export default () => (
-  <>
-    <Button type="primary" block>
-      Primary
-    </Button>
-    <Button block>Default</Button>
-    <Button type="dashed" block>
-      Dashed
-    </Button>
-    <Button type="link" block>
-      Link
-    </Button>
-  </>
-);
+```html
+<script>
+  import { Button } from 'ant-design-svelte';
+</script>
+<div>
+  <Button type="primary" block>Primary</Button>
+  <Button block>Default</Button>
+  <Button type="dashed" block>Dashed</Button>
+  <Button type="link" block>Link</Button>
+</div>
 ```

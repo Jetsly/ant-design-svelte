@@ -1,28 +1,19 @@
-<script>
+<script lang="ts">
   import { getContext, onMount } from 'svelte';
   import { router } from 'tinro';
-  import { Row, Col } from 'ant-design-svelte';
+  import { Row, Col, _util } from 'ant-design-svelte';
   const lang = getContext('lang');
+
   export let doc;
   export let demos = [];
-  $: isMobile = false;
-  $: selectedKeys = [];
+
+  let isMobile = false;
+  let selectedKeys = [];
   onMount(() => {
-    let mounted = true;
-    const mq = window.matchMedia('(max-width: 750px)');
-    function listener(ev) {
-      if (!mounted) return;
-      isMobile = mq.matches;
-      console.log(isMobile);
-    }
-    mq.addEventListener('change', listener);
-    isMobile = mq.matches;
-    selectedKeys = [location.pathname];
-    console.log(isMobile);
-    return () => {
-      mounted = false;
-      mq.removeEventListener('change', listener);
-    };
+    const token = _util.ResponsiveObserve.subscribe(screen => {
+      isMobile = !!screen.lg;
+    });
+    return () => _util.ResponsiveObserve.unsubscribe(token);
   });
   function handleMenu({ detail }) {
     selectedKeys = detail.selectedKeys;

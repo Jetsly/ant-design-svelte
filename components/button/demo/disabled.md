@@ -13,11 +13,11 @@ title:
 
 To mark a button as disabled, add the `disabled` property to the `Button`.
 
-```jsx
-import { Button } from 'antd';
-
-export default () => (
-  <>
+```html
+<script>
+  import { Button } from 'ant-design-svelte';
+</script>
+<div>
     <Button type="primary">Primary</Button>
     <Button type="primary" disabled>
       Primary(disabled)
@@ -65,10 +65,8 @@ export default () => (
         Ghost(disabled)
       </Button>
     </div>
-  </>
-);
+</div>
 ```
-
 ```css
 .site-button-ghost-wrapper {
   padding: 8px 8px 0 8px;
