@@ -103,14 +103,18 @@
         [`${prefixCls}-rtl`]: direction === 'rtl',
       };
     });
-    return classNames(prefixCls, className, {
-      [`${prefixCls}-${span}`]: span !== undefined,
-      [`${prefixCls}-order-${order}`]: order,
-      [`${prefixCls}-offset-${offset}`]: offset,
-      [`${prefixCls}-push-${push}`]: push,
-      [`${prefixCls}-pull-${pull}`]: pull,
-      ...sizeClassObj,
-    });
+    return classNames(
+      prefixCls,
+      {
+        [`${prefixCls}-${span}`]: span !== undefined,
+        [`${prefixCls}-order-${order}`]: order,
+        [`${prefixCls}-offset-${offset}`]: offset,
+        [`${prefixCls}-push-${push}`]: push,
+        [`${prefixCls}-pull-${pull}`]: pull,
+        ...sizeClassObj,
+      },
+      className,
+    );
   })();
 </script>
 

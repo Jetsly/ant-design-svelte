@@ -52,4 +52,8 @@ const getConfigContext = () => {
   }
 }
 
+export function getSizeContext(): SizeType {
+  return undefined;
+}
+
 export default getConfigContext

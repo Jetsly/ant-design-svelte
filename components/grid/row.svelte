@@ -96,12 +96,16 @@
   })();
   $: classes = (() => {
     const prefixCls = getPrefixCls('row', customizePrefixCls);
-    return classNames(className, prefixCls, {
-      [`${prefixCls}-no-wrap`]: wrap === false,
-      [`${prefixCls}-${justify}`]: justify,
-      [`${prefixCls}-${align}`]: align,
-      [`${prefixCls}-rtl`]: direction === 'rtl',
-    });
+    return classNames(
+      prefixCls,
+      {
+        [`${prefixCls}-no-wrap`]: wrap === false,
+        [`${prefixCls}-${justify}`]: justify,
+        [`${prefixCls}-${align}`]: align,
+        [`${prefixCls}-rtl`]: direction === 'rtl',
+      },
+      className,
+    );
   })();
 </script>
 
