@@ -4,7 +4,8 @@
   import { meta } from 'tinro';
   const route = meta();
   const mdDocList = import.meta.globEager('docs/**/*.md');
-  const mdDemoList = import.meta.globEager('components/**/[a-z|-]+.md');
+  const mdDemoList = import.meta.globEager('components/**/[a-z|-]+.(en-US.|zh-CN.)?md');
+  console.log(mdDemoList);
   const lang = getContext('lang');
   let demos = [];
   let doc;

@@ -27,9 +27,12 @@ function isHidden(element: HTMLElement) {
   return !element || element.offsetParent === null;
 }
 
-export default function(node: HTMLElement, isEnable: boolean) {
+export default function (node: HTMLElement, isEnable: boolean) {
   if (node.tagName === 'INPUT' || isHidden(node)) {
-    return;
+    return {
+      update() { },
+      destroy() { },
+    };
   }
   if (!isEnable) return {};
   let clickWaveTimeoutId = null;

@@ -17,7 +17,7 @@ title:
 <script>
     import { Button } from 'ant-design-svelte';
 </script>
-<div className="site-button-ghost-wrapper">
+<div class="site-button-ghost-wrapper">
     <Button type="primary" ghost>Primary</Button>
     <Button ghost>Default</Button>
     <Button type="dashed" ghost>Dashed</Button>

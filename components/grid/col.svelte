@@ -1,6 +1,14 @@
 <script lang="ts" context="module">
   type ColSpanType = number | string;
   type FlexType = number | 'none' | 'auto' | string;
+  interface ColSize {
+    flex?: FlexType;
+    span?: ColSpanType;
+    order?: ColSpanType;
+    offset?: ColSpanType;
+    push?: ColSpanType;
+    pull?: ColSpanType;
+  }
   function parseFlex(flex: FlexType): string {
     if (typeof flex === 'number') {
       return `${flex} ${flex} auto`;
@@ -20,15 +28,6 @@
 
   const { getPrefixCls, direction } = getConfigContext();
   const { gutter, wrap, supportFlexGap } = getRowContext();
-
-  interface ColSize {
-    flex?: FlexType;
-    span?: ColSpanType;
-    order?: ColSpanType;
-    offset?: ColSpanType;
-    push?: ColSpanType;
-    pull?: ColSpanType;
-  }
 
   export { className as class };
   export { customizePrefixCls as prefixCls };

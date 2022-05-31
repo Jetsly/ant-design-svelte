@@ -1,4 +1,7 @@
 <script lang="ts" context="module">
+  type ButtonType = 'default' | 'primary' | 'ghost' | 'dashed' | 'link' | 'text';
+  type ButtonShape = 'default' | 'circle' | 'round';
+  type ButtonHTMLType = 'button' | 'submit' | 'reset';
   function isUnBorderedButtonType(type: ButtonType | undefined) {
     return type === 'text' || type === 'link';
   }
@@ -7,13 +10,10 @@
 <script lang="ts">
   import getConfigContext, { getSizeContext, type SizeType } from '../config-provider/context';
   import classNames from '../_util/classes';
+  import wave from '../_util/wave';
 
   const { getPrefixCls, autoInsertSpaceInButton, direction } = getConfigContext();
   const size = getSizeContext();
-
-  type ButtonType = 'default' | 'primary' | 'ghost' | 'dashed' | 'link' | 'text';
-  type ButtonShape = 'default' | 'circle' | 'round';
-  type ButtonHTMLType = 'button' | 'submit' | 'reset';
 
   export { className as class };
   export { customizePrefixCls as prefixCls };
@@ -24,6 +24,7 @@
   export let danger: boolean = false;
   export let ghost: boolean = false;
   export let block: boolean = false;
+  export let disabled: boolean = false;
   export let htmlType: ButtonHTMLType = 'button';
 
   let className = '';
@@ -57,4 +58,6 @@
   })();
 </script>
 
-<button type={htmlType} class={classes}><slot /></button>
+<button use:wave={!isUnBorderedButtonType(type)} type={htmlType} class={classes} {disabled}
+  ><slot /></button
+>
