@@ -8,14 +8,12 @@
 </script>
 
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import getConfigContext, { getSizeContext, type SizeType } from '../config-provider/context';
-  import classNames from '../_util/classes';
+  import classNames, { formatStyle } from '../_util/classes';
   import wave from '../_util/wave';
 
   const { getPrefixCls, autoInsertSpaceInButton, direction } = getConfigContext();
   const size = getSizeContext();
-  const dispatch = createEventDispatcher();
 
   export { className as class };
   export { customizePrefixCls as prefixCls };
@@ -28,13 +26,17 @@
   export let block: boolean = false;
   export let disabled: boolean = false;
   export let htmlType: ButtonHTMLType = 'button';
+  export let icon = '';
+  export let style = '';
 
   let className = '';
   let customizePrefixCls = '';
   let customizeSize: SizeType = undefined;
   let innerLoading: boolean = !!loading;
   let hasTwoCNChar: boolean = false;
+  let havSlot = !!$$props.$$slots;
 
+  $: iconType = loading ? 'loading' : icon;
   $: classes = (() => {
     const prefixCls = getPrefixCls('btn', customizePrefixCls);
     const sizeClassNameMap = { large: 'lg', small: 'sm', middle: undefined };
@@ -47,7 +49,7 @@
         [`${prefixCls}-${shape}`]: shape !== 'default' && shape, // Note: Shape also has `default`
         [`${prefixCls}-${type}`]: type,
         [`${prefixCls}-${sizeCls}`]: sizeCls,
-        // [`${prefixCls}-icon-only`]: !children && children !== 0 && !!iconType,
+        [`${prefixCls}-icon-only`]: !havSlot && !!iconType,
         [`${prefixCls}-background-ghost`]: ghost && !isUnBorderedButtonType(type),
         [`${prefixCls}-loading`]: innerLoading,
         [`${prefixCls}-two-chinese-chars`]: hasTwoCNChar && autoInsertSpace,
@@ -59,19 +61,18 @@
     );
   })();
 
-  function handleClick(e: MouseEvent) {
-    if (innerLoading || disabled) {
-      e.preventDefault();
-      return;
-    }
-    dispatch('click', e);
-  }
+  $: computeStyle = [
+    formatStyle({
+      pointerEvents: innerLoading || disabled ? 'none' : undefined,
+    }),
+    style,
+  ];
+  $: buttonProps = {
+    type: htmlType,
+    class: classes,
+    disabled,
+    style: computeStyle.length == 0 ? undefined : computeStyle.filter(Boolean).join(';'),
+  };
 </script>
 
-<button
-  use:wave={!isUnBorderedButtonType(type)}
-  on:click={handleClick}
-  type={htmlType}
-  class={classes}
-  {disabled}><slot /></button
->
+<button use:wave={!isUnBorderedButtonType(type)} {...buttonProps} on:click><slot /></button>

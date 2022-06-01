@@ -50,6 +50,7 @@ function renderCode({ meta, tagArray, sourceArray }: IMDReturn): string {
   )
   meta.source = encodeURIComponent(code);
   const hicode = stringRe(hljs.highlight(code, { language: 'html' }).value);
+  console.log(style);
   return `
   <script context="module"> 
     export const meta=${JSON.stringify(meta)};
@@ -58,7 +59,7 @@ function renderCode({ meta, tagArray, sourceArray }: IMDReturn): string {
     import Demo from "demo";
     ${transformImport(scriptPart)}
   </script>
-  <style>${style}</style>
+  <style>${style.replace(/((\.|#)(-|\w)+)+/g, `:global($1)`)}</style>
   <Demo meta={meta} >
   <div class="code-box-demo" slot="component">${htmlPart}</div>
   <div class="code-box-description" slot="znDesc">${znDesc}</div>
