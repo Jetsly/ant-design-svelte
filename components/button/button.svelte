@@ -8,12 +8,14 @@
 </script>
 
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
   import getConfigContext, { getSizeContext, type SizeType } from '../config-provider/context';
   import classNames from '../_util/classes';
   import wave from '../_util/wave';
 
   const { getPrefixCls, autoInsertSpaceInButton, direction } = getConfigContext();
   const size = getSizeContext();
+  const dispatch = createEventDispatcher();
 
   export { className as class };
   export { customizePrefixCls as prefixCls };
@@ -56,8 +58,20 @@
       className,
     );
   })();
+
+  function handleClick(e: MouseEvent) {
+    if (innerLoading || disabled) {
+      e.preventDefault();
+      return;
+    }
+    dispatch('click', e);
+  }
 </script>
 
-<button use:wave={!isUnBorderedButtonType(type)} type={htmlType} class={classes} {disabled}
-  ><slot /></button
+<button
+  use:wave={!isUnBorderedButtonType(type)}
+  on:click={handleClick}
+  type={htmlType}
+  class={classes}
+  {disabled}><slot /></button
 >

@@ -14,7 +14,7 @@
         'package.json': {
           content: {
             dependencies: {
-              svelte: '^3.6.4',
+              svelte: '^3.48.0',
               'ant-design-svelte': 'latest',
             },
           },
