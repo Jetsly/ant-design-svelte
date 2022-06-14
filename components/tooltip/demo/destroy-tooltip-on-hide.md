@@ -16,9 +16,7 @@ Setting `destroyTooltipOnHide` to control whether destroy dom node of tooltip wh
 
 ```html
 <script>
-    import { Tooltip } from 'ant-design-svelte';
+    import { tooltip } from 'ant-design-svelte';
 </script>
-  <Tooltip destroyTooltipOnHide={{ keepParent: false }} title="prompt text">
-    <span>Tooltip will destroy when hidden.</span>
-  </Tooltip>
+<span use:tooltip={{destroyTooltipOnHide:{ keepParent: false },title:"prompt text"}}>Tooltip will destroy when hidden.</span>
 ```

@@ -11,6 +11,7 @@
   import getConfigContext, { getSizeContext, type SizeType } from '../config-provider/context';
   import classNames, { formatStyle } from '../_util/classes';
   import wave from '../_util/wave';
+  import tooltipAction, { type Parameters as tooltipParams } from '../tooltip';
 
   const { getPrefixCls, autoInsertSpaceInButton, direction } = getConfigContext();
   const size = getSizeContext();
@@ -28,6 +29,7 @@
   export let htmlType: ButtonHTMLType = 'button';
   export let icon = '';
   export let style = '';
+  export let tooltip: tooltipParams = undefined;
 
   let className = '';
   let customizePrefixCls = '';
@@ -75,4 +77,9 @@
   };
 </script>
 
-<button use:wave={!isUnBorderedButtonType(type)} {...buttonProps} on:click><slot /></button>
+<button
+  use:tooltipAction={tooltip}
+  use:wave={!isUnBorderedButtonType(type)}
+  {...buttonProps}
+  on:click><slot /></button
+>

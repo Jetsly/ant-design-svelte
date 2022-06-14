@@ -15,14 +15,10 @@ By specifying `arrowPointAtCenter` prop, the arrow will point to the center of t
 
 ```html
 <script>
-    import { Tooltip, Button } from 'ant-design-svelte';
+    import { Button } from 'ant-design-svelte';
 </script>
 <div>
-    <Tooltip placement="topLeft" title="Prompt Text">
-        <Button>Align edge / 边缘对齐</Button>
-    </Tooltip>
-    <Tooltip placement="topLeft" title="Prompt Text" arrowPointAtCenter>
-        <Button>Arrow points to center / 箭头指向中心</Button>
-    </Tooltip>
+<Button tooltip={{placement:"topLeft",title:"Prompt Text"}}>Align edge / 边缘对齐</Button>
+<Button tooltip={{placement:"topLeft",title:"Prompt Text",arrowPointAtCenter:true}}>Arrow points to center / 箭头指向中心</Button>
 </div>
 ```

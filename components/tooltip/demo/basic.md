@@ -15,10 +15,7 @@ The simplest usage.
 
 ```html
 <script>
-    import { Tooltip } from 'ant-design-svelte';
+    import { tooltip } from 'ant-design-svelte';
 </script>
-
-<Tooltip title="prompt text">
-    <span>Tooltip will show on mouse enter.</span>
-</Tooltip>
+<span use:tooltip={{title:"prompt text"}}>Tooltip will show on mouse enter.</span>
 ```

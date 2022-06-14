@@ -28,13 +28,12 @@ function isHidden(element: HTMLElement) {
 }
 
 export default function (node: HTMLElement, isEnable: boolean) {
-  if (node.tagName === 'INPUT' || isHidden(node)) {
+  if (node.tagName === 'INPUT' || isHidden(node) || !isEnable) {
     return {
       update() { },
       destroy() { },
     };
   }
-  if (!isEnable) return {};
   let clickWaveTimeoutId = null;
   const onClick = () => {
     resetEffect(node);

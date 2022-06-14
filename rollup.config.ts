@@ -79,7 +79,11 @@ export default Promise.all([getRollupInput(), getRollupLessInput()]).then(async 
       treeshake: false,
       external: [/.*/],
       plugins: [
-        replace({ '.svelte': '', preventAssignment: true }), esbuild(), svelte(), json()
+        replace({ '.svelte': '', preventAssignment: true }), esbuild(), svelte({
+          compilerOptions: {
+            hydratable: true
+          }
+        }), json()
       ],
       output: [
         {
@@ -106,7 +110,7 @@ export default Promise.all([getRollupInput(), getRollupLessInput()]).then(async 
         multi({
           entryFileName: 'antd.js'
         }),
-        esbuild(), svelte({ preprocess: {} }), nodeResolve(), json(),
+        esbuild(), svelte({ preprocess: {}, compilerOptions: { hydratable: true } }), nodeResolve(), json(),
         postcss({
           extract: true,
           use: postcssUseConf,

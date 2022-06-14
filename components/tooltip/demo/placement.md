@@ -15,55 +15,32 @@ There are 12 placement options available.
 
 ```html
 <script>
-    import { Tooltip, Button, _util } from 'ant-design-svelte';
-    const text = 'prompt text';
+    import { Button, _util } from 'ant-design-svelte';
+    const {formatStyle} = _util;
+    const title = 'prompt text';
     const buttonWidth = 70;
 </script>
   <div class="demo">
-    <div style={_util.formatStyle({ marginLeft: buttonWidth, whiteSpace: 'nowrap' })}>
-      <Tooltip placement="topLeft" title={text}>
-        <Button>TL</Button>
-      </Tooltip>
-      <Tooltip placement="top" title={text}>
-        <Button>Top</Button>
-      </Tooltip>
-      <Tooltip placement="topRight" title={text}>
-        <Button>TR</Button>
-      </Tooltip>
-    </div>
-    <div style={_util.formatStyle({ width: buttonWidth, float: 'left' })}>
-      <Tooltip placement="leftTop" title={text}>
-        <Button>LT</Button>
-      </Tooltip>
-      <Tooltip placement="left" title={text}>
-        <Button>Left</Button>
-      </Tooltip>
-      <Tooltip placement="leftBottom" title={text}>
-        <Button>LB</Button>
-      </Tooltip>
-    </div>
-    <div style={_util.formatStyle({ width: buttonWidth, marginLeft: buttonWidth * 4 + 24 })}>
-      <Tooltip placement="rightTop" title={text}>
-        <Button>RT</Button>
-      </Tooltip>
-      <Tooltip placement="right" title={text}>
-        <Button>Right</Button>
-      </Tooltip>
-      <Tooltip placement="rightBottom" title={text}>
-        <Button>RB</Button>
-      </Tooltip>
-    </div>
-    <div style={_util.formatStyle({ marginLeft: buttonWidth, clear: 'both', whiteSpace: 'nowrap' })}>
-      <Tooltip placement="bottomLeft" title={text}>
-        <Button>BL</Button>
-      </Tooltip>
-      <Tooltip placement="bottom" title={text}>
-        <Button>Bottom</Button>
-      </Tooltip>
-      <Tooltip placement="bottomRight" title={text}>
-        <Button>BR</Button>
-      </Tooltip>
-    </div>
+     <div style={formatStyle({ marginLeft: buttonWidth, whiteSpace: 'nowrap' })}>
+        <Button tooltip={{placement:"topLeft",title}}>TL</Button>
+        <Button tooltip={{placement:"top",title}}>Top</Button>
+        <Button tooltip={{placement:"topRight",title}}>TR</Button>
+      </div>
+      <div style={formatStyle({ width: buttonWidth, float: 'left' })}>
+        <Button tooltip={{placement:"leftTop",title}}>LT</Button>
+        <Button tooltip={{placement:"left",title}}>Left</Button>
+        <Button tooltip={{placement:"leftBottom",title}}>LB</Button>
+      </div>
+      <div style={formatStyle({ width: buttonWidth, marginLeft: buttonWidth * 4 + 24 })}>
+        <Button tooltip={{placement:"rightTop",title}}>RT</Button>
+        <Button tooltip={{placement:"right",title}}>Right</Button>
+        <Button tooltip={{placement:"rightBottom",title}}>RB</Button>
+      </div>
+      <div style={formatStyle({ marginLeft: buttonWidth, clear: 'both', whiteSpace: 'nowrap' })}>
+        <Button tooltip={{placement:"bottomLeft",title}}>BL</Button>
+        <Button tooltip={{placement:"bottom",title}}>Bottom</Button>
+        <Button tooltip={{placement:"bottomRight",title}}>BR</Button>
+      </div>
   </div>
 ```
 
